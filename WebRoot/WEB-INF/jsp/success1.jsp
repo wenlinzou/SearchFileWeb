@@ -51,14 +51,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <input type="button" value="隐藏" onclick="hiddenDiv()"/>
   <input type="button" value="隐显" onclick="changeDiv('showdiv')"/>
   <input type="button" value="回到首页" onclick="backIndex()"/>	
+  <input type="checkbox" value='全选' onclick="selectAll(this)" />全选<br/>
   
-  	<div id="mySearchInfo">
+  <div>
+  	<a href="javascript:void(0)" onclick="changeFont('max')">大字体</a>
+	<a href="javascript:void(0)" onclick="changeFont('normal')">中字体</a>
+	<a href="javascript:void(0)" onclick="changeFont('min')">小字体</a>
+	
+  	<input type="button" value="大字体" onclick="changeFont('max')"/>
+	<input type="button" value="中字体" onclick="changeFont('normal')"/>
+	<input type="button" value="小字体" onclick="changeFont('min')"/>
+
+  </div>
+  	<div id="mySearchInfo" >
 	    <table>
 	    	<tr><td class="mytitle">搜索结果-文件信息</td></tr>
 	    	
 	    	<c:forEach items="${fileLists }" var="file" varStatus="status">
 	    		<tr <c:if test="${status.index%2!=0}">class="mytr"</c:if>>
 	    			<td>
+	    				<input type="checkbox" name="filePathList"/>
 	    				<a href="playServlet.action?myUrl=${file}">
 	    					<c:if test="${fileLists!=null }">${file }</c:if>
 	    				</a>

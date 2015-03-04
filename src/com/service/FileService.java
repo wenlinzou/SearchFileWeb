@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bean.IFile;
-import com.util.SearchFile;
+import com.util.SeviceFile;
 
 public class FileService {
-	private SearchFile sf = new SearchFile();
+	private SeviceFile sf = new SeviceFile();
 	
 	public List<String> queryFileLists(IFile iFile){
 		/*StringBuilder sb = new StringBuilder();

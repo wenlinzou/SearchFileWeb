@@ -34,3 +34,20 @@ body{background:#fafafa;}
 .myright:HOVER{
 	background:url(../images/rocket.png) no-repeat 0 -62px;
 }
+
+/* 字体大小 */
+.normal{
+	color:#000000;
+	font-size:20px;
+	background-color:#cdd8d1;
+}
+.max{
+	color:#808080;
+	font-size:38px;
+	background-color:#9ce9b4;
+}
+.min{
+	color:#ffffff;
+	font-size:12px;
+	background-color:#f1b9dd;
+}

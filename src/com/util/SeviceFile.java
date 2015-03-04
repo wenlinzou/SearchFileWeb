@@ -2,16 +2,18 @@ package com.util;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.LineNumberReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import com.bean.IFile;
 
-public class SearchFile {
+public class SeviceFile {
 	private static int COUNT = 1;
 	private final String ERROR_INFO = "请输入硬盘符,以便查询!";
 	private final int SIZE_SEARCH = 20;
@@ -142,6 +144,8 @@ System.out.println("4 文件名为空,后缀为空");
 	}
 	
 	
+	
+	
 	//fatherFilter=====================
 	public void myFilter(File dir, FilenameFilter filter, List<String> lists){
 		File[] files = dir.listFiles();
@@ -184,6 +188,7 @@ System.out.println("4 文件名为空,后缀为空");
 	 * 写入到txt
 	 */
 	public void write2File(List<String> list,File file) throws IOException{
+		list = lineNum(file);
 		BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 		for (Iterator<String> it = list.iterator(); it.hasNext();) {
 			bw.write(it.next());
@@ -192,6 +197,18 @@ System.out.println("4 文件名为空,后缀为空");
 		}
 		bw.close();
 			
+	}
+	
+	//打印数据带行号
+	public List<String> lineNum(File fileLine) throws IOException{
+		LineNumberReader liner = new LineNumberReader(new FileReader(fileLine));
+		List<String> lists = new ArrayList<String>();
+		String line = null;
+		while((line = liner.readLine())!=null){
+			lists.add(liner.getLineNumber()+"\t"+line);
+		}
+		liner.close();
+		return lists;
 	}
 	
 	//截取盘符
@@ -210,9 +227,29 @@ System.out.println("4 文件名为空,后缀为空");
 		return foldernameTemp;
 	}
 	
-	public static void main(String[] args) {
-		String path = "D:/帮助文档";
-		System.out.println(path.replace("/", "\\"));
-	}
 	
+	private static void renameFile(File file) {
+		File [] files = file.listFiles(new MySuffixFilter(".rar"));
+		int count=0;
+		for (File f : files) {
+			if(f.isFile()){
+				if(!f.getName().contains("("))
+					continue;
+				count++;
+				StringBuilder sb = new StringBuilder();
+//				sb.append(String.valueOf(count));
+				String filename = f.getName();
+				int start = filename.indexOf('(');
+				int end = filename.lastIndexOf(')')+1;
+//				System.out.println("start:"+start+"\tend:"+end);
+				System.out.println("beforename:"+filename);
+				sb.append(filename.substring(0, start));
+				sb.append(filename.substring(end));
+				filename = sb.toString();
+				System.out.println("aftername:"+filename);
+				boolean isrename = f.renameTo(new File(f.getParent(),filename));
+				System.out.println(isrename);
+			}
+		}
+	}
 }
