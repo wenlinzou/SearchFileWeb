@@ -1,0 +1,36 @@
+*{margin:0;padding:0;list-style:none;border:none;}
+body{background:#fafafa;}
+
+.mytr{
+	background-color:#ECF6EE;
+}
+.mytitle{
+	 background-color:orange; 
+	color:#f3f3f3;
+	font-size:25px;
+	font-weight:bold;
+	text-align: center;
+}
+.mycenter{
+	text-align: center;
+}
+#mySearchInfo{
+	line-height: 35px;
+	color:green;
+	font-size:25px;
+}
+#mySearchInfo a:LINK{
+	text-decoration:none;
+	color:black;
+}
+#mySearchInfo a:HOVER{
+	text-decoration:none;
+}
+.myright{
+	position:fixed;right:25px;bottom:25px;display:block;width:26px;height:62px;
+	background-color:orange;
+	background:url(../images/rocket.png) no-repeat 0 0;-webkit-transition: all 0.2s ease-in-out;
+}
+.myright:HOVER{
+	background:url(../images/rocket.png) no-repeat 0 -62px;
+}
