@@ -58,6 +58,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<input type="button" value="回到首页" onclick="backIndex()"/>
 		<input type="button" value="重命名文件去除相同部分" onclick="changeDiv('showRenameDiv')"/>
 		<input type="checkbox" value='全选' onclick="selectAll(this)" />全选	
+
+		<input type="button" value="全选" onclick="checkAllByBtn(1)" />
+        <input type="button" value="取消全选" onclick="checkAllByBtn(0)" />
+        <input type="button" value="反选"  onclick="checkAllByBtn(2)"/>
 	</div>  
 	
 	<div id="showRenameDiv" style="display: none">	

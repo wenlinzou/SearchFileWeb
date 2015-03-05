@@ -31,6 +31,27 @@ function selectAll(node) {
 	}
 }
 
+//btn全选
+function checkAll(node){
+	var oMailNodes = document.getElementsByName("filePathList");
+	for(var i=0; i<oMailNodes.length; i++){
+		oMailNodes[i].checked = node.checked;
+	}
+}
+//反选
+function checkAllByBtn(val){
+	var oMailNodes = document.getElementsByName("filePathList");
+	for(var i=0; i<oMailNodes.length; i++){
+		if(val>1){
+			oMailNodes[i].checked = !oMailNodes[i].checked;
+		}else{
+			oMailNodes[i].checked = val;
+		}
+	}
+}
+
+
+//更改行样式
 var trColorName;
 function trColor() {
 	var oTabNode = document.getElementById("mySearchInfo");
