@@ -61,9 +61,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>  
 	
 	<div id="showRenameDiv" style="display: none">	
-		<form >
-			相同部分的名称为:<input type="text" name="renanme"/><br/>
-			<input type="button" value="修改"/>
+		<form method="post" action="rename.action" onsubmit="getSelectChecked()" >
+			相同部分的名称为:<input type="text" name="rename" id="rename"/><br/>
+			<input type="submit" value="修改" />
 		</form>
 	</div>	
 	
@@ -73,21 +73,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<a href="javascript:void(0)" onclick="changeFont('min')">小字体</a>
 	</div>
 	
-	<div id="mySearchInfo" >
+	<div >
 		
-		<table>
+		<table id="mySearchInfo" >
 	    	<tr><td class="mytitle">搜索结果-文件信息</td></tr>
 	    	
 	    	<c:forEach items="${fileLists }" var="file" varStatus="status">
-	    		<tr <c:if test="${status.index%2!=0}">class="mytr"</c:if>>
+	    		<tr name="changeFont">
+	    		<%-- <c:if test="${status.index%2!=1}">class="mytrTwo"</c:if> class="mytrOne"> --%>
 	    			<td>
-	    				<input type="checkbox" name="filePathList"/>
+	    				<input type="checkbox" name="filePathList" value="${file }"/>
 	    				<a href="playServlet.action?myUrl=${file}">
 	    					<c:if test="${fileLists!=null }">${file }</c:if>
 	    				</a>
 	    			</td>
 	    		</tr>
 	    	</c:forEach>
+	    	
 	    </table>
 	</div>
 	<div class="myright"><a href="#" onclick="gotoTop();return false;" class="myright"></a></div>

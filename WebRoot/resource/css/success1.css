@@ -1,9 +1,18 @@
 *{margin:0 auto;padding:0;list-style:none;border:none;}
-body{background:#fafafa;text-align: center;}
+body{text-align: center;}
 
-.mytr{
+.mytrOne{
 	background-color:#ECF6EE;
 }
+.mytrTwo{
+	background-color:#fafafa
+}
+.over{
+    background-color: tomato;
+}
+
+
+
 .mytitle{
 	background-color:orange; 
 	color:#f3f3f3;
@@ -14,11 +23,14 @@ body{background:#fafafa;text-align: center;}
 .mycenter{
 	text-align: center;
 }
+
 #mySearchInfo{
-	line-height: 35px;
-	color:green;
-	font-size:25px;
+	border:0px;
+	line-height: 30px;
+	font-size:16px;
+	
 }
+
 #mySearchInfo a:LINK{
 	text-decoration:none;
 	color:black;
@@ -46,17 +58,24 @@ body{background:#fafafa;text-align: center;}
 
 /* 字体大小 */
 .normal{
-	color:#000000;
 	font-size:20px;
 	background-color:#cdd8d1;
 }
+.normal a:hover{
+	color:#000000;
+}
 .max{
-	color:#808080;
 	font-size:38px;
+	line-height:44px;
 	background-color:#9ce9b4;
 }
+.max a:hover{
+	color:#808080;
+}
 .min{
-	color:#ffffff;
 	font-size:12px;
 	background-color:#f1b9dd;
+}
+.min a:link{
+	color:#ffcc22;
 }

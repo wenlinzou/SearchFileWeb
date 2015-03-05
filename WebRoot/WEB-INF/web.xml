@@ -24,6 +24,11 @@
     <servlet-name>PlayServlet</servlet-name>
     <servlet-class>com.servlet.PlayServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>RenameServlet</servlet-name>
+    <servlet-class>com.servlet.RenameServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -43,5 +48,9 @@
   <servlet-mapping>
     <servlet-name>PlayServlet</servlet-name>
     <url-pattern>/playServlet.action</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RenameServlet</servlet-name>
+    <url-pattern>/rename.action</url-pattern>
   </servlet-mapping>
 </web-app>

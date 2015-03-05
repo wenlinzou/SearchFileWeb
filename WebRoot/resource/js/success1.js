@@ -31,10 +31,37 @@ function selectAll(node) {
 	}
 }
 
+var trColorName;
+function trColor() {
+	var oTabNode = document.getElementById("mySearchInfo");
+
+	var collTrNodes = oTabNode.rows;
+
+	for (var i = 1; i < collTrNodes.length; i++) {
+		if (i % 2 == 1)
+			collTrNodes[i].className = "mytrOne";
+		else
+			collTrNodes[i].className = "mytrTwo";
+		collTrNodes[i].onmouseover = function() {
+			trColorName = this.className;
+			this.className = "over";
+		}
+		collTrNodes[i].onmouseout = function() {
+			this.className = trColorName;
+		}
+	}
+}
+onload = function() {
+	trColor();
+}
+
 /* 修改字体 */
 function changeFont(selectName) {
-	var oNewsText = document.getElementById("mySearchInfo");
-	oNewsText.className = selectName;
+	var oNewsText = document.getElementsByName("changeFont");
+
+	for (var i = 0; i < oNewsText.length; i++) {
+		oNewsText[i].className = selectName;
+	}
 	/*
 	 * var trNodes = document.getElementsByName("filePathList"); for(var i = 0;
 	 * i < trNodes.length; i++){
@@ -53,7 +80,7 @@ function validate_file(field, alerttxt, selectName) {
 		}
 	}
 }
-function $(val){
+function $(val) {
 	return document.getElementById(val);
 }
 function validate_disk(diskname, alerttxt, selectName) {
@@ -71,12 +98,12 @@ function validate_form(thisform) {
 	with (thisform) {
 		var diskwarn = "请输入盘符名称";
 		var filewarn = "请输入文件名称";
-		if((validate_disk(diskname,diskwarn,"errordiskfile")==false) && 
-				(validate_file(filename,filewarn,"errordiskfile")==false)){
+		if ((validate_disk(diskname, diskwarn, "errordiskfile") == false)
+				&& (validate_file(filename, filewarn, "errordiskfile") == false)) {
 			diskname.focus();
 			return false;
 		}
-		if(validate_disk(diskname,diskwarn)==false){
+		if (validate_disk(diskname, diskwarn) == false) {
 			diskname.focus();
 			return false;
 		}
@@ -84,6 +111,20 @@ function validate_form(thisform) {
 			filename.focus();
 			return false;
 		}
-		
 	}
+}
+
+function getSelectChecked() {
+	var collFiles = document.getElementsByName("filePathList");
+	var array = new Array();
+	var j = 0;
+	for (var i = 0; i < collFiles.length; i++) {
+		if (collFiles[i].checked) {
+			if (null != collFiles[i].value) {
+				array[j] = collFiles[i].value;
+				j++;
+			}
+		}
+	}
+	$("rename").value = array;
 }
