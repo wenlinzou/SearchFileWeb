@@ -24,47 +24,58 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=basePath%>resource/js/success1.js"></script>
   </head>
   
-  <body>
-  <div id="showdiv" style="display: none">
-  	<form action="print.action" method="post">
-  		
+<body>
+	<div id="showdiv" style="display: none">
+  		<form action="print.action" onsubmit="return validate_form(this)" method="post">
+  		<!-- 打印信息存储在隐藏标签 -->
   		<input type="hidden" value="${fileLists }" id="showdiv"/>
-  		<table>
-  		<tr class="mycenter"><td colspan="2"></td>
-  		</tr>
-  		
-		<tr><td>盘符:</td><td><input type="text" name="diskname"/></td>
-  		</tr>
-  		<tr>
-  			<td>文件名称:</td>
-  			<td><input type="text" name="filename"/></td>
-  		</tr>
-  		<tr>
-  			<td></td>
-  			<td><input type="submit" value="写入进本地磁盘" id="showthis"/></td>
-  		</tr>
-  		</table>
-  	</form>	
-  </div>
- 
-  <input type="button" value="显示" onclick="showDiv()"/>
-  <input type="button" value="隐藏" onclick="hiddenDiv()"/>
-  <input type="button" value="隐显" onclick="changeDiv('showdiv')"/>
-  <input type="button" value="回到首页" onclick="backIndex()"/>	
-  <input type="checkbox" value='全选' onclick="selectAll(this)" />全选<br/>
-  
-  <div>
-  	<a href="javascript:void(0)" onclick="changeFont('max')">大字体</a>
-	<a href="javascript:void(0)" onclick="changeFont('normal')">中字体</a>
-	<a href="javascript:void(0)" onclick="changeFont('min')">小字体</a>
+	  		<table>
+		  		<tr ><td colspan="3"></td>
+		  		</tr>
+				<tr>
+					<td>盘符:</td>
+					<td><input type="text" name="diskname"/></td>
+					<td id="errordisk"></td>
+		  		</tr>
+		  		<tr>
+		  			<td>文件名称:</td>
+		  			<td><input type="text" name="filename"/></td>
+		  			<td id="errorfile"></td>
+	  			</tr>
+	  			<tr>
+	  				<td></td>
+		  			<td><input type="submit" value="写入进本地磁盘" id="showthis"/></td>
+		  			<td></td>
+	  			</tr>
+			</table>
+	  	</form>
+	</div>
+  	
+	<div>
+		<input type="button" value="显示" onclick="showDiv()"/>
+		<input type="button" value="隐藏" onclick="hiddenDiv()"/>
+		<input type="button" value="隐显" onclick="changeDiv('showdiv')"/>
+		<input type="button" value="回到首页" onclick="backIndex()"/>
+		<input type="button" value="重命名文件去除相同部分" onclick="changeDiv('showRenameDiv')"/>
+		<input type="checkbox" value='全选' onclick="selectAll(this)" />全选	
+	</div>  
 	
-  	<input type="button" value="大字体" onclick="changeFont('max')"/>
-	<input type="button" value="中字体" onclick="changeFont('normal')"/>
-	<input type="button" value="小字体" onclick="changeFont('min')"/>
-
-  </div>
-  	<div id="mySearchInfo" >
-	    <table>
+	<div id="showRenameDiv" style="display: none">	
+		<form >
+			相同部分的名称为:<input type="text" name="renanme"/><br/>
+			<input type="button" value="修改"/>
+		</form>
+	</div>	
+	
+	<div>
+		<a href="javascript:void(0)" onclick="changeFont('max')">大字体</a>
+		<a href="javascript:void(0)" onclick="changeFont('normal')">中字体</a>
+		<a href="javascript:void(0)" onclick="changeFont('min')">小字体</a>
+	</div>
+	
+	<div id="mySearchInfo" >
+		
+		<table>
 	    	<tr><td class="mytitle">搜索结果-文件信息</td></tr>
 	    	
 	    	<c:forEach items="${fileLists }" var="file" varStatus="status">
@@ -78,9 +89,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    		</tr>
 	    	</c:forEach>
 	    </table>
-   	</div>
-    
-    <div class="myright"><a href="#" onclick="gotoTop();return false;" class="myright"></a></div>
-    
-  </body>
+	</div>
+	<div class="myright"><a href="#" onclick="gotoTop();return false;" class="myright"></a></div>
+
+</body>
+	
 </html>

@@ -23,7 +23,12 @@ public class PrintServlet extends HttpServlet {
 		
 		FileService fs = new FileService();
 		
+		File iPrintFile= new File(diskname, filename); 
 		
+		if(filename==null || filename.trim().equals("")){
+			response.sendRedirect("input.action");
+			return;
+		}
 		filename+=".txt";
 		request.setAttribute("localtion", diskname+":"+filename);
 		
