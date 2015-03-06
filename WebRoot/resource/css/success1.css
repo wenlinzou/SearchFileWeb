@@ -50,7 +50,9 @@ body{text-align: center;}
 .errordiskfile{
 	color:red;
 }
-
+.errorSameName{
+	color:red;
+}
 
 .mydivcenter{
 	

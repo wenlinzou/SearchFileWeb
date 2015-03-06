@@ -134,133 +134,27 @@ public class SeviceFile {
 		foldernameTemp = anyname.substring(start+1);
 		return foldernameTemp;
 	}
+
 	
 	
-	private static void renameFile(File file) {
-		File [] files = file.listFiles(new MySuffixFilter(".rar"));
-		int count=0;
-		for (File f : files) {
-			if(f.isFile()){
-				if(!f.getName().contains("("))
-					continue;
-				count++;
-				StringBuilder sb = new StringBuilder();
-//				sb.append(String.valueOf(count));
-				String filename = f.getName();
-				int start = filename.indexOf('(');
-				int end = filename.lastIndexOf(')')+1;
-//				System.out.println("start:"+start+"\tend:"+end);
-				System.out.println("beforename:"+filename);
-				sb.append(filename.substring(0, start));
-				sb.append(filename.substring(end));
-				filename = sb.toString();
-				System.out.println("aftername:"+filename);
-				boolean isrename = f.renameTo(new File(f.getParent(),filename));
-				System.out.println(isrename);
-			}
-		}
-	}
-	//private final int SIZE_SEARCH = 20;
-//	public List<String> searchByName(IFile searchFile){
+	public void renameFile(List<String> lists, String sameName) {
+		File[] tempFiles = new File[lists.size()];
 		
-	//	List<String> fileList = new ArrayList<String>();
-		
-//		System.out.println("==================\n搜索次数:"+(COUNT++)+"\t搜索上限:"+SIZE_SEARCH);
-//		if(COUNT>=SIZE_SEARCH){
-//			fileList.add("<center><p style='color:red;font-size:30px;'>搜索上限已到!</p></center>");
-//			return fileList;
-//		}
-		
-		
-		/*String diskname = searchFile.getDiskname();
-		String foldername = searchFile.getFoldername();
-		String filename = searchFile.getFilename();
-		String suffix = searchFile.getSuffix();
-
-		//过滤条件
-		
-		if(diskname!=null && !"".equals(diskname.trim())){
+System.out.print("samename:"+sameName);		
+		for (int i = 0; i < lists.size(); i++) {
+			tempFiles[i] = new File(lists.get(i));
+			String filename = tempFiles[i].getName();
+System.out.print("\toldName:"+filename+"\n");			
+			String newName = "";
+			if(filename.startsWith(sameName)){
+				newName = filename.substring(sameName.length());
 			
-			//盘符和文件夹都在盘符选项中,文件夹选项空
-			if(diskname.indexOf(':')!=-1){
-				
-				if(foldername==null || foldername.trim().equals("")){
-					diskname = diskname.replace("/", "\\");
-					String allFolderInfo = diskname;
-					diskname = getDisknameM(diskname);
-					foldername = getFoldernameM(allFolderInfo);
-				}
-			}
-			if(diskname.indexOf(":")==-1 && diskname.length()>1){
-				fileList.add(ERROR_INFO);
-				return fileList;
-			}
-			diskname = getDisknameM(diskname);
-			
-		}else{
-			if(foldername==null || foldername.trim().equals("")){
-				fileList.add(ERROR_INFO);
-				return fileList;
-				
-			}
-			//盘符位置空,但文件夹名称包含了盘符名称	
-			else{
-				if(foldername.indexOf(':')!=-1){
-					foldername = foldername.replace("/", "\\");
-					String allFoldername = foldername;
-					foldername = getFoldernameM(foldername);
-					diskname = getDisknameM(allFoldername);
-				}else{
-					//文件夹名称内没有盘符信息
-					fileList.add(ERROR_INFO);
-					return fileList;
-				}
-			}
-		}
-		
-		diskname+=":/";
-		
-		File dir = new File(diskname, foldername);
-System.out.println("dir:\t"+dir);		
-
-		
-		
-		
-		//文件名不为空
-		if((null!=filename && !filename.trim().equals(""))){
-			//后缀名为空
-			if(suffix==null || suffix.trim().equals("")) {
-System.out.println("1 文件名有值,后缀为空\t"+filename);				
-				ContainsWordFilter contains = new ContainsWordFilter(filename);
-				searchIgnoreFilename(dir, contains, fileList);
+				boolean rename = tempFiles[i].renameTo(new File(tempFiles[i].getParent(),newName));
+System.out.println("renameboolean:"+rename+"\tsameName:"+sameName+"\tnewName:"+newName);
 			}else{
-System.out.println("2 文件名有值,后缀有值\t"+filename+","+suffix);				
-				//文件名+文件后缀
-				FilenameSuffixFilter nameSuffixFilter = new FilenameSuffixFilter(filename, suffix);
-				searchIngoreNameWithSuffix(dir, nameSuffixFilter, fileList);
+				System.out.println("没有符合的");
 			}
 		}
-		
-		
-		//后缀名
-		if(null!=suffix && !suffix.trim().equals("")){
-			char[] temps = suffix.toCharArray();
-			if(temps[0]!='.')
-				suffix = "."+suffix;
-			
-			//文件名不为空
-			if(filename==null || filename.trim().equals("")){
-System.out.println("3 文件名为空,后缀有值"+"\t"+suffix);
-				MySuffixFilter filter = new MySuffixFilter(suffix);
-				accpetSuffix(dir, filter, fileList);
-			}
-		}
-		//文件名为空
-		else if(filename==null || filename.trim().equals("")){
-System.out.println("4 文件名为空,后缀为空");
-			searchFolderFile(dir, fileList);
-		}*/
-		
-	//	return fileList;
-	//}
+
+	}
 }

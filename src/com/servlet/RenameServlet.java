@@ -1,12 +1,16 @@
 package com.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.service.FileService;
 
 public class RenameServlet extends HttpServlet {
 
@@ -15,12 +19,25 @@ public class RenameServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		String rename = request.getParameter("rename");
-		String[] temp = rename.split(",");
-		for (int i = 0; i < temp.length; i++) {
-			
-			System.out.println("rename:"+i+temp[i]);
+		FileService fs = new FileService();
+		
+		String checkedName = request.getParameter("rename");
+		String sameName = request.getParameter("samename");
+		if(sameName==null || sameName.equals("")){
+			response.sendRedirect("search.action");
+			return;
 		}
+		
+		String[] temp = checkedName.split(",");
+		for (int i = 0; i < temp.length; i++) {
+			temp[i] = temp[i].replace("\\", "/");
+			
+		}
+		List<String> lists = new ArrayList<String>();
+		lists = Arrays.asList(temp);
+		fs.renameFile(lists, sameName);
+		request.getRequestDispatcher("/WEB-INF/jsp/success1.jsp").forward(request, response);
+		
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -14,7 +14,7 @@ import com.util.SeviceFile;
 public class FileService {
 	private static int COUNT = 1;
 	private final String ERROR_INFO = "请输入硬盘符,以便查询!";
-	private final int SIZE_SEARCH = 20;
+	private final int SIZE_SEARCH = 22;
 	
 	private SeviceFile sf = new SeviceFile();
 	
@@ -71,15 +71,11 @@ public class FileService {
 				}
 			}
 		}
-		
 		diskname+=":/";
 		
 		File dir = new File(diskname, foldername);
 System.out.println("dir:\t"+dir);		
 
-		
-		
-		
 		//文件名不为空
 		if((null!=filename && !filename.trim().equals(""))){
 			//后缀名为空
@@ -94,7 +90,6 @@ System.out.println("2 文件名有值,后缀有值\t"+filename+","+suffix);
 				sf.searchIngoreNameWithSuffix(dir, nameSuffixFilter, fileList);
 			}
 		}
-		
 		
 		//后缀名
 		if(null!=suffix && !suffix.trim().equals("")){
@@ -114,8 +109,6 @@ System.out.println("3 文件名为空,后缀有值"+"\t"+suffix);
 System.out.println("4 文件名为空,后缀为空");
 			sf.searchFolderFile(dir, fileList);
 		}
-		
-//		return sf.searchByName(iFile);
 		return fileList;
 	}
 	
@@ -130,5 +123,9 @@ System.out.println("4 文件名为空,后缀为空");
 			System.out.println("MLGB - 找不到"+file);
 			e.printStackTrace();
 		}
+	}
+	
+	public void renameFile(List<String> lists,String rename){
+		sf.renameFile(lists, rename);
 	}
 }

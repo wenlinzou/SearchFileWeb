@@ -147,5 +147,23 @@ function getSelectChecked() {
 			}
 		}
 	}
-	$("rename").value = array;
+	
+	
+	if(j<1){
+		var errorNode = $("nochecked");
+		errorNode.className = "errorSameName";
+		errorNode.innerHTML = "请选中修改的文件";
+		return false;
+	}else{
+		var nodeValue = $("samename").value;
+		if(nodeValue==null || nodeValue==""){
+			var errorNode = $("nochecked");
+			errorNode.className = "errorSameName";
+			errorNode.innerHTML = "请输入重复部分名称";
+			return false;
+		}else{
+			$("rename").value = array;
+		}
+	}
 }
+

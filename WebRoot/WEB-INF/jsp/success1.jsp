@@ -65,9 +65,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>  
 	
 	<div id="showRenameDiv" style="display: none">	
-		<form method="post" action="rename.action" onsubmit="getSelectChecked()" >
-			相同部分的名称为:<input type="text" name="rename" id="rename"/><br/>
-			<input type="submit" value="修改" />
+		<form method="post" action="rename.action" onsubmit="return getSelectChecked()" >
+			<input type="hidden" id="rename" name="rename"/>
+			<table>
+			<tr>
+			<td>相同部分的名称为:</td>
+			<td><input type="text" name="samename" id="samename"/></td>
+			</tr>
+			<tr><td colspan="2" id="nochecked" ></td></tr>
+			<tr>
+			<td></td>
+			<td><input type="submit" value="修改"/></td>
+			</tr>
+			</table>
 		</form>
 	</div>	
 	
