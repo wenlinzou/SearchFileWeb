@@ -1,0 +1,10 @@
+.errorInfo{
+	color:red;
+	font-size:30px;
+	font-weight: bold;
+	text-align: center;
+}
+.numStyle{
+	color:green;
+	font-size:23px;
+}

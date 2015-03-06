@@ -35,8 +35,16 @@ public class RenameServlet extends HttpServlet {
 		}
 		List<String> lists = new ArrayList<String>();
 		lists = Arrays.asList(temp);
-		fs.renameFile(lists, sameName);
-		request.getRequestDispatcher("/WEB-INF/jsp/success1.jsp").forward(request, response);
+		boolean canRename = fs.renameFile(lists, sameName);
+		if(canRename){
+			request.setAttribute("canRename", "文件名修改成功!");
+			request.getRequestDispatcher("/WEB-INF/jsp/canRename.jsp").forward(request, response);
+			return;
+		}else{
+			request.setAttribute("canRename", "没有找到合适的文件名称,或者修改后的名称与其他文件名称冲突");
+			request.getRequestDispatcher("/WEB-INF/jsp/cannotRename.jsp").forward(request, response);
+			return;
+		}
 		
 	}
 

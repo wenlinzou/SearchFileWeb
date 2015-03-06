@@ -137,24 +137,26 @@ public class SeviceFile {
 
 	
 	
-	public void renameFile(List<String> lists, String sameName) {
+	public boolean renameFile(List<String> lists, String sameName) {
 		File[] tempFiles = new File[lists.size()];
-		
-System.out.print("samename:"+sameName);		
+		boolean canRename = false;
 		for (int i = 0; i < lists.size(); i++) {
 			tempFiles[i] = new File(lists.get(i));
 			String filename = tempFiles[i].getName();
-System.out.print("\toldName:"+filename+"\n");			
+			String oldname = filename;
 			String newName = "";
 			if(filename.startsWith(sameName)){
 				newName = filename.substring(sameName.length());
 			
 				boolean rename = tempFiles[i].renameTo(new File(tempFiles[i].getParent(),newName));
-System.out.println("renameboolean:"+rename+"\tsameName:"+sameName+"\tnewName:"+newName);
+System.out.println("ISRename:"+rename+"\toldname:"+oldname+"\tsameName:"+sameName+"\tnewName:"+newName);
+				canRename = true;
 			}else{
-				System.out.println("没有符合的");
+				System.out.println("文件名:" + oldname + " -- 前缀不符合:" + sameName);
+				canRename = false;
 			}
 		}
+		return canRename;
 
 	}
 }

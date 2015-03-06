@@ -125,7 +125,7 @@ System.out.println("4 文件名为空,后缀为空");
 		}
 	}
 	
-	public void renameFile(List<String> lists,String rename){
-		sf.renameFile(lists, rename);
+	public boolean renameFile(List<String> lists,String rename){
+		return sf.renameFile(lists, rename);
 	}
 }
