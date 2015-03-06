@@ -28,7 +28,7 @@ public class PlayServlet extends HttpServlet {
 		String rest = myUrl.substring(1, myUrl.length());
 		String newStr = new StringBuffer(first).append(rest).toString();
 		
-		myUrl= "file:///"+newStr;
+		//myUrl= "file:///"+newStr;
 		
 System.out.println("myUrl:"+myUrl);	
 //myUrl = "//f:/w/d"; 
