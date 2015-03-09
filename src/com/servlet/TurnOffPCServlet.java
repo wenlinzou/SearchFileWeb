@@ -22,8 +22,15 @@ System.out.println("tempTIme:"+tempTime);
 		
 		
 		PCService ps = new PCService();
-		ps.turnOffPC(time);
-		request.setAttribute("turnOffSuccess", "将在"+time+"分钟后关机");
+		String info = "";
+		if(time>0){
+			ps.turnOffPC(time);
+			info = "将在"+time+"分钟后关机";
+		}else{
+			ps.cancelOffPC();
+			info = "取消关机成功!";
+		}
+		request.setAttribute("turnOffSuccess", info);
 		request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
 		
 	}

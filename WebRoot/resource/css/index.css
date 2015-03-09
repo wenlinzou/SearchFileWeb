@@ -11,6 +11,10 @@
 	color:white;
 	font-weight: bold;
 }
+.cancelOff{
+	color:green;
+	font-weight: bold;
+}
 .errormsgStyle{
 	color:red;
 }

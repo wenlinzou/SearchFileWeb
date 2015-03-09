@@ -37,8 +37,8 @@ public class TurnOffPC {
 		try {
 			int temp = second * time;
 		
-			run.exec("shutdown.exe -s -t "+temp);
-System.out.println("time:"+temp+"分钟后关机");				
+			run.exec("shutdown -s -t "+temp);
+System.out.println("time:"+time+"分钟后关机");				
 			 //rt.exec("shutdown.exe -s -t 40");
 			
 			/*40的单位为秒，可以改成你想要的任何数字。
@@ -47,5 +47,16 @@ System.out.println("time:"+temp+"分钟后关机");
 			
 			e.printStackTrace();
 		}
+	}
+	
+	public void cancelOffPC(){
+		try {
+			Runtime.getRuntime().exec("shutdown.exe -a");
+System.out.println("取消关机!");			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
 	}
 }

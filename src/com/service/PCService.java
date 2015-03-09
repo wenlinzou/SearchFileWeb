@@ -8,4 +8,7 @@ public class PCService {
 	public void turnOffPC(int time){
 		turnOff.turnOffPC(time);
 	}
+	public void cancelOffPC(){
+		turnOff.cancelOffPC();
+	}
 }
