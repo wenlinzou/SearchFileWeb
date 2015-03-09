@@ -28,6 +28,11 @@
     <servlet-name>RenameServlet</servlet-name>
     <servlet-class>com.servlet.RenameServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>TurnOffPCServlet</servlet-name>
+    <servlet-class>com.servlet.TurnOffPCServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -52,5 +57,9 @@
   <servlet-mapping>
     <servlet-name>RenameServlet</servlet-name>
     <url-pattern>/rename.action</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TurnOffPCServlet</servlet-name>
+    <url-pattern>/turnOff.action</url-pattern>
   </servlet-mapping>
 </web-app>

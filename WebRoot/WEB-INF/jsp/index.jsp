@@ -14,6 +14,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=basePath%>resource/js/index.js"></script>
 </head>
 <body>
+	<div class="divTurnoff" onclick="changeDiv('turnoffpc')">关机</div>
+	<div style="float:left;">${turnOffSuccess }</div>
+	<div id="turnoffpc" style="display:none;">
+		<form action="turnOff.action" method="post" onsubmit="return trunOffPC()">
+			<input type="hidden" id="turnoffID" name="turnoffTime"/>
+			<table>
+				<tr><td>
+			<input type="radio" name="turnoff" value="0.02">立即关机</td>
+				</tr>
+				<tr><td>
+			<input type="radio" name="turnoff" value="10">10分钟后关机</td>
+				</tr>
+				<tr><td id="errormsg"></td></tr>
+				<tr><td>
+			<input type="submit" value="提交"/></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	
+	
+	<div>
 	<center>
 	<h2 class="mycenter">搜索文件</h2>
 		<form action="search.action" method="post"  onsubmit="return validate_form(this)">
@@ -61,5 +83,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>
 		</form>
 		</center>
+	</div>
 </body>
 </html>
