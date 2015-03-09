@@ -49,14 +49,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tr><td>
 			<input type="radio" name="turnoff" value="1000">1000分钟后关机</td>
 				</tr>
-				<tr><td id="errormsg"></td></tr>
+				
 				
 			<TR >
 			<c:if test="${turnOffSuccess!=null }">
 				<td class="cancelOff"><input type="radio" name="turnoff" value="-1" >取消关机</td>
 			</c:if>
 			</TR>
-			
+				<tr><td id="errormsg"></td></tr>
 				<tr><td>
 			<input type="submit" value="提交"/></td>
 				</tr>
