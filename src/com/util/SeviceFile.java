@@ -2,21 +2,26 @@ package com.util;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.LineNumberReader;
+import java.io.SequenceInputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
-
-import com.bean.IFile;
+import java.util.Properties;
 
 public class SeviceFile {
+	private static int SIZE = 1024*1024;
 	
 	/*
 	 * 查询文件名及后缀
@@ -158,5 +163,128 @@ System.out.println("ISRename:"+rename+"\toldname:"+oldname+"\tsameName:"+sameNam
 		}
 		return canRename;
 
+	}
+	
+	public void splitFile(File srcFile, File destDir,int split_size, String suffix) throws IOException{
+		//1源
+		FileInputStream fis = new FileInputStream(srcFile);
+		//2目的
+		FileOutputStream fos = null;
+		byte[] buf = new byte[SIZE*split_size];
+		int count = 1;
+		int len = 0;
+		//3创建一个Properties集合，用于存储文件信息
+		Properties prop = new Properties();
+		if(!destDir.exists()){
+			destDir.mkdir();
+		}
+		
+		
+		
+		//对指定的目录进行判断
+		while((len=fis.read(buf))!=-1){
+			fos = new FileOutputStream(new File(destDir,(count++)+suffix));
+			fos.write(buf, 0, len);
+			fos.close();
+		}
+		File confile = new File(destDir,count+".properties");
+		
+		//在Properties集合存储一些文件信息
+		prop.setProperty("filename", srcFile.getName());
+		prop.setProperty("count", count+"");
+		prop.setProperty("splitSuffix", suffix);
+		
+		fos = new FileOutputStream(confile);
+		prop.store(fos, "");
+		
+		fos.close();
+		fis.close();
+	}
+	
+	//读取配置文件
+	public void mergeFile(File srcDir, String suffixName) throws IOException {
+		
+		
+		//健壮性判断
+		if(!srcDir.exists()){
+			throw new RuntimeException(srcDir.getName()+"不存在");
+		}
+		//1判断该目录下是否有配置文件
+		String[] names = srcDir.list(new MySuffixFilter(suffixName));
+		
+		if(names.length!=1){
+			throw new RuntimeException("后缀名为"+suffixName+"的文件不错在或者有多个");
+		}
+		
+		File confile = new File(srcDir, names[0]);
+		
+		//用读取流和配置文件关联
+		FileInputStream fis = new FileInputStream(confile);
+		
+		Properties prop = new Properties();
+		
+		prop.load(fis);
+		
+		//读取文件名称和碎片文件个数
+		String filename = prop.getProperty("filename");
+		int count = Integer.parseInt(prop.getProperty("count"))-1;
+		String splitSuffix = prop.getProperty("splitSuffix");
+		
+		File[] partFiles = srcDir.listFiles(new MySuffixFilter(splitSuffix));
+		if(partFiles.length!=count){
+			throw new RuntimeException("碎片个数错误，不是"+count+"个");
+		}
+		for(int i = 0; i < count; i++) {
+			File file = new File(srcDir,(i+1)+splitSuffix);
+			if(!file.exists()){
+				throw new RuntimeException(file.getName()+"不存在");
+			}
+		}
+		//到这里基本的合并的目录文件判断完毕
+		//合并
+		merge(srcDir, filename, count, splitSuffix);
+		
+		
+		
+	}
+
+
+	public void merge(File srcDir, String filename, int count, String splitSuffix) throws IOException {
+		List<FileInputStream> list = new ArrayList<FileInputStream>();
+		//System.out.println("count:"+count+"\tfilename:"+filename+"\tsrcDir:"+srcDir);
+		for(int i=0; i < count; i++){
+			list.add(new FileInputStream(new File(srcDir,(i+1)+splitSuffix)));
+		}
+		
+		//获取枚举接口对象
+		Enumeration<FileInputStream> en = Collections.enumeration(list);
+		
+		SequenceInputStream sis =new SequenceInputStream(en);
+		
+		FileOutputStream fos = new FileOutputStream(new File(srcDir, filename));
+		byte[] buf = new byte[1024];
+		int len = 0;
+		
+		while((len=sis.read(buf))!=-1){
+			fos.write(buf,0,len);
+		}
+		fos.close();
+		sis.close();
+		
+	}
+	
+	//获取改目录下的所有文件名
+	public List<String> getFileAllNames(File file){
+		List<String> lists = new ArrayList<String>();
+		File[] files = file.listFiles();
+		for (File f : files) {
+			if(file.isDirectory()){
+				getFileAllNames(f);
+			}else{
+				lists.add(f.getName());
+			}
+		}
+		return lists;
+		
 	}
 }

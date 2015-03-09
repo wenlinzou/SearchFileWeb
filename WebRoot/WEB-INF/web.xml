@@ -32,6 +32,16 @@
     <servlet-name>TurnOffPCServlet</servlet-name>
     <servlet-class>com.servlet.TurnOffPCServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>SplitFileServlet</servlet-name>
+    <servlet-class>com.servlet.SplitFileServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MergeFileServlet</servlet-name>
+    <servlet-class>mergeFile.MergeFileServlet</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -61,5 +71,13 @@
   <servlet-mapping>
     <servlet-name>TurnOffPCServlet</servlet-name>
     <url-pattern>/turnOff.action</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SplitFileServlet</servlet-name>
+    <url-pattern>/split.action</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MergeFileServlet</servlet-name>
+    <url-pattern>/mergeFile.action</url-pattern>
   </servlet-mapping>
 </web-app>

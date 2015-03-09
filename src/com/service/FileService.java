@@ -128,4 +128,39 @@ System.out.println("4 文件名为空,后缀为空");
 	public boolean renameFile(List<String> lists,String rename){
 		return sf.renameFile(lists, rename);
 	}
+	
+	public void splitFile(File srcFile, File destDir,int split_size, String suffix){
+		int indexStart = suffix.indexOf(".");
+		if(indexStart<0)
+			suffix = "." + suffix;
+		
+		try {
+System.out.println("size:"+srcFile);			
+				
+			sf.splitFile(srcFile, destDir, split_size, suffix);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	//合并文件
+	public void mergeFile(File mergreFile){
+		try {
+			String filePath = mergreFile.getAbsolutePath();
+			int pathEnd = filePath.replace("\\", "/").lastIndexOf("/");
+System.out.println(filePath);			
+			String fileInPath = filePath.substring(0, pathEnd);
+			
+			int suffixStart = filePath.lastIndexOf(".");
+			String suffixName = filePath.substring(suffixStart);
+			File srcFile = new File(fileInPath);
+System.out.println("SERVICE:fileInPath:"+fileInPath+"\tsuffixname:"+suffixName);	
+
+			sf.mergeFile(srcFile,suffixName);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
 }

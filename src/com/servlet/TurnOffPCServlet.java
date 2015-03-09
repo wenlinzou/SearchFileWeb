@@ -17,7 +17,7 @@ public class TurnOffPCServlet extends HttpServlet {
 		
 		String tempTime = request.getParameter("turnoffTime");
 		tempTime = tempTime.trim();
-System.out.println("tempTIme:"+tempTime);		
+System.out.println("tempTime:"+tempTime);		
 		int time = Integer.parseInt(tempTime);
 		
 		
@@ -25,10 +25,10 @@ System.out.println("tempTIme:"+tempTime);
 		String info = "";
 		if(time>0){
 			ps.turnOffPC(time);
-			info = "将在"+time+"分钟后关机";
+			info = "<p style='color:red;font-weight:blod;'>将在"+time+"分钟后关机</p>";
 		}else{
 			ps.cancelOffPC();
-			info = "取消关机成功!";
+			info = "<p style='color:green;font-weight:blod;'>取消关机成功!</p>";
 		}
 		request.setAttribute("turnOffSuccess", info);
 		request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);

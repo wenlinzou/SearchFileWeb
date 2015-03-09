@@ -1,0 +1,11 @@
+.trRight{
+	text-align: right;
+}
+#splitDiv{
+	width:550px;
+	height:150px;
+	background-color:#ffccaa;
+}
+#splitDiv table{
+	text-align:center;
+}

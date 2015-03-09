@@ -18,18 +18,57 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
 
+	<link rel="stylesheet" type="text/css" href="<%=basePath %>resource/css/play.css">
+	<script type="text/javascript" src="<%=basePath%>resource/js/play.js"></script>
 </head>
 
 <body>
+
+<!-- split file -->
+	<div onclick="changeDiv('splitDiv')">
+		${playUrl}
+	</div>
+	<div id="splitDiv" style="display:none;">
+		<form action="split.action" method="post">
+			<input type="hidden" name="splitFilePath" value="${playUrl }"/>
+			<table>
+			<tr>
+				<td class="trRight">分解文件大小:</td>
+				<td><input type="text" name="size"/></td>
+				<td>单位(M)</td>
+			</tr>
+			<tr>
+				<td class="trRight">分解文件后缀:</td>
+				<td><input type="text" name="suffixname"/></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="trRight">存放位置:</td>
+				<td><input type="text" name="dir"/></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="分解"/></td>
+				<td></td>
+			</tr>
+			</table>
+		</form>
+	</div>
+	<!-- split file end -->
+	
+	<div>
+		<form action="mergeFile.action" method="post">
+			<input type="hidden" name="splitFilePath" value="${playUrl }"/>
+			<input type="submit" value="还原">
+		</form>	
+	</div>
+	
 	<div>
 		<video src="${playUrl}" width="1000" height="500" controls="controls">您的浏览器不支持此种视频格式。</video> 
-		
 	</div>
-
+	
 	<%
 		String playpath = request.getParameter("playUrl");
 		String iplay = (String) session.getAttribute("iPlay");
