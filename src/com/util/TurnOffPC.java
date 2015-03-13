@@ -1,6 +1,9 @@
 package com.util;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class TurnOffPC {
 	private final int second = 60;
@@ -32,13 +35,17 @@ public class TurnOffPC {
 	           p 表明重启动或关闭是计划内的
 	           xx 是主要原因号(小于 256 的正整数)
 	           yy 是次要原因号(小于 65536 的正整数)*/
-	public void turnOffPC(int time){
+	public void turnOffPC(double time){
 		Runtime run = Runtime.getRuntime();
 		try {
-			int temp = second * time;
+			int temp = -1;
+			if(time==0.02)
+				temp = 1;
+			else
+				temp =(int)(second * time);
 		
 			run.exec("shutdown -s -t "+temp);
-System.out.println("time:"+time+"分钟后关机");				
+System.out.println("time:"+time+"分钟后关机"+",当前时间:"+getCurrentDate());				
 			 //rt.exec("shutdown.exe -s -t 40");
 			
 			/*40的单位为秒，可以改成你想要的任何数字。
@@ -58,5 +65,12 @@ System.out.println("取消关机!");
 			e.printStackTrace();
 		}
 		
+	}
+	private String getCurrentDate(){
+		Date dt=new Date();//如果不需要格式,可直接用dt,dt就是当前系统时间
+		DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");//设置显示格式
+		String nowTime="";
+		nowTime= df.format(dt);//用DateFormat的format()方法在dt中获取并以yyyy/MM/dd HH:mm:ss格式显示
+		return nowTime;
 	}
 }

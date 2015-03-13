@@ -6,8 +6,12 @@ function trunOffPC(){
 	var j = 0;
 	for(var i=0; i<collRadios.length; i++){
 		if(collRadios[i].checked){
-			j = j + 1;
-			$("turnoffID").value=collRadios[i].value;
+			if(confirm("确认此操作 ?")){
+				j = j + 1;
+				$("turnoffID").value=collRadios[i].value;
+			}else{
+				return false;
+			}
 		}
 	}
 	if(j<1){
