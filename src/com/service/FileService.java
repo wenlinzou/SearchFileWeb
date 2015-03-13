@@ -154,6 +154,9 @@ System.out.println(filePath);
 			
 			int suffixStart = filePath.lastIndexOf(".");
 			String suffixName = filePath.substring(suffixStart);
+			if(!suffixName.equals(".properties")){
+				throw new RuntimeException("文件后缀名不是"+".properties");
+			}
 			File srcFile = new File(fileInPath);
 System.out.println("SERVICE:fileInPath:"+fileInPath+"\tsuffixname:"+suffixName);	
 

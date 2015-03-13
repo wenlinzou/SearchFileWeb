@@ -25,19 +25,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
 <body>
+	<div class="backIndexDiv"><input type="button" value="回到首页" onclick="backIndex()" class="backIndexBtnStyle"/></div>
+
 	<div id="showdiv" style="display: none">
   		<form action="print.action" onsubmit="return validate_form(this)" method="post">
   		<!-- 打印信息存储在隐藏标签 -->
   		<input type="hidden" value="${fileLists }" id="showdiv"/>
 	  		<table>
-		  		<tr ><td colspan="3"></td>
+		  		<tr class="writeTabTitle"><td colspan="3">搜索结果写入</td>
 		  		</tr>
-				<tr>
+				<tr class="writeTabRight">
 					<td>盘符:</td>
 					<td><input type="text" name="diskname"/></td>
 					<td id="errordisk"></td>
 		  		</tr>
-		  		<tr>
+		  		<tr class="writeTabRight">
 		  			<td>文件名称:</td>
 		  			<td><input type="text" name="filename"/></td>
 		  			<td id="errorfile"></td>
@@ -51,12 +53,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  	</form>
 	</div>
   	
-	<div>
+	<div class="btnDivStyle">
 		<input type="button" value="显示" onclick="showDiv()"/>
 		<input type="button" value="隐藏" onclick="hiddenDiv()"/>
-		<input type="button" value="隐显" onclick="changeDiv('showdiv')"/>
-		<input type="button" value="回到首页" onclick="backIndex()"/>
-		<input type="button" value="重命名文件去除相同部分" onclick="changeDiv('showRenameDiv')"/>
+		<input type="button" value="隐显" onclick="changeDiv('showdiv')" class="shBtnStyle"/>
+		
+		<input type="button" value="重命名文件去除相同部分" onclick="changeDiv('showRenameDiv')" class="renameBtnStyle"/>
 		<input type="checkbox" value='全选' onclick="selectAll(this)" />全选	
 
 		<input type="button" value="全选" onclick="checkAllByBtn(1)" />
@@ -68,15 +70,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<form method="post" action="rename.action" onsubmit="return getSelectChecked()" >
 			<input type="hidden" id="rename" name="rename"/>
 			<table>
-			<tr>
-			<td>相同部分的名称为:</td>
-			<td><input type="text" name="samename" id="samename"/></td>
-			</tr>
-			<tr><td colspan="2" id="nochecked" ></td></tr>
-			<tr>
-			<td></td>
-			<td><input type="submit" value="修改"/></td>
-			</tr>
+				<tr>
+				<td>相同部分的名称为:</td>
+				<td><input type="text" name="samename" id="samename"/></td>
+				</tr>
+				<tr><td colspan="2" id="nochecked" ></td></tr>
+				<tr>
+				<td></td>
+				<td><input type="submit" value="修改" class="btnUpdate"/></td>
+				</tr>
 			</table>
 		</form>
 	</div>	

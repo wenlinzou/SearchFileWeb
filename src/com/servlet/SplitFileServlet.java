@@ -18,9 +18,9 @@ public class SplitFileServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		String fileSplitPath = request.getParameter("splitFilePath");
-		String sizeStr = request.getParameter("size");
+		String sizeStr = request.getParameter("sizename");
 		String suffixname = request.getParameter("suffixname");
-		String putPath = request.getParameter("dir");
+		String putPath = request.getParameter("dirname");
 		
 		int size = Integer.parseInt(sizeStr);
 		

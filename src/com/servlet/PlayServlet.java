@@ -33,8 +33,14 @@ public class PlayServlet extends HttpServlet {
 System.out.println("myUrl:"+myUrl);	
 //myUrl = "//f:/w/d"; 
 		request.setAttribute("playUrl", myUrl);
+		String suffixStr = myUrl;
+		int endIndex = suffixStr.lastIndexOf(".");
+		//.properties
+		suffixStr = suffixStr.substring(endIndex);
+		
 		HttpSession sessionPlay = request.getSession();
 		sessionPlay.setAttribute("iPlay", myUrl);
+		request.setAttribute("suffixStr", suffixStr);
 		request.getRequestDispatcher("/WEB-INF/jsp/play.jsp").forward(request, response);
 	}
 

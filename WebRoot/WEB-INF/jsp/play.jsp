@@ -30,23 +30,23 @@
 		${playUrl}
 	</div>
 	<div id="splitDiv" style="display:none;">
-		<form action="split.action" method="post">
+		<form action="split.action" method="post" onsubmit="return validate_form(this)">
 			<input type="hidden" name="splitFilePath" value="${playUrl }"/>
 			<table>
 			<tr>
 				<td class="trRight">分解文件大小:</td>
-				<td><input type="text" name="size"/></td>
-				<td>单位(M)</td>
+				<td><input type="text" name="sizename"/></td>
+				<td id="errorsize"></td>
 			</tr>
 			<tr>
 				<td class="trRight">分解文件后缀:</td>
 				<td><input type="text" name="suffixname"/></td>
-				<td></td>
+				<td id="errorsuffix"></td>
 			</tr>
 			<tr>
 				<td class="trRight">存放位置:</td>
-				<td><input type="text" name="dir"/></td>
-				<td></td>
+				<td><input type="text" name="dirname"/></td>
+				<td id="errordir"></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -61,7 +61,8 @@
 	<div>
 		<form action="mergeFile.action" method="post">
 			<input type="hidden" name="splitFilePath" value="${playUrl }"/>
-			<input type="submit" value="还原">
+			<c:if test="${suffixStr=='.properties' }"><input type="submit" value="还原"></c:if>
+			
 		</form>	
 	</div>
 	

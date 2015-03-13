@@ -10,8 +10,19 @@ body{text-align: center;}
 .over{
     background-color: tomato;
 }
-
-
+.shBtnStyle{
+	font-weight: bold;
+}
+.backIndexBtnStyle{
+	background-color:red;
+	color:white;
+	font-weight: bold;
+}
+.renameBtnStyle{
+	background-color:green;
+	color:#ccddaa;
+	font-weight: bold;
+}
 
 .mytitle{
 	background-color:orange; 
@@ -57,7 +68,26 @@ body{text-align: center;}
 .mydivcenter{
 	
 }
+/*返回按键div*/
+.backIndexDiv{
+	float: left;
+}
+/*写入文字*/
+.writeTabRight{
+	text-align: right;
+}
+.writeTabTitle{
+	text-align: center;
+	font-weight: bold;
+}
 
+.btnDivStyle{
+	height:40px;	
+}
+
+.btnUpdate{
+	background-color:pink;
+}
 /* 字体大小 */
 .normal{
 	font-size:20px;
