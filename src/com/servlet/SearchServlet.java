@@ -45,7 +45,6 @@ public class SearchServlet extends HttpServlet{
 		}
 		session.setAttribute("fileLists", fileLists);
 		//request.setAttribute("fileLists", fileLists);
-		
 		request.getRequestDispatcher("/WEB-INF/jsp/success1.jsp").forward(request, response);
 		
 	}

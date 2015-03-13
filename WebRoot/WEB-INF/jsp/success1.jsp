@@ -98,10 +98,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    		<tr name="changeFont">
 	    		<%-- <c:if test="${status.index%2!=1}">class="mytrTwo"</c:if> class="mytrOne"> --%>
 	    			<td>
-	    				<input type="checkbox" name="filePathList" value="${file }"/>
-	    				<a href="playServlet.action?myUrl=${file}">
-	    					<c:if test="${fileLists!=null }">${file }</c:if>
-	    				</a>
+	    				<c:if test="${fileLists=='[<center>没能搜索到的文件!</center>]' }">
+	    					<center>没能搜索到的文件!!!</center>
+	    				</c:if>
+	    				<c:if test="${fileLists!='[<center>没能搜索到的文件!</center>]' }">
+		    				<input type="checkbox" name="filePathList" value="${file }"/>
+		    				<a href="playServlet.action?myUrl=${file}">
+		    					<c:if test="${fileLists!=null }">${file }</c:if>
+		    				</a>
+	    				</c:if>
 	    			</td>
 	    		</tr>
 	    	</c:forEach>

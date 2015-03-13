@@ -28,6 +28,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	<br/>
    	文件位置:<c:out value="${localtion}"></c:out>
    </div>
+ 
+<center> 
    
    <span id="time" class="numStyle">6</span>秒种后自动跳转,如果不跳转,请点击下面链接 
 <script language="JavaScript1.2" type="text/javascript">
@@ -54,5 +56,8 @@ function delayURL(url) {
 <script type="text/javascript">
 	delayURL("input.action");
 </script>
+
+</center>
+
   </body>
 </html>
