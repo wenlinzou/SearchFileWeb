@@ -71,6 +71,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 <div class="middle">
 	<div>
+		<p>
+		${fullStr }
+		</p>
+		<c:if test="${fullStr==null }">
+		
 	<center>
 	<h2 class="mycenter">搜索文件</h2>
 		<form action="search.action" method="post"  onsubmit="return validate_form(this)">
@@ -118,6 +123,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>
 		</form>
 		</center>
+		
+		</c:if>
+		
 	</div>
 </div>	
 <!-- end middle -->

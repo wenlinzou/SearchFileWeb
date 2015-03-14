@@ -43,6 +43,12 @@ public class SearchServlet extends HttpServlet{
 			
 			fileLists.add(sb.toString());
 		}
+		String fullStr = fileLists.get(0).toString();
+		if("搜索上限已到!".equals(fullStr)){
+			request.setAttribute("fullStr", "<center><p style='color:red;font-size:30px;'>"+fullStr+"!</p></center>");
+			request.getRequestDispatcher("WEB-INF/jsp/index.jsp").forward(request, response);
+			return;
+		}
 		session.setAttribute("fileLists", fileLists);
 		//request.setAttribute("fileLists", fileLists);
 		request.getRequestDispatcher("/WEB-INF/jsp/success1.jsp").forward(request, response);

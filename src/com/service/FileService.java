@@ -13,6 +13,7 @@ import com.util.SeviceFile;
 
 public class FileService {
 	private static int COUNT = 0;
+	private final String FULL = "搜索上限已到!";
 	private final String ERROR_INFO = "请输入硬盘符,以便查询!";
 	private final int SIZE_SEARCH = 20;
 	
@@ -22,7 +23,8 @@ public class FileService {
 		List<String> fileList = new ArrayList<String>();
 		System.out.println("==================\n搜索次数:"+(++COUNT)+"\t搜索上限:"+SIZE_SEARCH);
 		if(COUNT>SIZE_SEARCH){
-			fileList.add("<center><p style='color:red;font-size:30px;'>搜索上限已到!</p></center>");
+			//<center><p style='color:red;font-size:30px;'>!</p></center>
+			fileList.add(FULL);
 			return fileList;
 		}
 		
