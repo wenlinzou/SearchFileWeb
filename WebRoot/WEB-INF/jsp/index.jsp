@@ -129,6 +129,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 </div>	
 <!-- end middle -->
-	
+
+<!-- right -->
+	<div class="divRightStyle">
+		<a href="CarInfo.html">拿照详细经验</a>
+	</div>
 </body>
 </html>
