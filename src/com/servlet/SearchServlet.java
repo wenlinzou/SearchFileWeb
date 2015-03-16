@@ -24,6 +24,11 @@ public class SearchServlet extends HttpServlet{
 		
 		
 		FileService ss = new FileService();
+		IFile iFile = new IFile();
+		iFile.setDiskname(diskname);
+		iFile.setFilename(filename);
+		iFile.setFoldername(foldername);
+		iFile.setSuffix(suffix);
 		
 		List<String> fileLists = ss.queryFileLists(new IFile(diskname, foldername, filename, suffix));
 		HttpSession session = request.getSession();
@@ -51,6 +56,8 @@ public class SearchServlet extends HttpServlet{
 		}
 		session.setAttribute("fileLists", fileLists);
 		//request.setAttribute("fileLists", fileLists);
+		session.setAttribute("iFile", iFile);
+		
 		request.getRequestDispatcher("/WEB-INF/jsp/success1.jsp").forward(request, response);
 		
 	}

@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			指定盘符:
 				</td>
 				<td>
-			<input type="text" name="diskname"/>
+			<input type="text" name="diskname" value="${iFile.diskname }"/>
 				</td>
 				<td id="errordisk"></td>
 			</tr>
@@ -94,7 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			文件夹名:
 				</td>
 				<td>
-			<input type="text" name="foldername"/>
+			<input type="text" name="foldername" value="${iFile.foldername }"/>
 				</td>
 				<td></td>
 			</tr>
@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			文件名:
 				</td>
 				<td>
-			<input type="text" name="filename"/>
+			<input type="text" name="filename" value="${iFile.filename }"/>
 				</td><td></td>
 			</tr>
 			<tr>
@@ -111,7 +111,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			文件后缀:
 				</td>
 				<td>
-			<input type="text" name="suffix"/>
+			<input type="text" name="suffix" value="${iFile.suffix }"/>
 				</td><td></td>
 			</tr>
 			<tr>
