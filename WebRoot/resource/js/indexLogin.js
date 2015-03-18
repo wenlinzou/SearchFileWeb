@@ -1,4 +1,6 @@
+var totalCount = 5;
 function verify() {
+	
     //var userName = $("#userName").val();
     //$.get("AJAXServer?name="+userName);
     //1获取文本框中的内容//document.getElementById("id");
@@ -10,10 +12,11 @@ function verify() {
     
     var username = $("input[name='username']").val(); 
     var password = $("input[name='password']").val(); 
+    var wordcheck = $("input[name='wordcheck']").val(); 
 
     //2将文本框中的数据发送给服务器的servlet
     //在javascript当中一个简单的对象的定义方法
-    var obj = {username:username, password: password};
+    var obj = {username:username, password: password, wordcheck:wordcheck};
 
     //使用JQuery的XMLHTTPRequest对象的封装
 
@@ -33,7 +36,17 @@ function errorfun(){
 	$("#msg").html("后台自杀了!!提交失败...");
 }
 //回调函数
+var count = 0;
 function callback(data) {
+	count++;
+	if(count>totalCount){
+		$("#msg").html("最多输入"+totalCount+"次,已经超出!");
+//		$("#login").css("disable","disable");
+		$("#login").attr({"disabled":true});
+
+		return;
+	}
+	
     //3接受服务器端返回的数据
     //需要将data这个dom对象中的数据解析出来
     //首先需要将dom对象转换成Jquery对象
@@ -59,4 +72,9 @@ function goToOther(msgObj){
 	}else{
 		return false;
 	}
+}
+
+//验证码
+function changeImage(img) {
+	img.src = img.src + "?" + new Date().getDate();
 }

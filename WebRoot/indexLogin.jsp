@@ -4,7 +4,10 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%
+	//验证码
+	
+%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -33,9 +36,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<tr><td> 
 			密码:</td><td><input type="text" id="password" name="password" value="${user.password }"/></td>
 			</tr>
+			<tr><td>
+			输入验证码:</td><td><input type="text" name="wordcheck" id="wordcheck"/></td></tr>
+			<tr>
+				<td></td>
+				<td>
+				<img alt="change" src="<%=basePath %>wordcheck.action"onclick="changeImage(this)" style="cursor: hand"></td>
+				<td>
+			</tr>
 			<tr><td class="errorStyle" colspan="2" id="msg"></td></tr>
 			<tr ><td class="loginBtn" colspan="2">
-			<input type="button" onclick="verify()" value="登陆"/>
+			<input type="button" onclick="verify()" value="登陆" id="login"/>
 			</td>
 			</tr>
 		</table>

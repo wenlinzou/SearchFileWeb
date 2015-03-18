@@ -44,6 +44,11 @@
     <servlet-name>MD5Servlet</servlet-name>
     <servlet-class>com.servlet.MD5Servlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>WordCheckServlet</servlet-name>
+    <servlet-class>com.servlet.WordCheckServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -88,5 +93,9 @@
   <servlet-mapping>
     <servlet-name>MD5Servlet</servlet-name>
     <url-pattern>/login.action</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WordCheckServlet</servlet-name>
+    <url-pattern>/wordcheck.action</url-pattern>
   </servlet-mapping>
 </web-app>
