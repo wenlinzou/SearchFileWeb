@@ -4,7 +4,6 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -25,6 +24,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
 <body>
+	
+	
 	<div class="backIndexDiv"><input type="button" value="回到首页" onclick="backIndex()" class="backIndexBtnStyle"/></div>
 
 	<div id="showdiv" style="display: none">
@@ -114,6 +115,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    </table>
 	</div>
 	<div class="myright"><a href="#" onclick="gotoTop();return false;" class="myright"></a></div>
+
 
 </body>
 	

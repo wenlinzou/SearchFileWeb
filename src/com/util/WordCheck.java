@@ -10,7 +10,7 @@ import java.util.Random;
 public class WordCheck {
 	private static final int HEIGHT = 30;
 	private static final int WIDTH = 120;
-
+	
 	public String wordChecked(Graphics g){
 //		BufferedImage image = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_RGB);
 		

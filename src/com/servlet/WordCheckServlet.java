@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.service.LoginService;
+import com.util.WordCheck;
 
 public class WordCheckServlet extends HttpServlet {
 

@@ -14,6 +14,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=basePath%>resource/js/index.js"></script>
 </head>
 <body>
+
+<c:if test="${user==null }">
+		<a href="<%=basePath%>indexLogin.jsp">跳转登陆页</a>
+</c:if>
+<c:if test="${user!=null }">
+
 <div class="left">
 
 	<div class="divTurnoff" onclick="changeDiv('turnoffpc')">关机</div>
@@ -134,5 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="divRightStyle">
 		<a href="CarInfo.html">拿照详细经验</a>
 	</div>
+	
+</c:if>	
 </body>
 </html>

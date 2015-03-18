@@ -17,8 +17,6 @@ import com.bean.IUser;
 import com.service.LoginService;
 
 public class MD5Servlet extends HttpServlet {
-	private static final int HEIGHT = 35;
-	private static final int WIDTH = 120;
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -76,12 +74,13 @@ System.out.println("username:"+username+"\tpassword:"+password+"\twordcheck:"+wo
 			LoginService ls = new LoginService();
 			boolean isLogin = ls.login(user);
 			if(!wordOK){
-			
+				
 				sb.append("验证码"+wordcheck+"输入不正确!").append("</message>");
 				out.print(sb.toString());return;
 			}
 			if(isLogin && wordOK){
 				sb.append("canLogin").append("</message>");
+				session.setAttribute("user", user);
 				out.print(sb.toString());return;
 			}else{
 				sb.append("用户名或密码不正确").append("</message>");
