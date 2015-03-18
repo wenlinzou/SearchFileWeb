@@ -138,7 +138,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!-- right -->
 	<div class="divRightStyle">
-		<a href="CarInfo.html">拿照详细经验</a>
+		<a href="<%=basePath %>otherInfo/CarInfo.html">拿照详细经验</a>
+		<a href="<%=basePath %>otherInfo/php-bigxhtml.html">拿照详细经验</a>
 	</div>
 	
 </c:if>	

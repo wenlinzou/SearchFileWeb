@@ -20,7 +20,7 @@ function backIndex() {
 	var myurl = location.href;
 	var endIndex = myurl.lastIndexOf('/');
 	var newUrl = myurl.substring(0, endIndex);
-	window.location.href = newUrl;
+	window.location.href = newUrl+"/input.action";
 }
 
 // 全选
