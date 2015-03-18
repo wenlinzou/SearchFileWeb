@@ -66,10 +66,10 @@ function callback(data) {
 }
 function goToOther(msgObj){
 	if(msgObj=="canLogin"){
-		var myurl = location.href;
+		var myurl = location.host;
 //		myurl+"/input.action";
 		//http://localhost:8080/SearchFileWeb/input.action
-		window.location.href = "http://localhost:8080/SearchFileWeb/input.action";
+		window.location.href = "http://"+myurl+"/SearchFileWeb/input.action";
 		return true;
 	}else{
 		return false;
