@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 
 <c:if test="${user==null }">
-		<a href="<%=basePath%>indexLogin.jsp">跳转登陆页</a>
+		<a href="<%=basePath%>indexLogin.jsp">请跳转至登陆页</a>
 </c:if>
 <c:if test="${user!=null }">
 
@@ -138,7 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!-- right -->
 	<div class="divRightStyle">
-		<a href="<%=basePath %>otherInfo/CarInfo.html">拿照详细经验</a>
+		<a href="<%=basePath %>otherInfo/CarInfo.html" target="_blank">拿照详细经验</a>
 	</div>
 	
 </c:if>	

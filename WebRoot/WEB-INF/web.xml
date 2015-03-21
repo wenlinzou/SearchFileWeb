@@ -48,6 +48,11 @@
     <servlet-name>WordCheckServlet</servlet-name>
     <servlet-class>com.servlet.WordCheckServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>Welcome</servlet-name>
+    <servlet-class>com.servlet.Welcome</servlet-class>
+  </servlet>
+
 
 
 
@@ -97,5 +102,9 @@
   <servlet-mapping>
     <servlet-name>WordCheckServlet</servlet-name>
     <url-pattern>/wordcheck.action</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Welcome</servlet-name>
+    <url-pattern>/welcome.action</url-pattern>
   </servlet-mapping>
 </web-app>

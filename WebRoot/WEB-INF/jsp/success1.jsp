@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
 	<div class="backIndexDiv"><input type="button" value="回到首页" onclick="backIndex()" class="backIndexBtnStyle"/></div>
-
+	搜索结果:${fileLists.size() }
 	<div id="showdiv" style="display: none">
   		<form action="print.action" onsubmit="return validate_form(this)" method="post">
   		<!-- 打印信息存储在隐藏标签 -->
