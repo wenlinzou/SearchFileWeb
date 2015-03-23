@@ -249,7 +249,6 @@ System.out.println("htmlsuffix:"+htmlsuffix);
 			
 System.out.println("inputTempFile:"+inputTempFile);			
 			sf.write2File(htmldata, inputTempFile);
-System.out.println("over!");			
 			//读取html文件将其转成pdf
 			String pdfsuffix = ".pdf";
 			pdfPath = filePath+"/"+htmlName+pdfsuffix;
