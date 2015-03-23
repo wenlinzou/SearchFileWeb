@@ -138,7 +138,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!-- right -->
 	<div class="divRightStyle">
-		<a href="<%=basePath %>otherInfo/CarInfo.html" target="_blank">拿照详细经验</a>
+		<ol>
+			<li><a href="<%=basePath %>otherInfo/CarInfo.html" target="_blank">拿照详细经验</a></li>
+			<li><a href="<%=basePath %>otherInfo/htmlTransPdf.jsp" target="_blank">HTML转成PDF</a></li>
+		</ol>
 	</div>
 	
 </c:if>	

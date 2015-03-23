@@ -5,11 +5,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.profiler.SpacePadder;
+
 import com.bean.IFile;
 import com.util.ContainsWordFilter;
 import com.util.FilenameSuffixFilter;
+import com.util.ITextPdf;
 import com.util.MySuffixFilter;
 import com.util.SeviceFile;
+import com.util.SpiderURL;
 
 public class FileService {
 	private static int COUNT = 0;
@@ -18,6 +22,7 @@ public class FileService {
 	private final int SIZE_SEARCH = 20;
 	
 	private SeviceFile sf = new SeviceFile();
+	private ITextPdf itd = new ITextPdf();
 	
 	public List<String> queryFileLists(IFile iFile){
 		List<String> fileList = new ArrayList<String>();
@@ -167,5 +172,98 @@ System.out.println("SERVICE:fileInPath:"+fileInPath+"\tsuffixname:"+suffixName);
 			
 			e.printStackTrace();
 		}
+	}
+	//html trans pdf
+	public void htmlTransPdf(String url, String filePath){
+		try {
+			//得到url的文件数据流
+			List<String> htmldata = new SpiderURL().getDataByURL(url);
+			//将数据写到本地
+			String htmlUrl = url;
+			String pdfPath = filePath;
+			
+			int startHtml = htmlUrl.lastIndexOf("/");	
+			int endHtml = htmlUrl.lastIndexOf(".");
+			String htmlName = "";
+			if(endHtml<startHtml){
+				if(startHtml>0){
+					String temphtmlUrl = htmlUrl.substring(0, htmlUrl.length()-1);
+					htmlName = temphtmlUrl.substring(temphtmlUrl.lastIndexOf("/")+1);
+System.out.println("htmlUrl:"+htmlUrl+"\thtmlname:"+htmlName);					
+				}
+			}else {
+				htmlName = htmlUrl.substring(startHtml+1, endHtml);
+			}
+			
+			String htmlsuffix = ".html";
+System.out.println("htmlsuffix:"+htmlsuffix);		
+
+			String inputTempFile = filePath+"/"+htmlName+htmlsuffix;
+			inputTempFile = sf.changeIngellUrlName(inputTempFile);
+			
+System.out.println("inputTempFile:"+inputTempFile);			
+			sf.write2File(htmldata, inputTempFile);
+System.out.println("over!");			
+			//读取html文件将其转成pdf
+			String pdfsuffix = ".pdf";
+			pdfPath = filePath+"/"+htmlName+pdfsuffix;
+System.out.println("pdfPath:"+pdfPath);			
+//			itd.htmlTransPdf1(inputTempFile, pdfPath);
+//			new ITextPdf().htmlTransPdf1(filePath, pdfurl);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+	public boolean htmlURLTransLocal(String url, String filePath){
+		boolean flag = false;
+		try {
+			//得到url的文件数据流
+			List<String> htmldata = new SpiderURL().getDataByURL(url);
+			//将数据写到本地
+			String htmlUrl = url;
+			String pdfPath = filePath;
+			
+			int startHtml = htmlUrl.lastIndexOf("/");	
+			int endHtml = htmlUrl.lastIndexOf(".");
+			String htmlName = "";
+			if(endHtml<startHtml){
+				if(startHtml>0){
+					String temphtmlUrl = htmlUrl.substring(0, htmlUrl.length()-1);
+					htmlName = temphtmlUrl.substring(temphtmlUrl.lastIndexOf("/")+1);
+System.out.println("htmlUrl:"+htmlUrl+"\thtmlname:"+htmlName);					
+				}
+			}else {
+				htmlName = htmlUrl.substring(startHtml+1, endHtml);
+			}
+			
+			String htmlsuffix = ".html";
+System.out.println("htmlsuffix:"+htmlsuffix);		
+
+			String inputTempFile = filePath+"/"+htmlName+htmlsuffix;
+			inputTempFile = sf.changeIngellUrlName(inputTempFile);
+			
+System.out.println("inputTempFile:"+inputTempFile);			
+			sf.write2File(htmldata, inputTempFile);
+System.out.println("over!");			
+			//读取html文件将其转成pdf
+			String pdfsuffix = ".pdf";
+			pdfPath = filePath+"/"+htmlName+pdfsuffix;
+System.out.println("pdfPath:"+pdfPath);			
+//			itd.htmlTransPdf1(inputTempFile, pdfPath);
+//			new ITextPdf().htmlTransPdf1(filePath, pdfurl);
+			flag = true;
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		} catch (Exception e) {
+			flag = false;
+			e.printStackTrace();
+		}
+		return flag;
 	}
 }

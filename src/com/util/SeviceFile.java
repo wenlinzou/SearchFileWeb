@@ -104,7 +104,17 @@ public class SeviceFile {
 		bw.close();
 			
 	}
-	
+	public void write2File(List<String> list,String inputHtmlFile) throws IOException{
+		
+		BufferedWriter bw = new BufferedWriter(new FileWriter(inputHtmlFile));
+		for (Iterator<String> it = list.iterator(); it.hasNext();) {
+			bw.write(it.next());
+			bw.newLine();
+			bw.flush();
+		}
+		bw.close();
+			
+	}
 	//打印数据带行号 暂未使用
 	public List<String> lineNum(List<String> list, File fileLine) throws IOException{
 		LineNumberReader liner = new LineNumberReader(new FileReader(fileLine));
@@ -286,5 +296,11 @@ System.out.println("ISRename:"+rename+"\toldname:"+oldname+"\tsameName:"+sameNam
 		}
 		return lists;
 		
+	}
+	public String changeIngellUrlName(String urlName){
+		urlName = urlName.replace("?", "");
+		urlName = urlName.replace("&", "");
+		urlName = urlName.replace("=", "");
+		return urlName;
 	}
 }

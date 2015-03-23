@@ -52,6 +52,11 @@
     <servlet-name>Welcome</servlet-name>
     <servlet-class>com.servlet.Welcome</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>HtmlTransPdfServlet</servlet-name>
+    <servlet-class>com.servlet.HtmlTransPdfServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -106,5 +111,9 @@
   <servlet-mapping>
     <servlet-name>Welcome</servlet-name>
     <url-pattern>/welcome.action</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HtmlTransPdfServlet</servlet-name>
+    <url-pattern>/htmlTransPdf.action</url-pattern>
   </servlet-mapping>
 </web-app>
