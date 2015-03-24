@@ -73,7 +73,7 @@ public class ITextPdf {
 
 			// File file = new File("f:/testdelete.pdf");
 			// file.getParentFile().mkdirs();
-			it.htmlTransPdf1("f:/delete11.html", "f:/testdelete.pdf");
+			it.htmlTransPdf1("f:/txt/all-post.html", "f:/txt/testdelete.pdf");
 		} catch (Exception e) {
 
 			e.printStackTrace();
@@ -137,6 +137,7 @@ public class ITextPdf {
 	 * 
 	 * }
 	 */
+	
 	/*
 	 * 暂时不使用 public void writePdf2() throws DocumentException, IOException {
 	 * 

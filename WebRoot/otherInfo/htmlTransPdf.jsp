@@ -20,17 +20,18 @@
 <meta http-equiv="description" content="This is my page">
 
 	<link rel="stylesheet" type="text/css" href="<%=basePath %>resource/css/htmlTransPdf.css">
-
+	<script type="text/javascript" src="<%=basePath%>resource/js/html2Local.js"></script>
 </head>
 
 <body>
 	<div>
-		<form action="<%=basePath %>htmlTransPdf.action" method="post">
+		<form action="<%=basePath %>htmlTransPdf.action" method="post"  onsubmit="return validate_form(this)">
 		<table>
 			<tr><td>输入网页地址:</td></tr>
 			<tr><td><input type="text" name="htmlUrl" class="inputStyle"/></td></tr>
 			<tr><td>输入存放地址:</td></tr>
 			<tr><td><input type="text" name="pdfPath" /></td></tr>
+			<tr><td id="errorinfo"></td></tr>
 			<tr><td><input type="submit" value="提交"/></td></tr>
 			<tr><td><select>
 				<option >1</option>

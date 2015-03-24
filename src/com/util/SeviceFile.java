@@ -5,10 +5,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.LineNumberReader;
+import java.io.OutputStreamWriter;
 import java.io.SequenceInputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -93,8 +93,9 @@ public class SeviceFile {
 //		List<String> listTemp = new ArrayList<String>();
 //		listTemp = lineNum(list, inputFile);
 //		list = lineNum(list, inputFile);
-
-		BufferedWriter bw = new BufferedWriter(new FileWriter(inputFile,true));
+		String inputFileName = inputFile.getAbsolutePath();
+		OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(inputFileName,true),"UTF-8");
+		BufferedWriter bw = new BufferedWriter(out);
 		int i = 1;
 		for (Iterator<String> it = list.iterator(); it.hasNext();i++) {
 			bw.write(i+": "+it.next()+"\t"+getCurrentDate());
@@ -105,8 +106,8 @@ public class SeviceFile {
 			
 	}
 	public void write2File(List<String> list,String inputHtmlFile) throws IOException{
-		
-		BufferedWriter bw = new BufferedWriter(new FileWriter(inputHtmlFile));
+		OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(new File(inputHtmlFile)),"UTF-8");
+		BufferedWriter bw = new BufferedWriter(out);
 		for (Iterator<String> it = list.iterator(); it.hasNext();) {
 			bw.write(it.next());
 			bw.newLine();
