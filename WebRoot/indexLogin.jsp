@@ -28,29 +28,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <center>
+    <div class="hero">
+    <!-- 新增一个div将用户登陆的这块信息挤到下面 -->
+    <div class="head"></div>
     <!-- <form action="login.action" method="post"> -->
-    	<table>
-	    	<tr><td>
-			用户名:</td><td><input type="text" id="username" name="username" value="${user.username }"/></td>
-			</tr>
-			<tr><td> 
-			密码:</td><td><input type="text" id="password" name="password" value="${user.password }"/></td>
-			</tr>
-			<tr><td>
-			输入验证码:</td><td><input type="text" name="wordcheck" id="wordcheck"/></td></tr>
-			<tr>
-				<td></td>
-				<td>
-				<img alt="change" src="<%=basePath %>wordcheck.action"onclick="changeImage(this)" style="cursor: hand"></td>
-				<td>
-			</tr>
-			<tr><td class="errorStyle" colspan="2" id="msg"></td></tr>
-			<tr ><td class="loginBtn" colspan="2">
-			<input type="button" onclick="verify()" value="登陆" id="login"/>
-			</td>
-			</tr>
-		</table>
+    	<div class="tabDiv">
+	    	<table class="trFont" border="0px">
+	    		<tr><td style="text-align: center;">用户登录</td></tr>
+	    		<tr><td ></td></tr>
+		    	<tr>
+				<td><input type="text" class="trInput" id="username" name="username" value="${user.username }"/></td>
+				</tr>
+				<tr><td>
+				<input type="text"  class="trInput" id="password" name="password" value="${user.password }"/></td>
+				</tr>
+				<tr><td><input type="text" name="wordcheck" id="wordcheck"/></td></tr>
+				<tr>
+					<td>
+					<img alt="change" src="<%=basePath %>wordcheck.action"onclick="changeImage(this)" style="cursor: hand"></td>
+					<td>
+				</tr>
+				<tr>
+				<td class="errorStyle" id="msg" ></td>
+				</tr>
+				<tr ><td class="loginBtn">
+				<input type="button" class="login-btn" onclick="verify()" value="登陆" id="login"/>
+				</td>
+				</tr>
+			</table>
+		</div>
 	<!-- </form> -->
+	
+	</div>
 	</center>
   </body>
 </html>

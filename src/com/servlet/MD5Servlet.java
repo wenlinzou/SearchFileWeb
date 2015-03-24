@@ -57,13 +57,13 @@ System.out.println("wordcheck value:"+wordcheck+"\tworktemp:"+wordTemp+"\twordok
 		PrintWriter out = response.getWriter();
 		
 System.out.println("username:"+username+"\tpassword:"+password+"\twordcheck:"+wordcheck);		
-		if(username==null || username.length()==0){
+		if(username==null || username.length()==0 || "输入用户名".equals(username)){
 			sb.append("用户名不能为空").append("</message>");
 			out.print(sb.toString());return;
-		}else if(password==null || password.length()==0){
+		}else if(password==null || password.length()==0 || "输入密码".equals(password)){
 			sb.append("密码不能为空").append("</message>");
 			out.print(sb.toString());return;
-		}else if(wordcheck==null || wordcheck.length()==0){
+		}else if(wordcheck==null || wordcheck.length()==0 || "输入验证码".equals(wordcheck)){
 			sb.append("验证码不能为空").append("</message>");
 			out.print(sb.toString());return;
 		}

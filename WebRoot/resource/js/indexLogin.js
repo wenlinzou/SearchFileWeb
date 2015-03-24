@@ -1,4 +1,33 @@
 var totalCount = 5;
+/*
+ * 提示框的内容
+ */
+function InputHint(el,hint){
+    this.hint = hint;
+    this.el = el;
+    this.el.style.color = '#aaa';
+    this.el.value = hint;
+    this.el.onfocus = function(){
+        el.value = '';
+        el.style.color = '';
+    }
+    this.el.onblur = function(){
+        if (el.value == ''){
+            el.style.color = '#aaa';
+            el.value = hint;
+        }else{
+            el.onfocus = null;
+            el.onblur = null;
+        }
+    }
+}
+
+$(function(){
+	InputHint(document.getElementById('username'),'输入用户名');
+	InputHint(document.getElementById('password'),'输入密码');
+	InputHint(document.getElementById('wordcheck'),'输入验证码');
+	
+});
 function verify() {
 	
     //var userName = $("#userName").val();

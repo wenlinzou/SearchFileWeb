@@ -38,8 +38,8 @@ public class WordCheck {
 	}
 
 	public String drawMandomNum(Graphics2D g) {
-		g.setColor(Color.RED);
-		g.setFont(new Font("宋体",Font.BOLD,25));
+		g.setColor(new Color(197,0,0));
+		g.setFont(new Font("黑体",Font.BOLD,25));
 		String base = "\u7684\u4e00\u662f\u4e86\u6211\u4e0d\u4eba\u5728\u4ed6\u6709\u8fd9\u4e2a\u4e0a\u4eec\u6765"
 				+ "\u5230\u65f6\u5927\u5730\u4e3a\u5b50\u4e2d\u4f60\u8bf4\u751f\u56fd\u5e74\u7740\u5c31\u90a3"
 				+ "\u548c\u8981\u5979\u51fa\u4e5f\u5f97\u91cc\u540e\u81ea\u4ee5\u4f1a\u5bb6\u53ef\u4e0b\u800c"
