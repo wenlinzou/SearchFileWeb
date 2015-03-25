@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div style=";">${turnOffSuccess }
 	</div>
 	<div id="turnoffpc" style="display:none;">
-		<form action="turnOff.action" method="post" onsubmit="return trunOffPC()">
+		<form action="turnOff.html" method="post" onsubmit="return trunOffPC()">
 			<input type="hidden" id="turnoffID" name="turnoffTime"/>
 			<table>
 				<tr><td>
@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	<center>
 	<h2 class="mycenter">搜索文件</h2>
-		<form action="search.action" method="post"  onsubmit="return validate_form(this)">
+		<form action="search.html" method="post"  onsubmit="return validate_form(this)">
 			<table>
 			<tr>
 				<td>

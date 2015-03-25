@@ -53,7 +53,7 @@ function delayURL(url) {
 
 <a href="<%=basePath%>">返回首页</a>
 <script type="text/javascript">
-	delayURL("input.action");
+	delayURL("input.html");
 </script>
 
 

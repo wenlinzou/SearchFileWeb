@@ -76,54 +76,54 @@
 
   <servlet-mapping>
     <servlet-name>SearchServlet</servlet-name>
-    <url-pattern>/search.action</url-pattern>
+    <url-pattern>/search.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>InputServlet</servlet-name>
-    <url-pattern>/input.action</url-pattern>
+    <url-pattern>/input.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>PrintServlet</servlet-name>
-    <url-pattern>/print.action</url-pattern>
+    <url-pattern>/print.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>PlayServlet</servlet-name>
-    <url-pattern>/playServlet.action</url-pattern>
+    <url-pattern>/playServlet.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>RenameServlet</servlet-name>
-    <url-pattern>/rename.action</url-pattern>
+    <url-pattern>/rename.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>TurnOffPCServlet</servlet-name>
-    <url-pattern>/turnOff.action</url-pattern>
+    <url-pattern>/turnOff.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>SplitFileServlet</servlet-name>
-    <url-pattern>/split.action</url-pattern>
+    <url-pattern>/split.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>MergeFileServlet</servlet-name>
-    <url-pattern>/mergeFile.action</url-pattern>
+    <url-pattern>/mergeFile.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>MD5Servlet</servlet-name>
-    <url-pattern>/login.action</url-pattern>
+    <url-pattern>/login.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>WordCheckServlet</servlet-name>
-    <url-pattern>/wordcheck.action</url-pattern>
+    <url-pattern>/wordcheck.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>Welcome</servlet-name>
-    <url-pattern>/welcome.action</url-pattern>
+    <url-pattern>/welcome.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>HtmlTransPdfServlet</servlet-name>
-    <url-pattern>/htmlTransPdf.action</url-pattern>
+    <url-pattern>/htmlTransPdf.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>HtmlWServlet</servlet-name>
-    <url-pattern>/htmlwordcheck.action</url-pattern>
+    <url-pattern>/htmlwordcheck.html</url-pattern>
   </servlet-mapping>
 </web-app>

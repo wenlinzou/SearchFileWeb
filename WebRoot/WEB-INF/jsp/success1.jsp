@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="backIndexDiv"><input type="button" value="回到首页" onclick="backIndex()" class="backIndexBtnStyle"/></div>
 	搜索结果:${fileLists.size() }
 	<div id="showdiv" style="display: none">
-  		<form action="print.action" onsubmit="return validate_form(this)" method="post">
+  		<form action="print.html" onsubmit="return validate_form(this)" method="post">
   		<!-- 打印信息存储在隐藏标签 -->
   		<input type="hidden" value="${fileLists }" id="showdiv"/>
 	  		<table>
@@ -68,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>  
 	
 	<div id="showRenameDiv" style="display: none">	
-		<form method="post" action="rename.action" onsubmit="return getSelectChecked()" >
+		<form method="post" action="rename.html" onsubmit="return getSelectChecked()" >
 			<input type="hidden" id="rename" name="rename"/>
 			<table>
 				<tr>
@@ -104,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    				</c:if>
 	    				<c:if test="${fileLists!='[<center>没能搜索到的文件!</center>]' }">
 		    				<input type="checkbox" name="filePathList" value="${file }"/>
-		    				<a href="playServlet.action?myUrl=${file}">
+		    				<a href="playServlet.html?myUrl=${file}">
 		    					<c:if test="${fileLists!=null }">${file }</c:if>
 		    				</a>
 	    				</c:if>

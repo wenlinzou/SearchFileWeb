@@ -26,7 +26,7 @@ function verify() {
 
     $.ajax({
         type: "POST",              //http请求方式
-        url: "login.action",    //服务器端url地址
+        url: "login.html",    //服务器端url地址
 //        data: "username=" + username+"&password="+password,    //发送给服务器短的数据
         data: obj,
         dataType: "xml",           //告诉Jquery返回的数据方式
@@ -75,9 +75,9 @@ function callback(data) {
 function goToOther(msgObj){
 	if(msgObj=="canLogin"){
 		var myurl = location.host;
-//		myurl+"/input.action";
-		//http://localhost:8080/SearchFileWeb/input.action
-		window.location.href = "http://"+myurl+"/SearchFileWeb/input.action";
+//		myurl+"/input.html";
+		//http://localhost:8080/SearchFileWeb/input.html
+		window.location.href = "http://"+myurl+"/SearchFileWeb/input.html";
 		return true;
 	}else{
 		return false;

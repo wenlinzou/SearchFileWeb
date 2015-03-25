@@ -30,7 +30,7 @@
 		${playUrl}
 	</div>
 	<div id="splitDiv" style="display:none;">
-		<form action="split.action" method="post" onsubmit="return validate_form(this)">
+		<form action="split.html" method="post" onsubmit="return validate_form(this)">
 			<input type="hidden" name="splitFilePath" value="${playUrl }"/>
 			<table>
 			<tr>
@@ -59,7 +59,7 @@
 	<!-- split file end -->
 	
 	<div>
-		<form action="mergeFile.action" method="post">
+		<form action="mergeFile.html" method="post">
 			<input type="hidden" name="splitFilePath" value="${playUrl }"/>
 			<c:if test="${suffixStr=='.properties' }"><input type="submit" value="还原"></c:if>
 			
