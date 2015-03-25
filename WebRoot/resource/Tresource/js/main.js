@@ -34,8 +34,6 @@ $(document).ready(function(){
 		}
 
 	});
-
-
-
-
 });
+//我添加的js
+

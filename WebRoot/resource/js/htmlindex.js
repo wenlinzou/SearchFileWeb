@@ -1,35 +1,8 @@
-var totalCount = 5;
-/*
- * 提示框的内容
- */
-function InputHint(el,hint){
-    this.hint = hint;
-    this.el = el;
-    this.el.style.color = '#aaa';
-    this.el.style.fontFamily = '新宋体';
-    this.el.style.fontSize = '20px';
-    this.el.value = hint;
-    this.el.onfocus = function(){
-        el.value = '';
-        el.style.color = '';
-    }
-    this.el.onblur = function(){
-        if (el.value == ''){
-            el.style.color = '#aaa';
-            el.value = hint;
-        }else{
-            el.onfocus = null;
-            el.onblur = null;
-        }
-    }
+//验证码
+function changeImage(img) {
+	img.src = img.src + "?" + new Date().getDate();
 }
-
-$(function(){
-	InputHint(document.getElementById('username'),'输入用户名');
-	InputHint(document.getElementById('password'),'输入密码');
-	InputHint(document.getElementById('wordcheck'),'输入验证码');
-	
-});
+var totalCount = 5;
 function verify() {
 	
     //var userName = $("#userName").val();
@@ -64,14 +37,16 @@ function verify() {
 
 }
 function errorfun(){
-	$("#msg").html("后台自杀了!!提交失败...");
+	$("#keywords").html("后台自杀了!!提交失败...");
 }
 //回调函数
 var count = 0;
 function callback(data) {
 	count++;
+	
+	
 	if(count>totalCount){
-		$("#msg").html("最多输入"+totalCount+"次,已经超出!");
+		$("#keywords").html("最多输入"+totalCount+"次,已经超出!");
 //		$("#login").css("disable","disable");
 		$("#login").attr({"disabled":true});
 
@@ -88,12 +63,14 @@ function callback(data) {
     var text = message.text();
     //4将服务器端返回的数据动态的显示在页面上
     //找到保存结果信息的节点
-    var msgObj = $("#msg");
+    var msgObj = $("#keywords");
 
     if(!goToOther(text)){
     //动态的改变页面中div节点中的内容
+    	$(".advanced_search").css("display","block");
     	msgObj.html(text);
 	}
+  //.search .advanced_search
 }
 function goToOther(msgObj){
 	if(msgObj=="canLogin"){
@@ -106,8 +83,9 @@ function goToOther(msgObj){
 		return false;
 	}
 }
-
-//验证码
-function changeImage(img) {
-	img.src = img.src + "?" + new Date().getDate();
-}
+$(document).keyup(function(event){
+	if(event.keyCode ==13){
+		$("#submit_search").trigger("click");
+		verify();
+	}
+});

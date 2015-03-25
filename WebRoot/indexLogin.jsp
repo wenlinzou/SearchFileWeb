@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- <form action="login.action" method="post"> -->
     	<div class="tabDiv">
 	    	<table class="trFont" border="0px">
-	    		<tr><td style="text-align: center;">用户登录</td></tr>
+	    		<tr><td style="text-align: center;font-size:22px;">用户登录</td></tr>
 	    		<tr><td ></td></tr>
 		    	<tr>
 				<td><input type="text" class="trInput" id="username" name="username" value="${user.username }"/></td>
@@ -45,8 +45,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tr><td><input type="text" name="wordcheck" id="wordcheck"/></td></tr>
 				<tr>
 					<td>
-					<img alt="change" src="<%=basePath %>wordcheck.action"onclick="changeImage(this)" style="cursor: hand"></td>
-					<td>
+					<img alt="change" src="<%=basePath %>wordcheck.action"onclick="changeImage(this)" style="cursor: hand">
+					</td>
 				</tr>
 				<tr>
 				<td class="errorStyle" id="msg" ></td>

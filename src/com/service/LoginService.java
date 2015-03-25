@@ -33,6 +33,13 @@ public class LoginService {
 	public String getWord(Graphics g){
 		return wc.wordChecked(g);
 	}
+	
+	//html word check
+	public String getHtmlWord(Graphics g){
+		return wc.wordHtmlChecked(g);
+	}
+	
+	
 //	public boolean checkWord(String tempCode){
 //		
 //	}

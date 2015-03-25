@@ -346,9 +346,9 @@ header nav .login_btn:hover{
     right: 6px;
 }
 
-.search .advanced_search #check_in_date,
-.search .advanced_search #check_out_date,
-.search .advanced_search #min_price,
+.search .advanced_search #username,
+.search .advanced_search #password,
+.search .advanced_search #wordcheck,
 .search .advanced_search #max_price{
     display: block;
     width: 509px;
@@ -360,8 +360,8 @@ header nav .login_btn:hover{
     background: #cbe0f4;
 }
 
-.search .advanced_search #check_in_date,
-.search .advanced_search #check_out_date{
+.search .advanced_search #username,
+.search .advanced_search #password{
     background: url('../img/calendar_icon.png') no-repeat;
     background-position: 484px 50%;
     padding: 0 100px 0 20px;
@@ -398,9 +398,9 @@ header nav .login_btn:hover{
     background: #cbe0f4;
 }
 
-.search .advanced_search #check_in_date,
-.search .advanced_search #check_out_date,
-.search .advanced_search #min_price,
+.search .advanced_search #username,
+.search .advanced_search #password,
+.search .advanced_search #wordcheck,
 .search .advanced_search #max_price,
 .search .advanced_search #keywords{    
     color: #ffffff;
@@ -412,33 +412,33 @@ header nav .login_btn:hover{
 } 
 
 
-.search .advanced_search #check_in_date::-webkit-input-placeholder,
-.search .advanced_search #check_out_date::-webkit-input-placeholder,
-.search .advanced_search #min_price::-webkit-input-placeholder,
+.search .advanced_search #username::-webkit-input-placeholder,
+.search .advanced_search #password::-webkit-input-placeholder,
+.search .advanced_search #wordcheck::-webkit-input-placeholder,
 .search .advanced_search #max_price::-webkit-input-placeholder,
 .search .advanced_search #keywords::-webkit-input-placeholder{
    color: #95badf;
 }
 
-.search .advanced_search #check_in_date:-moz-placeholder, 
-.search .advanced_search #check_out_date:-moz-placeholder, 
-.search .advanced_search #min_price:-moz-placeholder, 
+.search .advanced_search #username:-moz-placeholder, 
+.search .advanced_search #password:-moz-placeholder, 
+.search .advanced_search #wordcheck:-moz-placeholder, 
 .search .advanced_search #max_price:-moz-placeholder, 
 .search .advanced_search #keywords:-moz-placeholder{ 
    color: #95badf;  
 }
 
-.search .advanced_search #check_in_date::-moz-placeholder, 
-.search .advanced_search #check_out_date::-moz-placeholder, 
-.search .advanced_search #min_price::-moz-placeholder, 
+.search .advanced_search #username::-moz-placeholder, 
+.search .advanced_search #password::-moz-placeholder, 
+.search .advanced_search #wordcheck::-moz-placeholder, 
 .search .advanced_search #max_price::-moz-placeholder, 
 .search .advanced_search #keywords::-moz-placeholder{ 
    color: #95badf;  
 }
 
-.search .advanced_search #check_in_date:-ms-input-placeholder,  
-.search .advanced_search #check_out_date:-ms-input-placeholder,  
-.search .advanced_search #min_price:-ms-input-placeholder,  
+.search .advanced_search #username:-ms-input-placeholder,  
+.search .advanced_search #password:-ms-input-placeholder,  
+.search .advanced_search #wordcheck:-ms-input-placeholder,  
 .search .advanced_search #max_price:-ms-input-placeholder,  
 .search .advanced_search #keywords:-ms-input-placeholder{  
    color: #95badf;  
@@ -735,16 +735,16 @@ footer .copyrights a.ph_link{
         right: 46px;
     }
 
-    .search .advanced_search #check_in_date,
-    .search .advanced_search #check_out_date,
-    .search .advanced_search #min_price,
+    .search .advanced_search #username,
+    .search .advanced_search #password,
+    .search .advanced_search #wordcheck,
     .search .advanced_search #max_price{
         width: 46.27272727272727%;
         padding: 0 1.818181818181818%;
     }
 
-    .search .advanced_search #check_in_date,
-    .search .advanced_search #check_out_date{
+    .search .advanced_search #username,
+    .search .advanced_search #password{
         background: url('../img/calendar_icon.png') no-repeat;
         background-position: 95.08840864440079% 50%;
     }
@@ -897,17 +897,17 @@ footer .copyrights a.ph_link{
 
 @media (max-width:700px){
 
-    .search .advanced_search #check_in_date,
-    .search .advanced_search #check_out_date,
-    .search .advanced_search #min_price,
+    .search .advanced_search #username,
+    .search .advanced_search #password,
+    .search .advanced_search #wordcheck,
     .search .advanced_search #max_price{
         width: 96.36363636363636%;
         padding: 0 1.818181818181818%;
         border-bottom: 1px solid #aac8e4;
     }
 
-    .search .advanced_search #check_in_date,
-    .search .advanced_search #check_out_date{
+    .search .advanced_search #username,
+    .search .advanced_search #password{
         background: url('../img/calendar_icon.png') no-repeat;
         background-position: 95.08840864440079% 50%;
     }

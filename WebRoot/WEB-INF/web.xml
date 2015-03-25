@@ -57,6 +57,11 @@
     <servlet-name>HtmlTransPdfServlet</servlet-name>
     <servlet-class>com.servlet.HtmlTransPdfServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>HtmlWServlet</servlet-name>
+  	<servlet-class>com.servlet.HtmlWServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -116,5 +121,9 @@
   <servlet-mapping>
     <servlet-name>HtmlTransPdfServlet</servlet-name>
     <url-pattern>/htmlTransPdf.action</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HtmlWServlet</servlet-name>
+    <url-pattern>/htmlwordcheck.action</url-pattern>
   </servlet-mapping>
 </web-app>
