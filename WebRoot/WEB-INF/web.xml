@@ -46,8 +46,8 @@
     <servlet-class>com.servlet.MD5Servlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>WordCheckServlet</servlet-name>
-    <servlet-class>com.servlet.WordCheckServlet</servlet-class>
+    <servlet-name>WordCheckJSPServlet</servlet-name>
+    <servlet-class>com.servlet.WordCheckJSPServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>Welcome</servlet-name>
@@ -58,9 +58,10 @@
     <servlet-class>com.servlet.HtmlTransPdfServlet</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>HtmlWServlet</servlet-name>
-  	<servlet-class>com.servlet.HtmlWServlet</servlet-class>
+  	<servlet-name>WordCheckHTMLServlet</servlet-name>
+  	<servlet-class>com.servlet.WordCheckHTMLServlet</servlet-class>
   </servlet>
+
 
 
 
@@ -111,7 +112,7 @@
     <url-pattern>/login.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>WordCheckServlet</servlet-name>
+    <servlet-name>WordCheckJSPServlet</servlet-name>
     <url-pattern>/wordcheck.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
@@ -123,7 +124,7 @@
     <url-pattern>/htmlTransPdf.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>HtmlWServlet</servlet-name>
+    <servlet-name>WordCheckHTMLServlet</servlet-name>
     <url-pattern>/htmlwordcheck.html</url-pattern>
   </servlet-mapping>
 </web-app>

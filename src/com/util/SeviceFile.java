@@ -153,7 +153,7 @@ public class SeviceFile {
 	}
 
 	
-	
+	//重命名文件
 	public boolean renameFile(List<String> lists, String sameName) {
 		File[] tempFiles = new File[lists.size()];
 		boolean canRename = false;
@@ -177,6 +177,7 @@ System.out.println("ISRename:"+rename+"\toldname:"+oldname+"\tsameName:"+sameNam
 
 	}
 	
+	//拆分文件
 	public void splitFile(File srcFile, File destDir,int split_size, String suffix) throws IOException{
 		//1源
 		FileInputStream fis = new FileInputStream(srcFile);
@@ -213,7 +214,7 @@ System.out.println("ISRename:"+rename+"\toldname:"+oldname+"\tsameName:"+sameNam
 		fis.close();
 	}
 	
-	//读取配置文件
+	//读取配置文件 重新组合文件
 	public void mergeFile(File srcDir, String suffixName) throws IOException {
 		
 		
@@ -260,7 +261,7 @@ System.out.println("ISRename:"+rename+"\toldname:"+oldname+"\tsameName:"+sameNam
 		
 	}
 
-
+	//合并文件操作
 	public void merge(File srcDir, String filename, int count, String splitSuffix) throws IOException {
 		List<FileInputStream> list = new ArrayList<FileInputStream>();
 		//System.out.println("count:"+count+"\tfilename:"+filename+"\tsrcDir:"+srcDir);
@@ -299,6 +300,8 @@ System.out.println("ISRename:"+rename+"\toldname:"+oldname+"\tsameName:"+sameNam
 		return lists;
 		
 	}
+	
+	//替换非法字符
 	public String changeIngellUrlName(String urlName){
 		urlName = urlName.replace("?", "");
 		urlName = urlName.replace("&", "");

@@ -1,9 +1,13 @@
 package com.service;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import com.bean.IUser;
+import com.bean.IWordCheckStyle;
 import com.util.MD5Utils;
+import com.util.TWordCheck;
 import com.util.WordCheck;
 
 public class LoginService {
@@ -39,7 +43,10 @@ public class LoginService {
 		return wc.wordHtmlChecked(g);
 	}
 	
-	
+	//通过添一个 验证码的一个bean
+	public String getTWordCheck(IWordCheckStyle iword){
+		return new TWordCheck(iword).getWordSetCheckStyle();
+	}
 //	public boolean checkWord(String tempCode){
 //		
 //	}

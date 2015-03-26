@@ -11,6 +11,11 @@ public class WordCheck {
 	private static final int HEIGHT = 30;
 	private static final int WIDTH = 120;
 	
+	
+	
+	
+	
+	
 	public String wordChecked(Graphics g){
 //		BufferedImage image = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_RGB);
 //		Graphics g = image.getGraphics();
@@ -274,4 +279,5 @@ System.out.println("背景色");
 		}
 		return tempCode.toString();		
 	}
+	
 }

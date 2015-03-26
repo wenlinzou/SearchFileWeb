@@ -10,6 +10,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SpiderURL {
+	 //发送代数据的HTTP 请求 -->网络爬虫
+	
 	public List<String> getDataByURL(String urlPath) throws IOException, Exception {
 //		URL url = new URL("http://192.168.1.100:8080/myweb/mail.html");
 		List<String> htmlInfo = new ArrayList<String>();
