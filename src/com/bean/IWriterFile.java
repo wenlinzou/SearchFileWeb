@@ -1,5 +1,5 @@
 package com.bean;
-
+//not use
 public class IWriterFile {
 	private String disk;
 	private	 String filename;
