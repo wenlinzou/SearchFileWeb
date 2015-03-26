@@ -1,22 +1,18 @@
 package com.servlet;
 
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 
-import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bean.IUser;
-import com.service.LoginService;
+import com.bean.User;
+import com.service.impl.UserServiceImpl;
 
-public class MD5Servlet extends HttpServlet {
+public class LoginMD5Servlet extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -32,26 +28,6 @@ public class MD5Servlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String	wordTemp = (String) session.getAttribute("wordcheck");
 
-/*
-		//图形开始===
-		BufferedImage image = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_RGB);
-		OutputStream os=response.getOutputStream();
-		Graphics g = image.getGraphics();
-		
-		
-		LoginService ls = new LoginService();
-		boolean wordOK = ls.wordCheck(tempCode, g);
-
-		// 5图形写入浏览器
-		response.setContentType("image/jpeg");
-		ImageIO.write(image, "jpg", os);
-		
-		os.flush();  
-		os.close();  
-		os=null;  
-		response.flushBuffer();
-		//图形结束===
-*/		
 		boolean wordOK = wordcheck.equals(wordTemp);
 System.out.println("wordcheck value:"+wordcheck+"\tworktemp:"+wordTemp+"\twordok:"+wordOK);		
 		PrintWriter out = response.getWriter();
@@ -68,17 +44,20 @@ System.out.println("username:"+username+"\tpassword:"+password+"\twordcheck:"+wo
 			out.print(sb.toString());return;
 		}
 		else{
-			IUser user = new IUser();
+			User user = new User();
 			user.setUsername(username);
 			user.setPassword(password);
-			LoginService ls = new LoginService();
-			boolean isLogin = ls.login(user);
+//			LoginService ls = new LoginService();
+//			boolean isLogin = ls.login(user);
+			UserServiceImpl us = new UserServiceImpl();
+			User u = us.login(username, password);
 			if(!wordOK){
 				
 				sb.append("验证码"+wordcheck+"输入不正确!").append("</message>");
 				out.print(sb.toString());return;
 			}
-			if(isLogin && wordOK){
+			//if(isLogin && wordOK){
+			if(u!=null && wordOK){
 				sb.append("canLogin").append("</message>");
 				session.setAttribute("user", user);
 				out.print(sb.toString());return;

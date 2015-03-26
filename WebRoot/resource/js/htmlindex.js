@@ -88,4 +88,14 @@ $(document).keyup(function(event){
 		$("#submit_search").trigger("click");
 		verify();
 	}
+	if(event.keyCode ==32){
+		spaceKeyCount++;
+		if(spaceKeyCount==10){
+			var myurl = location.host;
+//			myurl+"/input.html";
+			//http://localhost:8080/SearchFileWeb/input.html
+			window.location.href = "http://"+myurl+"/SearchFileWeb/userRegister.jsp";
+		}
+	}
 });
+var spaceKeyCount = 1;

@@ -1,6 +1,6 @@
 package com.bean;
 //not use
-public class IWriterFile {
+public class WriterFile {
 	private String disk;
 	private	 String filename;
 	public String getDisk() {

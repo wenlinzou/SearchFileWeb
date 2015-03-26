@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bean.IFile;
+import com.bean.FileI;
 import com.service.FileService;
 
 public class SearchServlet extends HttpServlet{
@@ -24,13 +24,13 @@ public class SearchServlet extends HttpServlet{
 		
 		
 		FileService ss = new FileService();
-		IFile iFile = new IFile();
+		FileI iFile = new FileI();
 		iFile.setDiskname(diskname);
 		iFile.setFilename(filename);
 		iFile.setFoldername(foldername);
 		iFile.setSuffix(suffix);
 		
-		List<String> fileLists = ss.queryFileLists(new IFile(diskname, foldername, filename, suffix));
+		List<String> fileLists = ss.queryFileLists(new FileI(diskname, foldername, filename, suffix));
 		HttpSession session = request.getSession();
 		
 		if(fileLists==null || fileLists.size()<1){

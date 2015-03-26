@@ -1,17 +1,17 @@
 package com.bean;
 
-public class IFile {
+public class FileI {
 	private String diskname;
 	private String foldername;
 	private String filename;
 	private String suffix;
 	
 	
-	public IFile() {
+	public FileI() {
 		super();
 		
 	}
-	public IFile(String diskname, String foldername, String filename,
+	public FileI(String diskname, String foldername, String filename,
 			String suffix) {
 		super();
 		this.diskname = diskname;

@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.slf4j.profiler.SpacePadder;
 
-import com.bean.IFile;
+import com.bean.FileI;
 import com.util.ContainsWordFilter;
 import com.util.FilenameSuffixFilter;
 import com.util.ITextPdf;
@@ -24,7 +24,7 @@ public class FileService {
 	private SeviceFile sf = new SeviceFile();
 	private ITextPdf itd = new ITextPdf();
 	
-	public List<String> queryFileLists(IFile iFile){
+	public List<String> queryFileLists(FileI iFile){
 		List<String> fileList = new ArrayList<String>();
 		System.out.println("==================\n搜索次数:"+(++COUNT)+"\t搜索上限:"+SIZE_SEARCH);
 		if(COUNT>SIZE_SEARCH){

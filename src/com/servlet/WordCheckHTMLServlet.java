@@ -15,15 +15,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bean.IWordCheckStyle;
-import com.service.LoginService;
+import com.bean.WordCheckStyle;
+import com.service.impl.UserServiceImpl;
 
 public class WordCheckHTMLServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//iwordcheckstyle bean
-		IWordCheckStyle iword = new IWordCheckStyle();
+		WordCheckStyle iword = new WordCheckStyle();
 		iword.setHeight(30);
 		iword.setWidth(120);
 		
@@ -31,14 +31,15 @@ public class WordCheckHTMLServlet extends HttpServlet {
 		Graphics g = image.getGraphics();
 		
 		iword.setG(g);
-		LoginService ls = new LoginService();
+//		LoginService ls = new LoginService();
+		UserServiceImpl us = new UserServiceImpl();
 		iword.setBackColor(Color.WHITE);
 		iword.setBorderColor(Color.BLACK);
 //		iword.setFontColor(new Color(197,0,0));
 		iword.setFontColor(Color.BLACK);
 		iword.setLineColor(Color.GRAY);
 		iword.setWordFont(new Font("黑体",Font.BOLD,23));
-		String tempCode = ls.getTWordCheck(iword);
+		String tempCode = us.getTWordCheck(iword);
 		/*int height = 30;
 		int width = 120;
 		//Graphics g, Color backColor, Color borderColor, Color lineColor,Color fontColor, Font wordFont

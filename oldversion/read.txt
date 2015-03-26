@@ -1,0 +1,5 @@
+md5 xml copybean
+dom4j.jar
+jaxen-1.1-beta-6.jar
+commons-beanutils-1.8.0.jar
+commons-logging.jar
