@@ -17,10 +17,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 
-	<link rel="stylesheet" type="text/css" href="<%=basePath %>resource/css/success1.css">
+	<link rel="stylesheet" type="text/css" href="<%=basePath %>resource/css/searchSuccess1.css">
 	<link rel="syylesheet" type="text/css" href="<%=basePath%>resource/css/top.css">
 	<script type="text/javascript" src="<%=basePath%>resource/js/top.js"></script> 
-	<script type="text/javascript" src="<%=basePath%>resource/js/success1.js"></script>
+	<script type="text/javascript" src="<%=basePath%>resource/js/searchSuccess1.js"></script>
   </head>
   
 <body>

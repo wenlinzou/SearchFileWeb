@@ -58,7 +58,7 @@ public class SearchServlet extends HttpServlet{
 		//request.setAttribute("fileLists", fileLists);
 		session.setAttribute("iFile", iFile);
 		
-		request.getRequestDispatcher("/WEB-INF/jsp/success1.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/jsp/searchSuccess1.jsp").forward(request, response);
 		
 	}
 

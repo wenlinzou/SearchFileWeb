@@ -26,7 +26,7 @@ public class RegisterServlet extends HttpServlet {
 				//2校验失败。调回表单页面，回显失败信息
 				if(!b){
 					request.setAttribute("form", form);
-					request.getRequestDispatcher("/userRegister.jsp").forward(request, response);
+					request.getRequestDispatcher("/otherInfo/userRegister.jsp").forward(request, response);
 					return;
 				}
 				
@@ -50,13 +50,13 @@ System.out.println("注册成功 ===\n用户名"+user.getUsername()+"\t密码:"+
 					form.getErrors().put("username", "注册用户名已存在");
 					
 					request.setAttribute("form", form);
-					request.getRequestDispatcher("/userRegister.jsp").forward(request, response);
+					request.getRequestDispatcher("/otherInfo/userRegister.jsp").forward(request, response);
 					
 					return;
 				}catch(Exception e){
 					//5如果service处理不成功，并且不成功原因是其他问题的话，跳转到网站的全局消息显示页面，为用户显示友好错误消息
 					request.setAttribute("message", "服务器出现位置错误");
-					request.getRequestDispatcher("/message.jsp").forward(request, response);
+					request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
 					return;
 				}
 				
