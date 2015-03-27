@@ -115,7 +115,6 @@ public class SendMail {
 			transport.connect(semail.getHostname(), semail.getUsername(), semail.getPassword());
 			transport.sendMessage(msg, msg.getAllRecipients());
 			transport.close();
-System.out.println("sendmailFIle:"+semail.getFileList());			
 		} catch (Exception mex) {
 			mex.printStackTrace();
 			return false;

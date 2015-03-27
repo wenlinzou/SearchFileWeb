@@ -22,11 +22,13 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 <link rel="stylesheet" type="text/css" href="<%=basePath %>resource/css/sendEmail.css">
+<script type="text/javascript" src="<%=basePath %>resource/js/sendEmail.js"></script>
 </head>
 
 <body>
+	<div class="sendmailDiv">
 	<form action="sendemail.html" method="post">
-		<table>
+		<table id="fileid">
 			<tr>
 				<td class="tdwordRight">发件邮箱</td><td><input type="text" name="username" class="inputStyle"/></td>
 			</tr>
@@ -46,6 +48,11 @@
 				</td>
 			</tr>
 			<!-- 附件 -->
+			<tr>
+				<td></td>
+				<td><a href="javascript:void(0)" onclick="addFile()">添加附件</a></td>
+			</tr>
+			
 	    	<tr>
 	    		<td class="tdwordRight">附件</td>
 	    		<td>
@@ -53,10 +60,13 @@
 	    		</td>
 	    	</tr>
 			<tr>
-				<td> </td><td><input type="submit" value="发送"/></td>
+				<td> </td><td><!-- <input type="submit" value="发送"/> --></td>
 			</tr>
 		</table>
+		<input type="submit" value="发送"/>
 	</form>
+	
+	</div>
 	<br>
 </body>
 </html>
