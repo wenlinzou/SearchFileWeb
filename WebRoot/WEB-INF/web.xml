@@ -65,6 +65,11 @@
     <servlet-name>RegisterServlet</servlet-name>
     <servlet-class>com.servlet.RegisterServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>SendEmailServlet</servlet-name>
+    <servlet-class>com.servlet.SendEmailServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -135,5 +140,9 @@
   <servlet-mapping>
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/register.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SendEmailServlet</servlet-name>
+    <url-pattern>/sendemail.html</url-pattern>
   </servlet-mapping>
 </web-app>

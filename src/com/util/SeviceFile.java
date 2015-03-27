@@ -309,6 +309,14 @@ System.out.println("ISRename:"+rename+"\toldname:"+oldname+"\tsameName:"+sameNam
 		return urlName;
 	}
 	
+	//截取输入邮箱由谁发送的品牌 wwww@qq.com qq
+	public static String getAtName(String emailname){
+		String atname = "";
+		int beginIndex = emailname.indexOf("@");
+		int endIndex = emailname.lastIndexOf(".");
+		atname = emailname.substring(beginIndex+1, endIndex);
+		return atname;
+	}
 	
 	public static void main(String[] args) {
 		

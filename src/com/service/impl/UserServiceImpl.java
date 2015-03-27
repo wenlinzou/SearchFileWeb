@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import com.bean.SEmail;
 import com.bean.User;
 import com.bean.WordCheckStyle;
 import com.dao.UserDao;
@@ -33,5 +34,9 @@ public class UserServiceImpl {
 	//通过添一个 验证码的一个bean
 	public String getTWordCheck(WordCheckStyle iword){
 		return new TWordCheck(iword).getWordSetCheckStyle();
+	}
+	
+	public boolean sendEmail(SEmail semail){
+		return dao.sendEmail(semail);
 	}
 }

@@ -5,8 +5,11 @@ import java.text.SimpleDateFormat;
 import org.dom4j.Document;
 import org.dom4j.Element;
 
+import com.bean.SEmail;
 import com.bean.User;
 import com.dao.UserDao;
+import com.util.SendMail;
+import com.util.SeviceFile;
 import com.util.XmlUtils;
 
 public class UserDaoImpl implements UserDao {
@@ -69,6 +72,12 @@ public class UserDaoImpl implements UserDao {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	@Override
+	public boolean sendEmail(SEmail semail) {
+		boolean flag = SendMail.sendMail(semail);
+		return flag;
 	}
 
 }
