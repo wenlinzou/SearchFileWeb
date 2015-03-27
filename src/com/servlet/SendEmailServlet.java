@@ -1,6 +1,8 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,21 +20,27 @@ public class SendEmailServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
+		List<String> filelist = new ArrayList<String>();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String sendToEmailName = request.getParameter("sendToEmailName");
 		String sendFromEmailName = username;
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
+		String filename = request.getParameter("filename");
+		filename = "f:/"+filename;
+		filelist.add(filename);
+		
 		StringBuilder hostname = new StringBuilder();
 		hostname.append("smtp");
 //		String hostname = "smtp.sina.com";
 		//截取
-System.out.println("username:"+username+" \npassword:"+MD5Utils.md5(password)+"\n to:"+sendToEmailName+"\n from:"+sendFromEmailName
-		+"\n subject:"+subject+"\n content:"+content);		
 		String hostat = SeviceFile.getAtName(username);
 		hostname.append(".").append(hostat).append(".com");
 		
+System.out.println("emailname:"+username+"\tpassword:"+MD5Utils.md5(password)+"\thostname:"+hostname.toString()+"\nTO:"+sendToEmailName+"\nFROM:"+sendFromEmailName
+		+"\nSUBJECT:"+subject+"\nCONTENT:"+content+"\nfilename:"+filename);	
+
 		SEmail semail = new SEmail();
 		semail.setUsername(username);
 		semail.setPassword(password);
@@ -42,6 +50,8 @@ System.out.println("username:"+username+" \npassword:"+MD5Utils.md5(password)+"\
 		semail.setSubject(subject);
 		semail.setContent(content);
 		
+		semail.setFileList(filelist);
+System.out.println("serlvet:filelist:"+semail.getFileList());		
 		UserServiceImpl us = new UserServiceImpl();
 		boolean flag = us.sendEmail(semail);
 		if(flag){

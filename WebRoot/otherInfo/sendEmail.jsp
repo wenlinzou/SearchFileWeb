@@ -45,6 +45,13 @@
 				<textarea rows="10px" cols="30px" name="content" class="inputStyle"></textarea>
 				</td>
 			</tr>
+			<!-- 附件 -->
+	    	<tr>
+	    		<td class="tdwordRight">附件</td>
+	    		<td>
+	    			<input type="file" name="filename" value="浏览"/>
+	    		</td>
+	    	</tr>
 			<tr>
 				<td> </td><td><input type="submit" value="发送"/></td>
 			</tr>

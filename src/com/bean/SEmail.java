@@ -1,5 +1,9 @@
 package com.bean;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 public class SEmail {
 /*
  * email.setHostName("smtp.qq.com");
@@ -18,6 +22,25 @@ public class SEmail {
 	private String sendFromEmailName;
 	private String subject;
 	private String content;
+	private String filename;//附件名
+	private List<String> fileList = new ArrayList<String>();//附件文件集合
+	
+	
+	
+	
+	
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	public List<String> getFileList() {
+		return fileList;
+	}
+	public void setFileList(List<String> fileList) {
+		this.fileList = fileList;
+	}
 	public String getUsername() {
 		return username;
 	}
