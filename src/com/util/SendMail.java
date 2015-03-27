@@ -96,7 +96,7 @@ public class SendMail {
 				/*<span style="color: #ff0000;">//这个方法可以解决附件乱码问题。</span>	
 */				
 //						String filename= new String(fds.getName().getBytes(),"ISO-8859-1");
-				String filename= new String(fds.getName().getBytes(),"UTF-8");
+				String filename= new String(fds.getName().getBytes(),"ISO-8859-1");
 				mbpFile.setFileName(filename);
 				// 向MimeMessage添加（Multipart代表附件）
 				mp.addBodyPart(mbpFile);
@@ -144,7 +144,8 @@ public class SendMail {
 	public static String transferChinese(String strText) {
 		try {
 			strText = MimeUtility.encodeText(new String(strText.getBytes(),
-					"UTF-8"), "UTF-8", "B");
+//					"UTF-8"), "UTF-8", "B");使用GB2312解决中文乱码
+					"GB2312"), "GB2312", "B");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

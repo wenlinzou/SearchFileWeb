@@ -28,10 +28,11 @@ public class SendEmailServlet extends HttpServlet {
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
 		String filename = request.getParameter("filename");
-		filename = "f:/"+filename;
-		filelist.add(filename);
-		
-		int i = 0;
+		if(filename!=null && !filename.trim().equals("")){
+			filename = "f:/"+filename;
+			filelist.add(filename);
+		}
+		/*int i = 0;
 		String filetemp = "";
 		do{
 			i++;
@@ -42,7 +43,7 @@ System.out.println("filetemp:"+filetemp);
 			}else{
 				break;
 			}
-		}while(filetemp==null);
+		}while(filetemp==null);*/
 		
 		StringBuilder hostname = new StringBuilder();
 		hostname.append("smtp");
@@ -52,7 +53,7 @@ System.out.println("filetemp:"+filetemp);
 		hostname.append(".").append(hostat).append(".com");
 		
 System.out.println("emailname:"+username+"\tpassword:"+MD5Utils.md5(password)+"\thostname:"+hostname.toString()+"\nTO:"+sendToEmailName+"\nFROM:"+sendFromEmailName
-		+"\nSUBJECT:"+subject+"\nCONTENT:"+content+"\nFILENAME:"+filename);	
+		+"\nSUBJECT:"+subject+"\nCONTENT:"+content+"\nFILENAME:"+filename+"\n");	
 
 		SEmail semail = new SEmail();
 		semail.setUsername(username);
@@ -66,7 +67,6 @@ System.out.println("emailname:"+username+"\tpassword:"+MD5Utils.md5(password)+"\
 		
 		
 		semail.setFileList(filelist);
-System.out.println("serlvetFilelist:"+semail.getFileList());		
 		UserServiceImpl us = new UserServiceImpl();
 		boolean flag = us.sendEmail(semail);
 		if(flag){
