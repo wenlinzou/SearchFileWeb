@@ -142,6 +142,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<li><a href="<%=basePath %>otherInfo/CarInfo.html" target="_blank">拿照详细经验</a></li>
 			<li><a href="<%=basePath %>otherInfo/htmlTransPdf.jsp" target="_blank">HTML转成PDF</a></li>
 			<li><a href="<%=basePath %>otherInfo/sendEmail.jsp" target="_blank">发送邮件</a></li>
+			<li><a href="<%=basePath %>otherInfo/indexShowImg.html" target="_blank">查看图片</a></li>
 		</ol>
 	</div>
 	

@@ -53,7 +53,7 @@ System.out.println("filetemp:"+filetemp);
 		hostname.append(".").append(hostat).append(".com");
 		
 System.out.println("emailname:"+username+"\tpassword:"+MD5Utils.md5(password)+"\thostname:"+hostname.toString()+"\nTO:"+sendToEmailName+"\nFROM:"+sendFromEmailName
-		+"\nSUBJECT:"+subject+"\nCONTENT:"+content+"\nFILENAME:"+filename+"\n");	
+		+"\nSUBJECT:"+subject+"\nCONTENT:"+content+"\nFILENAME:"+(filename==null||filename.equals("")?"无":filename));	
 
 		SEmail semail = new SEmail();
 		semail.setUsername(username);
@@ -69,6 +69,7 @@ System.out.println("emailname:"+username+"\tpassword:"+MD5Utils.md5(password)+"\
 		semail.setFileList(filelist);
 		UserServiceImpl us = new UserServiceImpl();
 		boolean flag = us.sendEmail(semail);
+System.out.println("发送邮件:"+(flag==true?"成功!":"失败!"+"\n"));		
 		if(flag){
 			request.setAttribute("message", "发送邮件成功!");
 			request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);

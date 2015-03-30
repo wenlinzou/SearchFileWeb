@@ -19,14 +19,14 @@
 	color:red;
 }
 .left{
-	width: 300px;
+	width: 20%;
 	float: left;
 }
 .middle{
-	width: 550px;
+	width: 55%;
 	float: left;
 }
 .divRightStyle{
-	width: 250px;
+	width: 25%;
 	float: left;
 }
