@@ -69,6 +69,11 @@
     <servlet-name>SendEmailServlet</servlet-name>
     <servlet-class>com.servlet.SendEmailServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AsciiImgServlet</servlet-name>
+    <servlet-class>com.servlet.AsciiImgServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -144,5 +149,9 @@
   <servlet-mapping>
     <servlet-name>SendEmailServlet</servlet-name>
     <url-pattern>/sendemail.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AsciiImgServlet</servlet-name>
+    <url-pattern>/asciimg.html</url-pattern>
   </servlet-mapping>
 </web-app>

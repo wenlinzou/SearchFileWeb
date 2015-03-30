@@ -116,8 +116,8 @@
 	</script>
 
 	<hr />
-	<%=iplay%>
-
+	<a href="<%=basePath%>asciimg.html?imgpath=<%=iplay%>"><%=iplay%></a>
+	
 
 </body>
 </html>
