@@ -66,9 +66,9 @@
 		</form>	
 	</div>
 	
-	<div>
+	<%-- <div>
 		<video src="${playUrl}" width="1000" height="500" controls="controls">您的浏览器不支持此种视频格式。</video> 
-	</div>
+	</div> --%>
 	
 	<%
 		String playpath = request.getParameter("playUrl");
@@ -116,7 +116,12 @@
 	</script>
 
 	<hr />
-	<a href="<%=basePath%>asciimg.html?imgpath=<%=iplay%>"><%=iplay%></a>
+	<a href="<%=basePath%>asciimg.html?imgpath=<%=iplay%>"><%
+		if(iplay.endsWith(".jpg") || iplay.endsWith("gif") || iplay.endsWith(".png")){
+			out.print(iplay);
+		}
+	/* iplay */
+	%></a>
 	
 
 </body>

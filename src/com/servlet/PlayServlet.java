@@ -30,7 +30,7 @@ public class PlayServlet extends HttpServlet {
 		
 		//myUrl= "file:///"+newStr;
 		
-System.out.println("myUrl:"+myUrl);	
+System.out.println("PlayServlet myUrl:"+myUrl);	
 //myUrl = "//f:/w/d"; 
 		request.setAttribute("playUrl", myUrl);
 		String suffixStr = myUrl;

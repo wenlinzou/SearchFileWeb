@@ -25,7 +25,8 @@
 <style type="text/css">	
 	body {
 	 /* font-family: 宋体; */ 
-	 font-family: Source Code Pro; 
+	 /*Source Code Pro*/
+	 font-family:  Monaco; 
 	 line-height: 0.8em; letter-spacing: 0px; font-size: 8px;
 	}
 </style>
