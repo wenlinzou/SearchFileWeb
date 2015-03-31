@@ -31,7 +31,8 @@ System.out.println("method:"+method);
 			byte [] bs = imgpath.getBytes("ISO8859-1");
 			imgpath = new String(bs,"UTF-8");
 		}
-		if(imgpath.endsWith(".jpg") || imgpath.endsWith(".png") || imgpath.endsWith("gif")){
+		if(imgpath.endsWith(".jpg") || imgpath.endsWith(".png") || imgpath.endsWith("gif")
+				|| imgpath.endsWith(".bmp")){
 
 			String img = SimpleAsciiImg._BitmapConvert(imgpath);
 			request.setAttribute("img", img);

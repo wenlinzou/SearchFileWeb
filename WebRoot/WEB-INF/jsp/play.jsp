@@ -116,8 +116,17 @@
 	</script>
 
 	<hr />
+	<!-- 图片 to 字符画 -->
 	<a href="<%=basePath%>asciimg.html?imgpath=<%=iplay%>"><%
 		if(iplay.endsWith(".jpg") || iplay.endsWith("gif") || iplay.endsWith(".png")){
+			out.print(iplay);
+		}
+	/* iplay */
+	%></a>
+	
+	<!-- html to doc -->
+	<a href="<%=basePath%>htmltodoc.html?htmlpath=<%=iplay%>"><%
+		if(iplay.endsWith(".html")){
 			out.print(iplay);
 		}
 	/* iplay */

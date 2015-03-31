@@ -12,7 +12,7 @@ import com.util.ContainsWordFilter;
 import com.util.FilenameSuffixFilter;
 import com.util.ITextPdf;
 import com.util.MySuffixFilter;
-import com.util.SeviceFile;
+import com.util.ServiceFile;
 import com.util.SpiderURL;
 
 public class FileService {
@@ -21,7 +21,7 @@ public class FileService {
 	private final String ERROR_INFO = "请输入硬盘符,以便查询!";
 	private final int SIZE_SEARCH = 20;
 	
-	private SeviceFile sf = new SeviceFile();
+	private ServiceFile sf = new ServiceFile();
 	private ITextPdf itd = new ITextPdf();
 	
 	public List<String> queryFileLists(FileI iFile){

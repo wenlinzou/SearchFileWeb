@@ -8,3 +8,7 @@ commons-logging.jar
 添加发送邮件
 commons-email-1.2.jar
 mail.jar
+
+添加转成word
+在java中将html文件导出到word需要应用到第三方的jar包：采用poi-bin-3.0-FINAL-20070503.zip
+这里使用的是poi-3.11-20141221.jar

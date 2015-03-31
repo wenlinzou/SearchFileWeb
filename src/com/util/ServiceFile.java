@@ -1,13 +1,14 @@
 package com.util;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.io.OutputStreamWriter;
 import java.io.SequenceInputStream;
@@ -21,7 +22,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
-public class SeviceFile {
+public class ServiceFile {
 	private static int SIZE = 1024*1024;
 	
 	/*
@@ -117,6 +118,26 @@ public class SeviceFile {
 		bw.close();
 			
 	}
+	
+	//读取文件-->暂时用户读取html
+	public static String readFile(String filename) throws Exception {
+		StringBuffer buffer = new StringBuffer("");
+//		InputStreamReader in = new InputStreamReader(new FileInputStream(new File(filename)),"UTF-8");
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(filename));
+			buffer = new StringBuffer();
+			while (br.ready())
+				buffer.append((char) br.read());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null)
+				br.close();
+		}
+		return buffer.toString();
+	}
+
 	//打印数据带行号 暂未使用
 	public List<String> lineNum(List<String> list, File fileLine) throws IOException{
 		LineNumberReader liner = new LineNumberReader(new FileReader(fileLine));
@@ -316,6 +337,15 @@ System.out.println("ISRename:"+rename+"\toldname:"+oldname+"\tsameName:"+sameNam
 		int endIndex = emailname.lastIndexOf(".");
 		atname = emailname.substring(beginIndex+1, endIndex);
 		return atname;
+	}
+	
+	//截取指定的两者间字符-->前包后不包
+	public static String getUNeedname(String name, char startC, char endC){
+		String needname = "";
+		int beginIndex = name.lastIndexOf(startC);
+		int endIndex = name.lastIndexOf(endC);
+		needname = name.substring(beginIndex+1, endIndex);
+		return needname;
 	}
 	
 	public static void main(String[] args) {

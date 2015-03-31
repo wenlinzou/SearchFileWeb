@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.bean.SEmail;
 import com.service.impl.UserServiceImpl;
 import com.util.MD5Utils;
-import com.util.SeviceFile;
+import com.util.ServiceFile;
 
 public class SendEmailServlet extends HttpServlet {
 
@@ -49,7 +49,7 @@ System.out.println("filetemp:"+filetemp);
 		hostname.append("smtp");
 //		String hostname = "smtp.sina.com";
 		//截取
-		String hostat = SeviceFile.getAtName(username);
+		String hostat = ServiceFile.getAtName(username);
 		hostname.append(".").append(hostat).append(".com");
 		
 System.out.println("emailname:"+username+"\tpassword:"+MD5Utils.md5(password)+"\thostname:"+hostname.toString()+"\nTO:"+sendToEmailName+"\nFROM:"+sendFromEmailName

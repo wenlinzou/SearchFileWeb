@@ -73,6 +73,11 @@
     <servlet-name>AsciiImgServlet</servlet-name>
     <servlet-class>com.servlet.AsciiImgServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>HtmlToDocServlet</servlet-name>
+    <servlet-class>com.servlet.HtmlToDocServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -153,5 +158,9 @@
   <servlet-mapping>
     <servlet-name>AsciiImgServlet</servlet-name>
     <url-pattern>/asciimg.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HtmlToDocServlet</servlet-name>
+    <url-pattern>/htmltodoc.html</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -9,7 +9,7 @@ import com.bean.SEmail;
 import com.bean.User;
 import com.dao.UserDao;
 import com.util.SendMail;
-import com.util.SeviceFile;
+import com.util.ServiceFile;
 import com.util.XmlUtils;
 
 public class UserDaoImpl implements UserDao {
