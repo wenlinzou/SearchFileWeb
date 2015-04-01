@@ -27,7 +27,7 @@
 
 <body>
 	<div class="sendmailDiv">
-	<form action="sendemail.html" method="post">
+	<form action="sendemail.html" method="post"  onsubmit="return validate_form(this)">
 		<table id="fileid">
 			<tr>
 				<td class="tdwordRight">发件邮箱</td><td><input type="text" name="username" class="inputStyle"/></td>
@@ -65,6 +65,8 @@
 			<tr>
 				<td> </td><td><!-- <input type="submit" value="发送"/> --></td>
 			</tr>
+			
+			<tr><td></td><td id="errorinfo"></td></tr>
 		</table>
 		<input type="submit" value="发送"/>
 	</form>

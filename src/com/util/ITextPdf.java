@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.io.StringReader;
 import java.util.Date;
 
+import org.w3c.tidy.Tidy;
 import org.xhtmlrenderer.pdf.ITextFontResolver;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
@@ -24,61 +25,62 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 public class ITextPdf {
 
-	public void writePdfByTxt(File readFile) throws DocumentException,
-			IOException {
+	public static boolean writePdfByTxt(String readFile, String outFile){
+		boolean flag = false;
+		OutputStream os = null;
+		FileInputStream fis = null;
+		BufferedReader br = null;
+		Document document = null;
+		try{
+			os = new FileOutputStream(new File(outFile));
+			fis = new FileInputStream(new File(readFile));
+			br = new BufferedReader(new InputStreamReader(fis, "gbk"));
+			
+			document = new Document();
+			PdfWriter.getInstance(document, os);
+			document.open();
 
-		OutputStream os = new FileOutputStream(new File("f:\\Test.pdf"));
-		FileInputStream fis = new FileInputStream(readFile);
-		BufferedReader br = new BufferedReader(
-				new InputStreamReader(fis, "gbk"));
+			// BaseFont baseFontChinese = BaseFont.createFont("STSong-Light",
+			// "UniGB-UCS2-H", BaseFont.NOT_EMBEDDED);
+			// Font fontChinese = new Font(baseFontChinese , 12 , Font.NORMAL);
 
-		Document document = new Document();
-		PdfWriter.getInstance(document, os);
-		document.open();
+			// 方法一：使用Windows系统字体(TrueType)
+			BaseFont baseFont = BaseFont.createFont("C:/Windows/Fonts/SIMYOU.TTF",
+					BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+			// 方法二：使用iTextAsian.jar中的字体
+			// BaseFont baseFont =
+			// BaseFont.createFont("STSong-Light",BaseFont.IDENTITY_H,BaseFont.NOT_EMBEDDED);
+			// 方法三：使用资源字体(ClassPath)
+			// //BaseFont baseFont =
+			// BaseFont.createFont("/SIMYOU.TTF",BaseFont.IDENTITY_H,BaseFont.NOT_EMBEDDED);
 
-		// BaseFont baseFontChinese = BaseFont.createFont("STSong-Light",
-		// "UniGB-UCS2-H", BaseFont.NOT_EMBEDDED);
-		// Font fontChinese = new Font(baseFontChinese , 12 , Font.NORMAL);
-
-		// 方法一：使用Windows系统字体(TrueType)
-		BaseFont baseFont = BaseFont.createFont("C:/Windows/Fonts/SIMYOU.TTF",
-				BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-		// 方法二：使用iTextAsian.jar中的字体
-		// BaseFont baseFont =
-		// BaseFont.createFont("STSong-Light",BaseFont.IDENTITY_H,BaseFont.NOT_EMBEDDED);
-		// 方法三：使用资源字体(ClassPath)
-		// //BaseFont baseFont =
-		// BaseFont.createFont("/SIMYOU.TTF",BaseFont.IDENTITY_H,BaseFont.NOT_EMBEDDED);
-
-		Font font = new Font(baseFont);
-		String tempStr = null;
-		while ((tempStr = br.readLine()) != null) {
-			document.add(new Paragraph(tempStr, font));
-		}
-		document.add(new Paragraph(new Date().toString()));
-
-		document.close();
-
-		fis.close();
-		br.close();
-		os.close();
-
-	}
-
-	public static void main(String[] args) {
-		try {
-			ITextPdf it = new ITextPdf();
-			// it.writePdfByTxt(new File("f:/delllll.txt"));
-			// it.htmlTransPdf1("f:/CarInfo.html", "f:/testdelete.pdf");
-
-			// File file = new File("f:/testdelete.pdf");
-			// file.getParentFile().mkdirs();
-			it.htmlTransPdf1("f:/txt/all-post.html", "f:/txt/testdelete.pdf");
-		} catch (Exception e) {
-
+			Font font = new Font(baseFont);
+			String tempStr = null;
+			while ((tempStr = br.readLine()) != null) {
+				document.add(new Paragraph(tempStr, font));
+			}
+			document.add(new Paragraph(new Date().toString()));
+			flag = true;
+		}catch(IOException e){
 			e.printStackTrace();
+		}catch(DocumentException d){
+			d.printStackTrace();
 		}
+		finally{
+		
+			document.close();
+			try {
+				fis.close();
+				br.close();
+				os.close();
+			} catch (IOException e2) {
+				e2.printStackTrace();
+			}
+		}
+		return flag;
 	}
+
+	
 
 	// HTML to PDF 
 	public void htmlTransPdf1(String htmlpath, String pdfPath)
@@ -105,20 +107,33 @@ public class ITextPdf {
 		System.out.println("create pdf done!!");
 	}
 
-	public void htmlTransPdf23(String url, String file) throws IOException,
-			Exception {
-		Document document = new Document(PageSize.LETTER);
-		// String htmlUrl = spiderURL.getDataByURL(url);
-		String htmlUrl = null;
-		System.out.println("htmlurl:" + htmlUrl);
-
-		PdfWriter.getInstance(document, new FileOutputStream(file));
-		document.open();
-		HTMLWorker htmlWorker = new HTMLWorker(document);
-		htmlWorker.parse(new StringReader(htmlUrl));
-		document.close();
+	//对html不规范进行预处理
+	public void test(String inputStream, String outStream){
+		Tidy tidy = new Tidy();
+		tidy.setXmlOut(true);
+		tidy.setXmlPi(true); // 添加 <?xml?> 标签 为输出的 XML 文件， 这些参数是可选的。
+		tidy.setXmlSpace(true);
+		/*tidy.setInputEncoding("utf-8");
+		tidy.setOutputEncoding("utf-8");*/
+		try {
+		// 文件转换
+//			tidy.parse(inputStream, outStream);
+		}catch (Exception e) {
+		 e.printStackTrace();
+		}
 	}
 
+	public static void main(String[] args) {
+		try {
+//			ITextPdf it = new ITextPdf();
+//			it.htmlTransPdf1("f:/txt/all-post.html", "f:/txt/testdelete.pdf");
+//			htmlToPdf3("f:/txt/HTTPS是如何保证连接安全.html","f:/txt/HTTPS是如何保证连接安全.pdf");
+			System.out.println(writePdfByTxt("f:/txt/ (2) - 副本.txt","f:/txt/ (2) - 副本.pdf"));
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+	}
 	// Barcode QRCode
 	/*
 	 * public static void barcodePdf(){ Document doc = new

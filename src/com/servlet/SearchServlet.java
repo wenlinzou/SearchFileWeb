@@ -33,6 +33,8 @@ public class SearchServlet extends HttpServlet{
 		List<String> fileLists = ss.queryFileLists(new FileI(diskname, foldername, filename, suffix));
 		HttpSession session = request.getSession();
 		
+		//定义是否搜索到内容的标记
+		int flag = -1;
 		if(fileLists==null || fileLists.size()<1){
 			StringBuilder sb = new StringBuilder();
 			sb.append("<center>没能搜索到");
@@ -47,6 +49,7 @@ public class SearchServlet extends HttpServlet{
 			sb.append("的文件!</center>");
 			
 			fileLists.add(sb.toString());
+			flag = 1;//没有内容
 		}
 		String fullStr = fileLists.get(0).toString();
 		if("搜索上限已到!".equals(fullStr)){
@@ -57,6 +60,7 @@ public class SearchServlet extends HttpServlet{
 		session.setAttribute("fileLists", fileLists);
 		//request.setAttribute("fileLists", fileLists);
 		session.setAttribute("iFile", iFile);
+		request.setAttribute("flag", flag);
 		
 		request.getRequestDispatcher("/WEB-INF/jsp/searchSuccess1.jsp").forward(request, response);
 		

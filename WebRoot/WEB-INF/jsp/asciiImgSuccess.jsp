@@ -26,7 +26,12 @@
 	body {
 	 /* font-family: 宋体; */ 
 	 /*Source Code Pro*/
+	 
+	 /*颜色较深*/
 	 font-family:  Monaco; 
+	 
+	 /*颜色较浅*/
+	 /* font-family:  Droid Sans Mono; */ 
 	 line-height: 0.8em; letter-spacing: 0px; font-size: 8px;
 	}
 </style>
