@@ -17,12 +17,18 @@ public class MergeFileServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		String mergeFilePath = request.getParameter("splitFilePath");
-System.out.println("servlet:"+mergeFilePath);		
+System.out.println("MergeFile-servlet:"+mergeFilePath);		
 		
 		FileService fs = new FileService();
-		fs.mergeFile(new File(mergeFilePath));
-		request.setAttribute("localtion", mergeFilePath);
-		request.getRequestDispatcher("/WEB-INF/jsp/mergeSuccess.jsp").forward(request, response);
+		boolean flag = fs.mergeFile(new File(mergeFilePath));
+System.out.println("MergeFile:"+flag);		
+		if(flag){
+			request.setAttribute("localtion", mergeFilePath);
+			request.getRequestDispatcher("/WEB-INF/jsp/mergeSuccess.jsp").forward(request, response);
+		}else{
+			request.setAttribute("message", "合并文件失败!");
+			request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
+		}
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

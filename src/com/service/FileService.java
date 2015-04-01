@@ -152,26 +152,31 @@ System.out.println("size:"+srcFile);
 	}
 	
 	//合并文件
-	public void mergeFile(File mergreFile){
+	public boolean mergeFile(File mergreFile){
+		boolean flag = false;
 		try {
 			String filePath = mergreFile.getAbsolutePath();
-			int pathEnd = filePath.replace("\\", "/").lastIndexOf("/");
-System.out.println(filePath);			
-			String fileInPath = filePath.substring(0, pathEnd);
+			String fileInPath = filePath.replace("\\", "/");
+			int pathEnd =fileInPath.lastIndexOf("/");
+System.out.println("SERVICE-MergeFIle:"+fileInPath);			
+			fileInPath = filePath.substring(0, pathEnd);
 			
 			int suffixStart = filePath.lastIndexOf(".");
 			String suffixName = filePath.substring(suffixStart);
 			if(!suffixName.equals(".properties")){
-				throw new RuntimeException("文件后缀名不是"+".properties");
+//				throw new RuntimeException("文件后缀名不是"+".properties");
+				System.out.println("文件后缀名不是"+".properties");
 			}
 			File srcFile = new File(fileInPath);
 System.out.println("SERVICE:fileInPath:"+fileInPath+"\tsuffixname:"+suffixName);	
 
 			sf.mergeFile(srcFile,suffixName);
+			flag = true;
 		} catch (IOException e) {
 			
 			e.printStackTrace();
 		}
+		return flag;
 	}
 	//html trans pdf
 	public void htmlTransPdf(String url, String filePath){
@@ -252,7 +257,7 @@ System.out.println("inputTempFile:"+inputTempFile);
 			//读取html文件将其转成pdf
 			String pdfsuffix = ".pdf";
 			pdfPath = filePath+"/"+htmlName+pdfsuffix;
-System.out.println("pdfPath:"+pdfPath);			
+//System.out.println("pdfPath:"+pdfPath);	暂时没有转pdf		
 //			itd.htmlTransPdf1(inputTempFile, pdfPath);
 //			new ITextPdf().htmlTransPdf1(filePath, pdfurl);
 			flag = true;

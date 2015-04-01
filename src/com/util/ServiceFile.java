@@ -247,7 +247,8 @@ System.out.println("ISRename:"+rename+"\toldname:"+oldname+"\tsameName:"+sameNam
 		String[] names = srcDir.list(new MySuffixFilter(suffixName));
 		
 		if(names.length!=1){
-			throw new RuntimeException("后缀名为"+suffixName+"的文件不错在或者有多个");
+//			throw new RuntimeException("后缀名为"+suffixName+"的文件不错在或者有多个");
+			System.out.println("后缀名为"+suffixName+"的文件不错在或者有多个");
 		}
 		
 		File confile = new File(srcDir, names[0]);
@@ -266,12 +267,14 @@ System.out.println("ISRename:"+rename+"\toldname:"+oldname+"\tsameName:"+sameNam
 		
 		File[] partFiles = srcDir.listFiles(new MySuffixFilter(splitSuffix));
 		if(partFiles.length!=count){
-			throw new RuntimeException("碎片个数错误，不是"+count+"个");
+//			throw new RuntimeException("碎片个数错误，不是"+count+"个");
+			System.out.println("碎片个数错误，不是"+count+"个");
 		}
 		for(int i = 0; i < count; i++) {
 			File file = new File(srcDir,(i+1)+splitSuffix);
 			if(!file.exists()){
-				throw new RuntimeException(file.getName()+"不存在");
+//				throw new RuntimeException(file.getName()+"不存在");
+				System.out.println(file.getName()+"不存在");
 			}
 		}
 		//到这里基本的合并的目录文件判断完毕
