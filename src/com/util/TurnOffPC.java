@@ -44,6 +44,7 @@ public class TurnOffPC {
 			else
 				temp =(int)(second * time);
 		
+			Runtime.getRuntime().exec("shutdown.exe -a");//先取消,再设置关机时间
 			run.exec("shutdown -s -t "+temp);
 System.out.println("time:"+time+"分钟后关机"+",当前时间:"+getCurrentDate());				
 			 //rt.exec("shutdown.exe -s -t 40");

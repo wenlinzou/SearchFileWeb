@@ -25,6 +25,9 @@ function deleteFile(node) {
 	var oTrNode = node.parentNode.parentNode;
 	oTrNode.parentNode.removeChild(oTrNode);
 }
+/*获取上传文件的路径*/
+
+
 /*输入验证*/
 function validate_username(username, alerttxt, selectName) {
 	with (username) {

@@ -21,13 +21,16 @@
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<link rel="stylesheet" type="text/css" href="<%=basePath %>resource/css/asciiImg.css">
+	<script type="text/javascript" src="<%=basePath%>resource/js/asciiImg.js"></script>
 
 </head>
 
 <body>
-	<form action="<%=basePath %>asciimg.html" method="post">
+	<form action="<%=basePath %>asciimg.html" method="post" onsubmit="return validate_form(this)">
 		图片地址<input type="text" name="imgpath"/>
 		<input type="submit" value="提交"/>
+		<span id="errorinfo"></span>
 	</form>
 	<br>
 </body>

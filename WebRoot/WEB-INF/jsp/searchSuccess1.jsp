@@ -25,6 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
 <body>
 	
+	<div  id="convertH">
 	
 	<div class="backIndexDiv"><input type="button" value="回到首页" onclick="backIndex()" class="backIndexBtnStyle"/></div>
 	搜索结果:<c:if test="${flag>0}">0</c:if><c:if test="${flag<0}">${fileLists.size() }</c:if>
@@ -66,6 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<input type="button" value="全选" onclick="checkAllByBtn(1)" />
         <input type="button" value="取消全选" onclick="checkAllByBtn(0)" />
         <input type="button" value="反选"  onclick="checkAllByBtn(2)"/>
+        <input type="button" value="倒置"  onclick="convertHtml()"/>
 	</div>  
 	
 	<div id="showRenameDiv" style="display: none">	
@@ -116,7 +118,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    </table>
 	</div>
 	<div class="myright"><a href="#" onclick="gotoTop();return false;" class="myright"></a></div>
-
+	
+	</div>
 
 </body>
 	
