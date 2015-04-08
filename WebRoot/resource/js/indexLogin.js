@@ -97,10 +97,9 @@ function callback(data) {
 }
 function goToOther(msgObj){
 	if(msgObj=="canLogin"){
-		var myurl = location.host;
 //		myurl+"/input.html";
 		//http://localhost:8080/SearchFileWeb/input.html
-		window.location.href = "http://"+myurl+"/SearchFileWeb/input.html";
+		window.location.href = "jump.html";
 		return true;
 	}else{
 		return false;

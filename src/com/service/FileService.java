@@ -8,12 +8,12 @@ import java.util.List;
 import org.slf4j.profiler.SpacePadder;
 
 import com.bean.FileI;
-import com.util.ContainsWordFilter;
-import com.util.FilenameSuffixFilter;
 import com.util.ITextPdf;
-import com.util.MySuffixFilter;
-import com.util.ServiceFile;
-import com.util.SpiderURL;
+import com.util.FileUtils;
+import com.util.SpiderURLUtils;
+import com.util.filter.ContainsWordFilter;
+import com.util.filter.FilenameSuffixFilter;
+import com.util.filter.MySuffixFilter;
 
 public class FileService {
 	private static int COUNT = 0;
@@ -21,7 +21,7 @@ public class FileService {
 	private final String ERROR_INFO = "请输入硬盘符,以便查询!";
 	private final int SIZE_SEARCH = 20;
 	
-	private ServiceFile sf = new ServiceFile();
+	private FileUtils sf = new FileUtils();
 	private ITextPdf itd = new ITextPdf();
 	
 	public List<String> queryFileLists(FileI iFile){
@@ -119,24 +119,27 @@ System.out.println("4 文件名为空,后缀为空");
 		return fileList;
 	}
 	
-	public void write2File(List<String> list,File file){
+	public boolean write2File(List<String> list,File file){
+		boolean flag = false;
 		try {
 			if(file.exists()){
 				file.mkdirs();
 			}
 			sf.write2File(list, file);
+			flag = true;
 		} catch (IOException e) {
-			
 			System.out.println("MLGB - 找不到"+file);
 			e.printStackTrace();
 		}
+		return flag;
 	}
 	
 	public boolean renameFile(List<String> lists,String rename){
 		return sf.renameFile(lists, rename);
 	}
 	
-	public void splitFile(File srcFile, File destDir,int split_size, String suffix){
+	public boolean splitFile(File srcFile, File destDir,int split_size, String suffix){
+		boolean flag = false;
 		int indexStart = suffix.indexOf(".");
 		if(indexStart<0)
 			suffix = "." + suffix;
@@ -145,10 +148,12 @@ System.out.println("4 文件名为空,后缀为空");
 System.out.println("size:"+srcFile);			
 				
 			sf.splitFile(srcFile, destDir, split_size, suffix);
+			flag = true;
 		} catch (IOException e) {
 			
 			e.printStackTrace();
 		}
+		return flag;
 	}
 	
 	//合并文件
@@ -182,7 +187,7 @@ System.out.println("SERVICE:fileInPath:"+fileInPath+"\tsuffixname:"+suffixName);
 	public void htmlTransPdf(String url, String filePath){
 		try {
 			//得到url的文件数据流
-			List<String> htmldata = new SpiderURL().getDataByURL(url);
+			List<String> htmldata = new SpiderURLUtils().getDataByURL(url);
 			//将数据写到本地
 			String htmlUrl = url;
 			String pdfPath = filePath;
@@ -228,7 +233,7 @@ System.out.println("pdfPath:"+pdfPath);
 		boolean flag = false;
 		try {
 			//得到url的文件数据流
-			List<String> htmldata = new SpiderURL().getDataByURL(url);
+			List<String> htmldata = new SpiderURLUtils().getDataByURL(url);
 			//将数据写到本地
 			String htmlUrl = url;
 			String pdfPath = filePath;
@@ -265,7 +270,6 @@ System.out.println("inputTempFile:"+inputTempFile);
 			
 			e.printStackTrace();
 		} catch (Exception e) {
-			flag = false;
 			e.printStackTrace();
 		}
 		return flag;

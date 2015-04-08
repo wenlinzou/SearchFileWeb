@@ -17,7 +17,7 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
  * @author Pet
  * 
  */
-public class HtmlToDoc {
+public class Html2DocUtils {
 	
 	// 根据实际情况写路径
 	public static boolean writeDocFile(String readpath, String writepath) throws Exception {
@@ -30,7 +30,7 @@ public class HtmlToDoc {
 			if (!"".equals(writepath)) {
 				File fileDir = new File(writepath);
 				if (fileDir.exists()) {
-					String content = ServiceFile.readFile(readpath);
+					String content = FileUtils.readFile(readpath);
 					byte b[] = content.getBytes();
 					bais = new ByteArrayInputStream(b);
 					POIFSFileSystem poifs = new POIFSFileSystem();
@@ -38,7 +38,7 @@ public class HtmlToDoc {
 					DocumentEntry documentEntry = directory.createDocument("WordDocument", bais);
 
 					//获取html的名字作为doc的名字
-					String docname = ServiceFile.getUNeedname(readpath, '/', '.');
+					String docname = FileUtils.getUNeedname(readpath, '/', '.');
 System.out.println("docname:"+docname);					
 					//写入路径 仅仅是路径writepath e.g f:/txt
 System.out.println("wirtepathUtil: "+writepath+"/"+docname+".doc");					
@@ -65,7 +65,7 @@ System.out.println("wirtepathUtil: "+writepath+"/"+docname+".doc");
 	
 
 	public static void main(String[] args) throws Exception {
-		new HtmlToDoc().writeWordFile("f:/txt/Servlet获得Http请求,GETPOST.html");
+		new Html2DocUtils().writeWordFile("f:/txt/Servlet获得Http请求,GETPOST.html");
 	}
 	
 	//============暂未使用=====================

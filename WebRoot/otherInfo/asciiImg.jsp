@@ -10,7 +10,6 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-
 <title>字符画输入</title>
 
 <meta http-equiv="pragma" content="no-cache">

@@ -1,9 +1,9 @@
 package com.service;
 
-import com.util.TurnOffPC;
+import com.util.TurnOffPCUtils;
 
 public class PCService {
-	private TurnOffPC turnOff = new TurnOffPC();
+	private TurnOffPCUtils turnOff = new TurnOffPCUtils();
 	
 	public void turnOffPC(double time){
 		turnOff.turnOffPC(time);

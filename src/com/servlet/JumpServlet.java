@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.bean.User;
 
-public class InputServlet extends HttpServlet {
+public class JumpServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

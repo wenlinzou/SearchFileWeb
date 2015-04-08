@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.util.HtmlToDoc;
-import com.util.ServiceFile;
+import com.util.Html2DocUtils;
+import com.util.FileUtils;
 
-public class HtmlToDocServlet extends HttpServlet {
+public class Html2DocServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -32,17 +32,20 @@ System.out.println("htmltodoc htmlpath:"+htmlpath);
 		//html to doc
 		boolean flag = false;
 		try {
-			flag = HtmlToDoc.writeDocFile(htmlpath, writepath);
+			flag = Html2DocUtils.writeDocFile(htmlpath, writepath);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		if(flag){
-			request.setAttribute("message", htmlpath+"转换DOC成功!");
-			request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
+			request.setAttribute("ok", "1");
+			request.setAttribute("title", "HTML2DOC成功");
+			request.setAttribute("message", htmlpath+" 转换DOC成功!");
 		}else{
-			request.setAttribute("message", htmlpath+"转换DOC失败!");
-			request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
+			request.setAttribute("ok", "-1");
+			request.setAttribute("title", "HTML2DOC失败");
+			request.setAttribute("message", htmlpath+" 转换DOC失败!");
 		}
+		request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
 		
 		
 

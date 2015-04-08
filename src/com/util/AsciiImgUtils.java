@@ -6,7 +6,7 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
-public class SimpleAsciiImg {
+public class AsciiImgUtils {
 	public static String _BitmapConvert(String imgpath) {
 	    StringBuffer _sb = new StringBuffer();
 	    File imgfile = new File(imgpath);

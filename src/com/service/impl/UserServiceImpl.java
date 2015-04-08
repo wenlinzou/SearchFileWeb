@@ -2,12 +2,12 @@ package com.service.impl;
 
 import com.bean.SEmail;
 import com.bean.User;
-import com.bean.WordCheckStyle;
+import com.bean.IDCodeStyle;
 import com.dao.UserDao;
 import com.dao.impl.UserDaoImpl;
 import com.exception.UserExistException;
 import com.util.MD5Utils;
-import com.util.TWordCheck;
+import com.util.IDCodeUtils;
 
 public class UserServiceImpl {
 	private UserDao dao = new UserDaoImpl();
@@ -32,8 +32,8 @@ public class UserServiceImpl {
 	}
 	
 	//通过添一个 验证码的一个bean
-	public String getTWordCheck(WordCheckStyle iword){
-		return new TWordCheck(iword).getWordSetCheckStyle();
+	public String getTWordCheck(IDCodeStyle iword){
+		return new IDCodeUtils(iword).getWordSetCheckStyle();
 	}
 	
 	public boolean sendEmail(SEmail semail){

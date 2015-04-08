@@ -22,7 +22,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
-public class ServiceFile {
+import com.util.filter.ContainsWordFilter;
+import com.util.filter.FilenameSuffixFilter;
+import com.util.filter.MySuffixFilter;
+
+public class FileUtils {
 	private static int SIZE = 1024*1024;
 	
 	/*

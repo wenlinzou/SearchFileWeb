@@ -42,6 +42,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<input type="radio" name="turnoff" value="10">10分钟后关机</td>
 				</tr>
 				<tr><td>
+			<input type="radio" name="turnoff" value="20">20分钟后关机</td>
+				</tr>
+				<tr><td>
 			<input type="radio" name="turnoff" value="30">半小时后关机</td>
 				</tr>
 				<tr><td>

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.bean.SEmail;
 import com.service.impl.UserServiceImpl;
 import com.util.MD5Utils;
-import com.util.ServiceFile;
+import com.util.FileUtils;
 
 public class SendEmailServlet extends HttpServlet {
 
@@ -49,7 +49,7 @@ System.out.println("filetemp:"+filetemp);
 		hostname.append("smtp");
 //		String hostname = "smtp.sina.com";
 		//截取
-		String hostat = ServiceFile.getAtName(username);
+		String hostat = FileUtils.getAtName(username);
 		hostname.append(".").append(hostat).append(".com");
 		
 System.out.println("emailname:"+username+"\tpassword:"+MD5Utils.md5(password)+"\thostname:"+hostname.toString()+"\nTO:"+sendToEmailName+"\nFROM:"+sendFromEmailName
@@ -71,12 +71,15 @@ System.out.println("emailname:"+username+"\tpassword:"+MD5Utils.md5(password)+"\
 		boolean flag = us.sendEmail(semail);
 System.out.println("发送邮件:"+(flag==true?"成功!":"失败!"+"\n"));		
 		if(flag){
-			request.setAttribute("message", "发送邮件成功!");
-			request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
+			request.setAttribute("ok", "1");
+			request.setAttribute("title", "邮件发送成功");
+			request.setAttribute("message", sendToEmailName+"发送邮件成功!");
 		}else{
-			request.setAttribute("message", "发送邮件失败!");
-			request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
+			request.setAttribute("ok", "-1");
+			request.setAttribute("title", "邮件发送失败");
+			request.setAttribute("message", sendToEmailName+"发送邮件失败!");
 		}
+		request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

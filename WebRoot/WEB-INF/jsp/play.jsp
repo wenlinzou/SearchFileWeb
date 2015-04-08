@@ -130,7 +130,7 @@
 	<%
 		if(iplay.endsWith(".html")){
 	%>
-		html to doc:<a href="<%=basePath%>htmltodoc.html?htmlpath=<%=iplay%>"><%=iplay%></a>
+		html to doc:<a href="<%=basePath%>html2doc.html?htmlpath=<%=iplay%>"><%=iplay%></a>
 		<%
 		}
 	%>

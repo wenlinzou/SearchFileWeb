@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.service.FileService;
 
-public class HtmlTransPdfServlet extends HttpServlet {
+public class Html2PdfServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -25,9 +25,16 @@ public class HtmlTransPdfServlet extends HttpServlet {
 		FileService fs = new FileService();
 		//html to local html
 		boolean flag = fs.htmlURLTransLocal(htmlUrl, pdfPath);
-		request.setAttribute("flag", flag);
-		request.setAttribute("localtion", pdfPath);
-		request.getRequestDispatcher("/WEB-INF/jsp/html2Local/html2Local.jsp").forward(request, response);
+		if(flag){
+			request.setAttribute("ok", "1");
+			request.setAttribute("title", "HTML2PDF成功");
+			request.setAttribute("message", "HTML转换PDF成功!文件位于 "+pdfPath);
+		}else{
+			request.setAttribute("ok", "-1");
+			request.setAttribute("title", "HTML2PDF失败");
+			request.setAttribute("message", "修HTML转换PDF失败!");
+		}
+		request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
 		
 	}
 

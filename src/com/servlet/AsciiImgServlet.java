@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.util.SimpleAsciiImg;
+import com.util.AsciiImgUtils;
 
 public class AsciiImgServlet extends HttpServlet {
 
@@ -34,7 +34,7 @@ System.out.println("method:"+method);
 		if(imgpath.endsWith(".jpg") || imgpath.endsWith(".png") || imgpath.endsWith("gif")
 				|| imgpath.endsWith(".bmp")){
 
-			String img = SimpleAsciiImg._BitmapConvert(imgpath);
+			String img = AsciiImgUtils._BitmapConvert(imgpath);
 			request.setAttribute("img", img);
 			request.getRequestDispatcher("/WEB-INF/jsp/asciiImgSuccess.jsp").forward(request, response);
 		}else{

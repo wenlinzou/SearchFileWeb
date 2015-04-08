@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
-public class WordCheckStyle {
+public class IDCodeStyle {
 	// int height, int width,Graphics g, Color backColor, Color borderColor,
 	// Color lineColor,
 	// Color fontColor, Font wordFont
@@ -17,11 +17,11 @@ public class WordCheckStyle {
 	private Color fontColor;
 	private Font wordFont;
 
-	public WordCheckStyle() {
+	public IDCodeStyle() {
 		super();
 	}
 
-	public WordCheckStyle(int height, int width, Graphics g, Color backColor,
+	public IDCodeStyle(int height, int width, Graphics g, Color backColor,
 			Color borderColor, Color lineColor, Color fontColor, Font wordFont) {
 		this.height = height;
 		this.width = width;

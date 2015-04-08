@@ -25,7 +25,7 @@
 
 <body>
 	<div>
-		<form action="<%=basePath %>htmlTransPdf.html" method="post"  onsubmit="return validate_form(this)">
+		<form action="<%=basePath %>html2pdf.html" method="post"  onsubmit="return validate_form(this)">
 		<table>
 			<tr><td>输入网页地址:</td></tr>
 			<tr><td><input type="text" name="htmlUrl" class="inputStyle"/></td></tr>

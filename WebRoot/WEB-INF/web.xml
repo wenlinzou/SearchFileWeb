@@ -14,8 +14,8 @@
   	<servlet-class>com.servlet.SearchServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>InputServlet</servlet-name>
-    <servlet-class>com.servlet.InputServlet</servlet-class>
+    <servlet-name>JumpServlet</servlet-name>
+    <servlet-class>com.servlet.JumpServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>PrintServlet</servlet-name>
@@ -30,8 +30,8 @@
     <servlet-class>com.servlet.RenameServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>TurnOffPCServlet</servlet-name>
-    <servlet-class>com.servlet.TurnOffPCServlet</servlet-class>
+    <servlet-name>TurnoffPCServlet</servlet-name>
+    <servlet-class>com.servlet.TurnoffPCServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>SplitFileServlet</servlet-name>
@@ -39,27 +39,27 @@
   </servlet>
   <servlet>
     <servlet-name>MergeFileServlet</servlet-name>
-    <servlet-class>mergeFile.MergeFileServlet</servlet-class>
+    <servlet-class>com.servlet.MergeFileServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>LoginMD5Servlet</servlet-name>
     <servlet-class>com.servlet.LoginMD5Servlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>WordCheckJSPServlet</servlet-name>
-    <servlet-class>com.servlet.WordCheckJSPServlet</servlet-class>
+    <servlet-name>IDCodeJSPServlet</servlet-name>
+    <servlet-class>com.servlet.IDCodeJSPServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>Welcome</servlet-name>
     <servlet-class>com.servlet.Welcome</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>HtmlTransPdfServlet</servlet-name>
-    <servlet-class>com.servlet.HtmlTransPdfServlet</servlet-class>
+    <servlet-name>Html2PdfServlet</servlet-name>
+    <servlet-class>com.servlet.Html2PdfServlet</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>WordCheckHTMLServlet</servlet-name>
-  	<servlet-class>com.servlet.WordCheckHTMLServlet</servlet-class>
+  	<servlet-name>IDCodeHTMLServlet</servlet-name>
+  	<servlet-class>com.servlet.IDCodeHTMLServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>RegisterServlet</servlet-name>
@@ -74,8 +74,8 @@
     <servlet-class>com.servlet.AsciiImgServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>HtmlToDocServlet</servlet-name>
-    <servlet-class>com.servlet.HtmlToDocServlet</servlet-class>
+    <servlet-name>Html2DocServlet</servlet-name>
+    <servlet-class>com.servlet.Html2DocServlet</servlet-class>
   </servlet>
 
 
@@ -100,8 +100,8 @@
     <url-pattern>/search.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>InputServlet</servlet-name>
-    <url-pattern>/input.html</url-pattern>
+    <servlet-name>JumpServlet</servlet-name>
+    <url-pattern>/jump.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>PrintServlet</servlet-name>
@@ -116,7 +116,7 @@
     <url-pattern>/rename.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>TurnOffPCServlet</servlet-name>
+    <servlet-name>TurnoffPCServlet</servlet-name>
     <url-pattern>/turnOff.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
@@ -132,7 +132,7 @@
     <url-pattern>/login.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>WordCheckJSPServlet</servlet-name>
+    <servlet-name>IDCodeJSPServlet</servlet-name>
     <url-pattern>/wordcheck.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
@@ -140,11 +140,11 @@
     <url-pattern>/welcome.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>HtmlTransPdfServlet</servlet-name>
-    <url-pattern>/htmlTransPdf.html</url-pattern>
+    <servlet-name>Html2PdfServlet</servlet-name>
+    <url-pattern>/html2pdf.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>WordCheckHTMLServlet</servlet-name>
+    <servlet-name>IDCodeHTMLServlet</servlet-name>
     <url-pattern>/htmlwordcheck.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
@@ -160,7 +160,7 @@
     <url-pattern>/asciimg.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>HtmlToDocServlet</servlet-name>
-    <url-pattern>/htmltodoc.html</url-pattern>
+    <servlet-name>Html2DocServlet</servlet-name>
+    <url-pattern>/html2doc.html</url-pattern>
   </servlet-mapping>
 </web-app>

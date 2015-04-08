@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SpiderURL {
+public class SpiderURLUtils {
 	 //发送代数据的HTTP 请求 -->网络爬虫
 	
 	public List<String> getDataByURL(String urlPath) throws IOException, Exception {
@@ -38,7 +38,7 @@ public class SpiderURL {
 		//document.close();
 	}
 	public static void main(String[] args) throws Exception {
-		SpiderURL s = new SpiderURL();
+		SpiderURLUtils s = new SpiderURLUtils();
 		List<String> temm = s.getDataByURL("http://www.open-open.com/lib/view/open1402448471822.html");
 
 

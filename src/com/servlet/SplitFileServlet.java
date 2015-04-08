@@ -35,9 +35,17 @@ System.out.println("filesplitPath:"+fileSplitPath);
 		
 System.out.println(fis.available()/1024);
 		
-		fs.splitFile(new File(fileSplitPath), new File(putPath), size, suffixname);
-		request.setAttribute("localtion", putPath);
-		request.getRequestDispatcher("/WEB-INF/jsp/splitSuccess.jsp").forward(request, response);
+		boolean flag = fs.splitFile(new File(fileSplitPath), new File(putPath), size, suffixname);
+		if(flag){
+			request.setAttribute("ok", "1");
+			request.setAttribute("title", "拆分文件成功");
+			request.setAttribute("message", "拆分文件 "+ fileSplitPath +"成功!文件位于 " + putPath);
+		}else{
+			request.setAttribute("ok", "1");
+			request.setAttribute("title", "拆分文件成功");
+			request.setAttribute("message", "拆分文件 "+ fileSplitPath +"失败!");
+		}
+		request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

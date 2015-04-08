@@ -5,7 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TurnOffPC {
+public class TurnOffPCUtils {
 	private final int second = 60;
 	/*DOS关机命令如下，怎么用你自己填吧
 	shutdown [/i | /l | /s | /r | /a | /p | /h | /e] [/

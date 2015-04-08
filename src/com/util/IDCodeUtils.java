@@ -3,16 +3,16 @@ package com.util;
 import java.awt.Graphics2D;
 import java.util.Random;
 
-import com.bean.WordCheckStyle;
+import com.bean.IDCodeStyle;
 
-public class TWordCheck {
-	private WordCheckStyle iword;
+public class IDCodeUtils {
+	private IDCodeStyle iword;
 	
-	public TWordCheck(){
+	public IDCodeUtils(){
 		super();
 		
 	}
-	public TWordCheck(WordCheckStyle iword){
+	public IDCodeUtils(IDCodeStyle iword){
 		this.iword = iword;
 	}
 	//添加一个通用的设置验证码的一个function
@@ -28,15 +28,15 @@ public class TWordCheck {
 		
 		return word4;
 	}
-	private void setWordBackgroundColor(WordCheckStyle iword) {
+	private void setWordBackgroundColor(IDCodeStyle iword) {
 		iword.getG().setColor(iword.getBackColor());
 		iword.getG().fillRect(0, 0, iword.getWidth(), iword.getHeight());
 	}
-	private void setWordBorder(WordCheckStyle iword) {
+	private void setWordBorder(IDCodeStyle iword) {
 		iword.getG().setColor(iword.getBorderColor());
 		iword.getG().drawRect(1, 1, iword.getWidth()-2, iword.getHeight()-2);
 	}
-	private void drawWordLine(WordCheckStyle iword) {
+	private void drawWordLine(IDCodeStyle iword) {
 		iword.getG().setColor(iword.getLineColor());
 		for (int i = 0; i < 4; i++) {
 			int x1 = new Random().nextInt(iword.getWidth());
@@ -49,7 +49,7 @@ public class TWordCheck {
 		}
 	}
 	//------------------------
-	public String drawWordMandomNum(WordCheckStyle iword) {
+	public String drawWordMandomNum(IDCodeStyle iword) {
 //		g.setColor(Color.BLACK);
 //		g.setFont(new Font("黑体",Font.BOLD,23));
 		Graphics2D g = (Graphics2D) iword.getG();

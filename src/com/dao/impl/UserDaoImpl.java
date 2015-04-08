@@ -8,8 +8,8 @@ import org.dom4j.Element;
 import com.bean.SEmail;
 import com.bean.User;
 import com.dao.UserDao;
-import com.util.SendMail;
-import com.util.ServiceFile;
+import com.util.SendMailUtils;
+import com.util.FileUtils;
 import com.util.XmlUtils;
 
 public class UserDaoImpl implements UserDao {
@@ -80,7 +80,7 @@ public class UserDaoImpl implements UserDao {
 		/*if(semail.getFilename() == null || semail.getFileList().size() < 1 )
 		return SendMail.sendMail(semail);
 		else*/
-			return SendMail.sendEMail(semail);
+			return SendMailUtils.sendEMail(semail);
 	}
 
 

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.service.PCService;
 
-public class TurnOffPCServlet extends HttpServlet {
+public class TurnoffPCServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

@@ -26,7 +26,7 @@ import org.apache.commons.mail.SimpleEmail;
 
 import com.bean.SEmail;
 
-public class SendMail {
+public class SendMailUtils {
 	public static boolean sendMail(SEmail semail){
 		boolean flag = false;
 		SimpleEmail email = new SimpleEmail();

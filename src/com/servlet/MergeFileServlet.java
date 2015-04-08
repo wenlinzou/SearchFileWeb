@@ -1,4 +1,4 @@
-package mergeFile;
+package com.servlet;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,12 +23,15 @@ System.out.println("MergeFile-servlet:"+mergeFilePath);
 		boolean flag = fs.mergeFile(new File(mergeFilePath));
 System.out.println("MergeFile:"+flag);		
 		if(flag){
-			request.setAttribute("localtion", mergeFilePath);
-			request.getRequestDispatcher("/WEB-INF/jsp/mergeSuccess.jsp").forward(request, response);
+			request.setAttribute("ok", "1");
+			request.setAttribute("title", "合并文件成功");
+			request.setAttribute("message", "合并文件成功!文件位于 " + mergeFilePath);
 		}else{
-			request.setAttribute("message", "合并文件失败!");
-			request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
+			request.setAttribute("ok", "-1");
+			request.setAttribute("title", "合并文件成功");
+			request.setAttribute("message", "合并文件 "+ mergeFilePath +"失败!");
 		}
+		request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
