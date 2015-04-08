@@ -21,10 +21,11 @@ function changeDiv(showdiv) {
 
 // 返回首页
 function backIndex() {
-	var myurl = location.href;
-	var endIndex = myurl.lastIndexOf('/');
-	var newUrl = myurl.substring(0, endIndex);
-	window.location.href = newUrl+"/input.html";
+//	var myurl = location.href;
+//	var endIndex = myurl.lastIndexOf('/');
+//	var newUrl = myurl.substring(0, endIndex);
+//	window.location.href = newUrl+"/input.html";
+	window.location.href = "jump.html";
 }
 
 // 全选

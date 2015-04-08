@@ -118,9 +118,16 @@
 	<hr />
 	<!-- 图片 to 字符画 -->
 	<%
+	String showIplay = iplay;
+	int endIndex = iplay.lastIndexOf(".");
+	String suffixTemp = iplay.substring(endIndex);
+	String iplayname = iplay.substring(0, endIndex);
+	StringBuilder sb = new StringBuilder();
+	iplay = sb.append(iplayname).append(suffixTemp.toLowerCase()).toString();
+	
 		if(iplay.endsWith(".jpg") || iplay.endsWith("gif") || iplay.endsWith(".png")){
 	%>
-		图片 to 字符画:<a href="<%=basePath%>asciimg.html?imgpath=<%=iplay%>"><%=iplay%></a>
+		图片 to 字符画:<a href="<%=basePath%>asciimg.html?imgpath=<%=showIplay%>"><%=showIplay%></a>
 	<%
 		}
 	%>
@@ -130,7 +137,7 @@
 	<%
 		if(iplay.endsWith(".html")){
 	%>
-		html to doc:<a href="<%=basePath%>html2doc.html?htmlpath=<%=iplay%>"><%=iplay%></a>
+		html to doc:<a href="<%=basePath%>html2doc.html?htmlpath=<%=showIplay%>"><%=showIplay%></a>
 		<%
 		}
 	%>
