@@ -80,10 +80,19 @@ function goToOther(msgObj){
 		return false;
 	}
 }
+//keycode   71 = g G 
+var gameKeycount = 0;
 $(document).keyup(function(event){
 	if(event.keyCode ==13){
 		$("#submit_search").trigger("click");
 		verify();
+	}
+	if(event.keyCode == 71){
+		gameKeycount++;
+		if(gameKeycount==5){
+			var myurl = location.host;
+			window.location.href = "http://"+myurl+"/SearchFileWeb/otherInfo/whiteDiv.html";
+		}
 	}
 	if(event.keyCode ==32){
 		spaceKeyCount++;

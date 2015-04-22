@@ -15,6 +15,7 @@ import java.util.zip.ZipOutputStream;
  */
 public class ZipIt {
 	public static void main(String args[]) throws IOException {  
+		args[0] = "f:/txt/3).txt";
         if (args.length < 2) {  
             System.err.println("usage: java ZipIt Zip.zip file1 file2 file3");  
             System.exit(-1);  

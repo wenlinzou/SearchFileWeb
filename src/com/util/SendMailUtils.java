@@ -105,14 +105,18 @@ public class SendMailUtils {
 
 			semail.getFileList().removeAll(semail.getFileList());
 			//.removeAllElements()
+			
 			// 向Multipart添加MimeMessage
 			msg.setContent(mp);
 			msg.setSentDate(new Date());
+			//保存邮件
 			msg.saveChanges() ;
+
 			// 发送邮件
-			
 			Transport transport = session.getTransport("smtp");
+			//连接服务器的邮箱
 			transport.connect(semail.getHostname(), semail.getUsername(), semail.getPassword());
+			//把邮件发送出去
 			transport.sendMessage(msg, msg.getAllRecipients());
 			transport.close();
 		} catch (Exception mex) {

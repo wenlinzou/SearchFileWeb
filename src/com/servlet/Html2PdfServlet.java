@@ -32,7 +32,7 @@ public class Html2PdfServlet extends HttpServlet {
 		}else{
 			request.setAttribute("ok", "-1");
 			request.setAttribute("title", "HTML2PDF失败");
-			request.setAttribute("message", "修HTML转换PDF失败!");
+			request.setAttribute("message", "HTML转换PDF失败!");
 		}
 		request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
 		
