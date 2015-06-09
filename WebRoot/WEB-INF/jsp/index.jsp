@@ -87,6 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	<center>
 	<h2 class="mycenter">搜索文件</h2>
+	<span id="useTime" class="numStyle"></span>
 		<form action="search.html" method="post"  onsubmit="return validate_form(this)">
 			<table>
 			<tr>

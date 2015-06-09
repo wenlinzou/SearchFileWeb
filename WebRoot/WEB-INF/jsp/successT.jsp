@@ -54,5 +54,17 @@
 		</script>
 
 	</center>
+	<div style="display:none;">
+		<script type="text/javascript">
+			function myClick(){
+				setTimeout("realMethod()",2000);
+				//setInterval("function()", 3000);//每隔多久就执行
+			}
+			function realMethod(){
+				alert("ok this is me");
+			}
+		</script>
+		<a href="javascript:void(0);" onclick="myClick()" >href跳转</a>
+	</div>
 </body>
 </html>

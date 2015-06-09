@@ -53,4 +53,12 @@ function validate_form(thisform) {
 		}
 		
 	}
+	//setInterval("startTime()",1000);
+}
+//写一个计时的js
+var useTime = 0;
+function startTime(){
+	var useTime = document.getElementById("useTime").innerHTML;
+	useTime++;
+	document.getElementById("useTime").innerHTML=useTime;
 }
