@@ -121,6 +121,7 @@ public class SendMailUtils {
 			transport.close();
 		} catch (Exception mex) {
 			mex.printStackTrace();
+System.out.println("发送邮件--连接异常>>>");			
 			return false;
 		}
 		return true;
