@@ -217,8 +217,6 @@ System.out.println("ISRename:"+rename+"\toldname:"+oldname+"\tsameName:"+sameNam
 			destDir.mkdir();
 		}
 		
-		
-		
 		//对指定的目录进行判断
 		while((len=fis.read(buf))!=-1){
 			fos = new FileOutputStream(new File(destDir,(count++)+suffix));
@@ -241,8 +239,6 @@ System.out.println("ISRename:"+rename+"\toldname:"+oldname+"\tsameName:"+sameNam
 	
 	//读取配置文件 重新组合文件
 	public void mergeFile(File srcDir, String suffixName) throws IOException {
-		
-		
 		//健壮性判断
 		if(!srcDir.exists()){
 			throw new RuntimeException(srcDir.getName()+"不存在");
@@ -314,7 +310,7 @@ System.out.println("ISRename:"+rename+"\toldname:"+oldname+"\tsameName:"+sameNam
 		
 	}
 	
-	//获取改目录下的所有文件名
+	//获取该目录下的所有文件名
 	public List<String> getFileAllNames(File file){
 		List<String> lists = new ArrayList<String>();
 		File[] files = file.listFiles();
@@ -337,7 +333,7 @@ System.out.println("ISRename:"+rename+"\toldname:"+oldname+"\tsameName:"+sameNam
 		return urlName;
 	}
 	
-	//截取输入邮箱由谁发送的品牌 wwww@qq.com qq
+	//截取输入邮箱由谁发送的品牌 www@qq.com -->qq
 	public static String getAtName(String emailname){
 		String atname = "";
 		int beginIndex = emailname.indexOf("@");

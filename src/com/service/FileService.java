@@ -119,6 +119,12 @@ System.out.println("4 文件名为空,后缀为空");
 		return fileList;
 	}
 	
+	/**
+	 * 将list<String>写入到文件中
+	 * @param list
+	 * @param file
+	 * @return
+	 */
 	public boolean write2File(List<String> list,File file){
 		boolean flag = false;
 		try {
@@ -134,10 +140,24 @@ System.out.println("4 文件名为空,后缀为空");
 		return flag;
 	}
 	
+	/**
+	 * 重命名文件
+	 * @param lists
+	 * @param rename
+	 * @return
+	 */
 	public boolean renameFile(List<String> lists,String rename){
 		return sf.renameFile(lists, rename);
 	}
 	
+	/**
+	 * 分解文件
+	 * @param srcFile
+	 * @param destDir
+	 * @param split_size
+	 * @param suffix
+	 * @return
+	 */
 	public boolean splitFile(File srcFile, File destDir,int split_size, String suffix){
 		boolean flag = false;
 		int indexStart = suffix.indexOf(".");
@@ -156,7 +176,11 @@ System.out.println("size:"+srcFile);
 		return flag;
 	}
 	
-	//合并文件
+	/**
+	 * 合并文件
+	 * @param mergreFile
+	 * @return
+	 */
 	public boolean mergeFile(File mergreFile){
 		boolean flag = false;
 		try {
@@ -183,7 +207,8 @@ System.out.println("SERVICE:fileInPath:"+fileInPath+"\tsuffixname:"+suffixName);
 		}
 		return flag;
 	}
-	//html trans pdf
+
+	
 	public void htmlTransPdf(String url, String filePath){
 		try {
 			//得到url的文件数据流
@@ -229,6 +254,12 @@ System.out.println("pdfPath:"+pdfPath);
 		}
 		
 	}
+	
+	/**
+	 * html2pdf 暂时只是爬虫下来 html
+	 * @param url
+	 * @param filePath
+	 */
 	public boolean htmlURLTransLocal(String url, String filePath){
 		boolean flag = false;
 		try {
