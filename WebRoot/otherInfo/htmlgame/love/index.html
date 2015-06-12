@@ -34,15 +34,40 @@
                 if (parseInt(imonth) < 10) {
                     imonth = "0" + imonth;
                 }
-                var iday = d.getDay();
+                var iday = d.getDate();
+                
                 if (parseInt(iday) < 10) {
                     iday = "0" + iday;
                 }
                 document.getElementById("mydate").innerHTML = "*" + iyear + "-" + imonth + "-" + iday;
             </script>.</span><br/>
+            <span class="space"/><span class="comments" id="iweek">
+            <script type="text/javascript">
+            	var newd = new Date();
+            	var iweek = newd.getDay();
+            	var week = "";
+            	switch(iweek){
+            	case 1:
+            		week = "星期一";break;
+            	case 2:
+            		week = "星期二";break;
+            	case 3:
+            		week = "星期三";break;
+            	case 4:
+            		week = "星期四";break;
+            	case 5:
+            		week = "星期五";break;
+            	case 6:
+            		week = "星期六";break;
+            	case 7:
+            		week = "星期日";break;
+            	}
+            	document.getElementById("iweek").innerHTML = "*" + week;
+            </script>
+            </span><br/>
             <span class="space"/><span class="comments">*/</span><br/>
-            Boy name = <span class="keyword">Mr</span> LIU<br/>
-            Girl name = <span class="keyword">Mrs</span> XU<br/>
+            Boy name = <span class="keyword">Mr</span> Liu<br/>
+            Girl name = <span class="keyword">Miss</span> Xu<br/>
             <span class="comments">// 坠入爱河Fall in love river. </span><br/>
             The boy love the girl;<br/>
             <span class="comments">// They love each other.</span><br/>
