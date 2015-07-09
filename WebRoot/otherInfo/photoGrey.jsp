@@ -43,7 +43,7 @@
     	return document.getElementById(input);
     }
     function showPhoto(){
-    	for(var i=1;i<=5;i++){
+    	for(var i=1;i<=6;i++){
     		var divObj = $("showLoopPhoto");
     		var aT = document.createElement("a");
     		var imgT = document.createElement("img");

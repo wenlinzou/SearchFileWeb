@@ -14,16 +14,6 @@ public class GreyPhotoServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String imgpath = request.getParameter("imgPath");
-		/*String dynamicImgPath = "";
-		if(null == imgpath) {
-			for (int i = 1; i <= 10; i++) {
-				String temppath = request.getParameter("imgPath"+i);
-				if(null!=temppath || !(temppath.isEmpty())){
-					dynamicImgPath = imgpath;
-					imgpath = dynamicImgPath;
-				}
-			}
-		}*/
 		String webName = request.getContextPath();
 		
 		System.out.println("webName:"+webName);
