@@ -5,15 +5,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.profiler.SpacePadder;
-
 import com.bean.FileI;
-import com.util.ITextPdf;
 import com.util.FileUtils;
+import com.util.PhotoUtils;
 import com.util.SpiderURLUtils;
 import com.util.filter.ContainsWordFilter;
 import com.util.filter.FilenameSuffixFilter;
 import com.util.filter.MySuffixFilter;
+import com.util.filter.PrefixFilter;
 
 public class FileService {
 	private static int COUNT = 0;
@@ -22,7 +21,31 @@ public class FileService {
 	private final int SIZE_SEARCH = 20;
 	
 	private FileUtils sf = new FileUtils();
-	private ITextPdf itd = new ITextPdf();
+//	private ITextPdf itd = new ITextPdf();
+	
+	public boolean getUrlPhotoMakeItGrey(String imgpath) {
+        boolean pass = false;
+        PhotoUtils.saveToFile(imgpath);
+        System.out.println("save photo ok");
+        String filename = FileUtils.getFilePathFileName(imgpath, "/", ".");
+        List<String> allFilapath = new ArrayList<String>();
+
+        PrefixFilter filter = new PrefixFilter(filename);
+        String saveLocalPhoto = "D:\\Apache_Tomcat\\apache-tomcat-7.0.54\\bin\\delete";
+
+        allFilapath = sf.accpetPrefix(new File(saveLocalPhoto), filter, allFilapath);
+        System.out.println(allFilapath.size() + allFilapath.get(0).toString());
+
+
+        try {
+            PhotoUtils.newGrayImage(allFilapath.get(0).toString());
+            pass = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            pass = false;
+        }
+        return pass;
+    }
 	
 	public List<String> queryFileLists(FileI iFile){
 		List<String> fileList = new ArrayList<String>();

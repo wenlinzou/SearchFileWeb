@@ -77,6 +77,11 @@
     <servlet-name>Html2DocServlet</servlet-name>
     <servlet-class>com.servlet.Html2DocServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>GreyPhotoServlet</servlet-name>
+    <servlet-class>com.servlet.GreyPhotoServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -162,5 +167,9 @@
   <servlet-mapping>
     <servlet-name>Html2DocServlet</servlet-name>
     <url-pattern>/html2doc.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GreyPhotoServlet</servlet-name>
+    <url-pattern>/photoGrey.html</url-pattern>
   </servlet-mapping>
 </web-app>

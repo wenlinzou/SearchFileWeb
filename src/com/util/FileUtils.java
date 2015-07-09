@@ -8,7 +8,6 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.io.OutputStreamWriter;
 import java.io.SequenceInputStream;
@@ -25,10 +24,60 @@ import java.util.Properties;
 import com.util.filter.ContainsWordFilter;
 import com.util.filter.FilenameSuffixFilter;
 import com.util.filter.MySuffixFilter;
+import com.util.filter.PrefixFilter;
 
 public class FileUtils {
 	private static int SIZE = 1024*1024;
 	
+	/**
+	 * 获取全路径下的文件名称
+	 * @param filePath
+	 * @param startChar
+	 * @param endChar
+	 * @return
+	 */
+	public static String getFilePathFileName(String filePath, String startChar, String endChar) {
+        String fileName = "";
+        filePath = filePath.replace("\\", "/");
+        int startIndex = filePath.lastIndexOf(startChar);
+        int endIndex = filePath.lastIndexOf(endChar);
+        if (startIndex < endIndex && startIndex != -1) {
+            fileName = filePath.substring(startIndex + 1, endIndex);
+        }
+        return fileName;
+    }
+	 /**
+     * 获取全路径的路径
+     *
+     * @param fileName
+     * @param endChar
+     * @return
+     */
+    public static String getFilepath(String fileName, String endChar) {
+        String filePath = "";
+        fileName = fileName.replace("\\", "/");
+        int endIndex = fileName.lastIndexOf(endChar);
+        if (endIndex != -1) {
+            filePath = fileName.substring(0, endIndex + 1);
+        }
+        return filePath;
+    }
+    /**
+     * 截取全路径下的文件后缀
+     *
+     * @param filePath
+     * @param startChar
+     * @return
+     */
+    public static String getFileSuffix(String filePath, String startChar) {
+        String suffix = "";
+        filePath = filePath.replace("\\", "/");
+        int startIndex = filePath.lastIndexOf(startChar);
+        if (startIndex != -1) {
+            suffix = filePath.substring(startIndex + 1);
+        }
+        return suffix;
+    }
 	/*
 	 * 查询文件名及后缀
 	 */
@@ -52,7 +101,10 @@ public class FileUtils {
 	}
 	
 	
-	
+	public List<String> accpetPrefix(File dir, PrefixFilter filter, List<String> fileLists) {
+        myFilter(dir, filter, fileLists);
+        return fileLists;
+    }
 	
 	//fatherFilter=====================
 	public void myFilter(File dir, FilenameFilter filter, List<String> lists){
