@@ -16,7 +16,7 @@ public class GreyPhotoServlet extends HttpServlet {
 		String imgpath = request.getParameter("imgPath");
 		String webName = request.getContextPath();
 		
-		System.out.println("contenapath:"+webName);
+		System.out.println("webName:"+webName);
         if (imgpath == null) {
             System.out.println("is null");
             return;
@@ -27,6 +27,10 @@ public class GreyPhotoServlet extends HttpServlet {
         if ("GET".equals(method)) {
             byte[] bs = imgpath.getBytes("ISO8859-1");
             imgpath = new String(bs, "UTF-8");
+            if(imgpath.endsWith("Copy.jpg")){
+            	request.getRequestDispatcher("otherInfo/photoGrey.jsp").forward(request, response);
+            	return;
+            }
             boolean pass = fileService.getUrlPhotoMakeItGrey(imgpath,webName);
             if (pass) {
                 request.setAttribute("existPhoto", "1");
