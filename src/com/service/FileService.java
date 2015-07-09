@@ -22,6 +22,11 @@ public class FileService {
 	
 	private FileUtils sf = new FileUtils();
 //	private ITextPdf itd = new ITextPdf();
+	public String getFileName(String imgpath){
+		String filename = "";
+		filename = sf.getFilePathFileName(imgpath, "/", ".");
+		return filename;
+	}
 	
 	public boolean checkPhotoCopyExist(String imgpath,String webName){
 		boolean exist = false;
