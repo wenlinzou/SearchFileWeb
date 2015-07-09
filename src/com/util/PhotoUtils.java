@@ -30,8 +30,20 @@ public class PhotoUtils {
             String filename = FileUtils.getFilePathFileName(destUrl, "/", ".");
 
             String suffix = FileUtils.getFileSuffix(destUrl, ".");
-            String newFilePath = System.getProperty("user.dir") + "/delete/" + filename + "_Copy_ucandelete." + suffix;
+            String tomcatBin = System.getProperty("user.dir");
 
+            tomcatBin = tomcatBin.replace("\\", "/");
+            int endIndex = tomcatBin.lastIndexOf("/");
+            String tomcat = "";
+            if(endIndex!=-1){
+            	tomcat = tomcatBin.substring(0, endIndex);
+            }
+            
+//            String newFilePath = System.getProperty("user.dir") + "/delete/" + filename + "_Copy_ucandelete." + suffix;
+            String newFilePath = tomcat + "/webapps/deletephoto/" + filename + "_Copy_ucandelete." + suffix;
+            System.out.println("newFilePath:"+newFilePath);
+            
+            
             fos = new FileOutputStream(newFilePath);
             System.out.println("photo:" + newFilePath);
             while ((size = bis.read(buf)) != -1) {

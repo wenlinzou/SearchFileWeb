@@ -31,10 +31,11 @@ public class FileService {
         List<String> allFilapath = new ArrayList<String>();
 
         PrefixFilter filter = new PrefixFilter(filename);
-        String saveLocalPhoto = "D:\\Apache_Tomcat\\apache-tomcat-7.0.54\\bin\\delete";
+//        String saveLocalPhoto = "D:\\Apache_Tomcat\\apache-tomcat-7.0.54\\bin\\delete";
+        String saveLocalPhoto = "D:\\Apache_Tomcat\\apache-tomcat-7.0.54\\webapps\\deletephoto";
 
         allFilapath = sf.accpetPrefix(new File(saveLocalPhoto), filter, allFilapath);
-        System.out.println(allFilapath.size() + allFilapath.get(0).toString());
+        System.out.println("FileService-Photo:size"+allFilapath.size() + allFilapath.get(0).toString());
 
 
         try {

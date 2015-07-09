@@ -26,7 +26,7 @@ public class GreyPhotoServlet extends HttpServlet {
             imgpath = new String(bs, "UTF-8");
             boolean pass = fileService.getUrlPhotoMakeItGrey(imgpath);
             if (pass) {
-                request.setAttribute("existPhoto", "true");
+                request.setAttribute("existPhoto", "1");
                 request.getRequestDispatcher("otherInfo/photoGrey.jsp").forward(request, response);
             }
 //            PhotoUtils.saveToFile(imgpath);

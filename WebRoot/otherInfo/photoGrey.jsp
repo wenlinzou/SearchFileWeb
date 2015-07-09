@@ -18,8 +18,12 @@
     <title>显示图片</title>
 </head>
 <body>
-<a id="jumppath" href="" onclick="getImgPath();"><img id="imgPath" src="../resource/images/s6_fb.jpg" alt="beauty"/></a>
-
+<c:if test="${existPhoto==null }">
+<a id="jumppath" href="" onclick="getImgPath();"><img id="imgPath" src="<%=basePath %>resource/images/s6_fb.jpg" alt="beauty"/></a>
+</c:if>
+<c:if test="${existPhoto!=null }">
+<a id="jumppath" href="" onclick="getImgPath();"><img id="imgPath" src="<%=basePath %>resource/images/s6_f1b.jpg" alt="beauty"/></a>
+</c:if>
 <script type="text/javascript">
     function getImgPath(){
         var imgObj = document.getElementById("imgPath");
