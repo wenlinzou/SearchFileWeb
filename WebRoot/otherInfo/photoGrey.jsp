@@ -11,13 +11,19 @@
     <title><c:if test="${title==null }">显示图片</c:if><c:if test="${title!=null }">${title }</c:if></title>
 </head>
 <body>
-
-<c:if test="${existPhoto==null }">
-<a id="jumppath" href="" onclick="getImgPath(this);"><img id="imgPath" src="<%=basePath %>resource/images/${filename }.jpg" alt="beauty"/></a><!-- s6_fbCopy.jpg -->
-</c:if>
-<c:if test="${existPhoto!=null }">
-<a id="jumppath" href="" onclick="getImgPath(this);"><img id="imgPath" src="<%=basePath %>resource/images/${filename }Copy.jpg" alt="beauty"/></a>
-</c:if>
+<div>
+	<c:if test="${existPhoto==null }">
+		<c:if test="${filename==null }">
+			<a id="jumppath" href="" onclick="getImgPath(this);"><img id="imgPath" src="<%=basePath %>resource/images/s6_fb.jpg" alt="beauty"/></a><!-- s6_fbCopy.jpg -->
+		</c:if>
+		<c:if test="${filename!=null }">
+			<a id="jumppath" href="" onclick="getImgPath(this);"><img id="imgPath" src="<%=basePath %>resource/images/${filename }.jpg" alt="beauty"/></a><!-- s6_fbCopy.jpg -->
+		</c:if>
+	</c:if>
+	<c:if test="${existPhoto!=null }">
+	<a id="jumppath" href="" onclick="getImgPath(this);"><img id="imgPath" src="<%=basePath %>resource/images/${filename }Copy.jpg" alt="beauty"/></a>
+	</c:if>
+</div>
 
 <div id="showLoopPhoto"><input type="button" onclick="showPhoto();" value="添加图片" id="addBtn"/></div>
 <script type="text/javascript">

@@ -40,7 +40,7 @@ public class GreyPhotoServlet extends HttpServlet {
             imgpath = new String(bs, "UTF-8");
             if(imgpath.endsWith("Copy.jpg")){
             	String filename = fileService.getFileName(imgpath);
-            	filename = filename.substring(0,filename.indexOf("C"));
+            	filename = filename.substring(0,filename.lastIndexOf("C"));
             	request.setAttribute("filename", filename);
             	System.out.println(filename);
             	request.setAttribute("title", "显示彩色图片");
