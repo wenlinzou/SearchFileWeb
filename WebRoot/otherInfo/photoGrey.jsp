@@ -8,7 +8,7 @@
 %>
 <html>
 <head>
-    <title>显示图片</title>
+    <title><c:if test="${title==null }">显示图片</c:if><c:if test="${title!=null }">${title }</c:if></title>
 </head>
 <body>
 <c:if test="${existPhoto==null }">

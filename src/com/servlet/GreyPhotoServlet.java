@@ -28,11 +28,20 @@ public class GreyPhotoServlet extends HttpServlet {
             byte[] bs = imgpath.getBytes("ISO8859-1");
             imgpath = new String(bs, "UTF-8");
             if(imgpath.endsWith("Copy.jpg")){
+            	request.setAttribute("title", "显示彩色图片");
+            	request.getRequestDispatcher("otherInfo/photoGrey.jsp").forward(request, response);
+            	return;
+            }
+            boolean copyPhotoExist = fileService.checkPhotoCopyExist(imgpath, webName);
+            if(copyPhotoExist){
+            	request.setAttribute("title", "显示黑白图片");
+            	request.setAttribute("existPhoto", "1");
             	request.getRequestDispatcher("otherInfo/photoGrey.jsp").forward(request, response);
             	return;
             }
             boolean pass = fileService.getUrlPhotoMakeItGrey(imgpath,webName);
             if (pass) {
+            	request.setAttribute("title", "显示彩色图片");
                 request.setAttribute("existPhoto", "1");
                 request.getRequestDispatcher("otherInfo/photoGrey.jsp").forward(request, response);
             }

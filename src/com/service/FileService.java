@@ -23,6 +23,19 @@ public class FileService {
 	private FileUtils sf = new FileUtils();
 //	private ITextPdf itd = new ITextPdf();
 	
+	public boolean checkPhotoCopyExist(String imgpath,String webName){
+		boolean exist = false;
+		File tempf = new File(System.getProperty("user.dir"));
+    	String tomcat = tempf.getParent();
+        String saveLocalPhoto = tomcat+"/webapps"+webName+"/resource/images";
+        String filename = FileUtils.getFilePathFileName(imgpath, "/", ".");
+        File photoFile = new File(saveLocalPhoto+"/"+filename+"Copy.jpg");
+        System.out.println("photoExist:"+new File(saveLocalPhoto+"/"+filename+"Copy.jpg"));
+        if(photoFile.exists())
+        	exist = true;
+		return exist;
+	}
+	
 	public boolean getUrlPhotoMakeItGrey(String imgpath,String webName) {
         boolean pass = false;
         
