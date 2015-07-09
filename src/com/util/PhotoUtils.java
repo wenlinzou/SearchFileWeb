@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 
 public class PhotoUtils {
 	public static void saveToFile(String destUrl) {
+		System.out.println("PhotoUtils-desturl:"+destUrl);
         FileOutputStream fos = null;
         BufferedInputStream bis = null;
         HttpURLConnection httpUrl = null;
@@ -24,25 +25,14 @@ public class PhotoUtils {
             httpUrl = (HttpURLConnection) url.openConnection();
             httpUrl.connect();
             bis = new BufferedInputStream(httpUrl.getInputStream());
-            //System.getProperty("user.dir") tomcat bin
-
-//        File newFile = new File(System.getProperty("user.dir")+"/method1.jpg");
             String filename = FileUtils.getFilePathFileName(destUrl, "/", ".");
 
             String suffix = FileUtils.getFileSuffix(destUrl, ".");
-            String tomcatBin = System.getProperty("user.dir");
-
-            tomcatBin = tomcatBin.replace("\\", "/");
-            int endIndex = tomcatBin.lastIndexOf("/");
-            String tomcat = "";
-            if(endIndex!=-1){
-            	tomcat = tomcatBin.substring(0, endIndex);
-            }
             
 //            String newFilePath = System.getProperty("user.dir") + "/delete/" + filename + "_Copy_ucandelete." + suffix;
-            String newFilePath = tomcat + "/webapps/deletephoto/" + filename + "_Copy_ucandelete." + suffix;
+//            String newFilePath = tomcat + "/webapps/deletephoto/" + filename + "_Copy_ucandelete." + suffix;
+            String newFilePath = destUrl+"/" + filename + "_Copy_ucandelete." + suffix;
             System.out.println("newFilePath:"+newFilePath);
-            
             
             fos = new FileOutputStream(newFilePath);
             System.out.println("photo:" + newFilePath);
@@ -136,7 +126,7 @@ public class PhotoUtils {
         String suffix = FileUtils.getFileSuffix(filePath, ".");
         String photoFilePath = filepath + copyname + "Copy" + "." + suffix;
         File newFile = new File(photoFilePath);
-        System.out.println(newFile.getAbsolutePath() + "\t" + photoFilePath);
+        System.out.println("newGrayImage:"+newFile.getAbsolutePath() + "\nphotoFilePath:" + photoFilePath);
 //        File newFile = new File(System.getProperty("user.dir") + "/ok.jpg");
 //        ImageIO.write(grayImage, "jpg", newFile);
         ImageIO.write(grayImage, suffix, newFile);
