@@ -27,8 +27,9 @@ public class LoginMD5Servlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		String	wordTemp = (String) session.getAttribute("wordcheck");
+		//转换小写
 
-		boolean wordOK = wordcheck.equals(wordTemp);
+		boolean wordOK = wordcheck.toLowerCase().equals(wordTemp.toLowerCase());
 System.out.println("wordcheck value:"+wordcheck+"\tworktemp:"+wordTemp+"\twordok:"+wordOK);		
 		PrintWriter out = response.getWriter();
 		

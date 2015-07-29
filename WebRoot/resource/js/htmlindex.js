@@ -109,6 +109,7 @@ $(document).keyup(function(event){
 	            }
 	        }
 	    }
+	    
 	if(event.keyCode ==13){
 		$("#submit_search").trigger("click");
 		verify();

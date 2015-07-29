@@ -56,7 +56,7 @@ public class IDCodeUtils {
 		iword.setG(g);
 	g.setColor(iword.getFontColor());
 	g.setFont(iword.getWordFont());
-	String base = "\u7684\u4e00\u662f\u4e86\u6211\u4e0d\u4eba\u5728\u4ed6\u6709\u8fd9\u4e2a\u4e0a\u4eec\u6765"
+	String base1 = "\u7684\u4e00\u662f\u4e86\u6211\u4e0d\u4eba\u5728\u4ed6\u6709\u8fd9\u4e2a\u4e0a\u4eec\u6765"
 			+ "\u5230\u65f6\u5927\u5730\u4e3a\u5b50\u4e2d\u4f60\u8bf4\u751f\u56fd\u5e74\u7740\u5c31\u90a3"
 			+ "\u548c\u8981\u5979\u51fa\u4e5f\u5f97\u91cc\u540e\u81ea\u4ee5\u4f1a\u5bb6\u53ef\u4e0b\u800c"
 			+ "\u8fc7\u5929\u53bb\u80fd\u5bf9\u5c0f\u591a\u7136\u4e8e\u5fc3\u5b66\u4e48\u4e4b\u90fd\u597d"
@@ -124,6 +124,7 @@ public class IDCodeUtils {
 			+ "\u5f52\u6d6a\u542c\u51e1\u9884\u5976\u96c4\u5347\u7883\u7f16\u5178\u888b\u83b1\u542b\u76db"
 			+ "\u6d4e\u8499\u68cb\u7aef\u817f\u62db\u91ca\u4ecb\u70e7\u8bef";
 	
+	String base = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz";
 	int x  = 5;
 	StringBuilder tempCode = new StringBuilder();
 	for (int i = 0; i < 4; i++) {

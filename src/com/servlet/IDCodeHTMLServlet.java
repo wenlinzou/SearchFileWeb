@@ -65,9 +65,6 @@ System.out.println("TTTWordServlet:"+tempCode);
 		os=null;
 		
 		
-		
-		
-		
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
