@@ -22,6 +22,7 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 <script type="text/javascript" src="<%=basePath%>resource/js/Calendar4.js"></script>
+<script type="text/javascript" src="<%=basePath%>resource/js/userRegisterJsp.js"></script>
 </head>
 
 <body>
@@ -33,7 +34,7 @@
 	    	<tr>
 	    		<td>用户名</td>
 	    		<td>
-	    			<input type="text" name="username" value="${form.username }">
+	    			<input type="text" name="username" value="${form.username }" id="username">
 	    			<span class="message">${form.errors.username }</span>
 	    			</td>
 	    	</tr>
