@@ -1,5 +1,7 @@
 package com.service;
 
+import com.util.DateUtils;
+import com.util.IPUtils;
 import com.util.TurnOffPCUtils;
 
 public class PCService {
@@ -10,5 +12,11 @@ public class PCService {
 	}
 	public void cancelOffPC(){
 		turnOff.cancelOffPC();
+	}
+	public String currentDetailTime(){
+		return DateUtils.getCurrentDetailTime();
+	}
+	public String getIpAddr(String ipAddr){
+		return IPUtils.getAddressByIP(ipAddr);
 	}
 }

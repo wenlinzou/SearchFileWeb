@@ -2,6 +2,8 @@ package com.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.bean.User;
+import com.service.PCService;
 import com.service.impl.UserServiceImpl;
 
 public class LoginMD5Servlet extends HttpServlet {
@@ -59,6 +62,15 @@ System.out.println("username:"+username+"\tpassword:"+password+"\twordcheck:"+wo
 			}
 			//if(isLogin && wordOK){
 			if(u!=null && wordOK){
+				//user login ip 
+				String userLogIP = request.getRemoteAddr();
+				
+				PCService ps = new PCService();
+				
+System.out.println("login Time: "+ps.currentDetailTime());
+System.out.println("login Addr: "+ps.getIpAddr(userLogIP));
+System.out.println("userLogIP: " + userLogIP);				
+				
 				sb.append("canLogin").append("</message>");
 				session.setAttribute("user", user);
 				out.print(sb.toString());return;

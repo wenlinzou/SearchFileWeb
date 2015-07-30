@@ -36,9 +36,9 @@ public class IDCodeHTMLServlet extends HttpServlet {
 		iword.setBackColor(Color.WHITE);
 		iword.setBorderColor(Color.BLACK);
 //		iword.setFontColor(new Color(197,0,0));
-		iword.setFontColor(Color.BLACK);
+		iword.setFontColor(Color.DARK_GRAY);
 		iword.setLineColor(Color.GRAY);
-		iword.setWordFont(new Font("黑体",Font.BOLD,23));
+		iword.setWordFont(new Font("宋体",Font.BOLD,23));
 		String tempCode = us.getTWordCheck(iword);
 		/*int height = 30;
 		int width = 120;

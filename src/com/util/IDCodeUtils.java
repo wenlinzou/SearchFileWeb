@@ -124,7 +124,7 @@ public class IDCodeUtils {
 			+ "\u5f52\u6d6a\u542c\u51e1\u9884\u5976\u96c4\u5347\u7883\u7f16\u5178\u888b\u83b1\u542b\u76db"
 			+ "\u6d4e\u8499\u68cb\u7aef\u817f\u62db\u91ca\u4ecb\u70e7\u8bef";
 	
-	String base = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz";
+	String base = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz0123456789";
 	int x  = 5;
 	StringBuilder tempCode = new StringBuilder();
 	for (int i = 0; i < 4; i++) {
