@@ -9,6 +9,13 @@
     <welcome-file>index.html</welcome-file>
     <!-- <welcome-file>indexLogin.jsp</welcome-file> -->
   </welcome-file-list>
+  
+  
+  	<error-page> 
+		<error-code>404</error-code> 
+		<location>/404NotFound.jsp</location> 
+	</error-page> 
+  
   <servlet>
   	<servlet-name>SearchServlet</servlet-name>
   	<servlet-class>com.servlet.SearchServlet</servlet-class>

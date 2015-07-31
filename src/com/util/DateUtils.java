@@ -1,10 +1,5 @@
 package com.util;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Calendar;
 
 public class DateUtils {
@@ -23,7 +18,7 @@ public class DateUtils {
 		int hour = c.get(Calendar.HOUR_OF_DAY);
 		int minute = c.get(Calendar.MINUTE);
 		int second = c.get(Calendar.SECOND);
-		return year + "-" + month + "-" + date + " " + hour + ":"+ minute + ":" + second;
+		return year + "-" + month + "-" + date + " " + hour + ":"+ (minute<10?"0"+minute:minute) + ":" + (second<10?"0"+second:second);
 	}
 	
 	

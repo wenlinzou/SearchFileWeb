@@ -21,6 +21,13 @@ public class LoginMD5Servlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/xml;charset=utf-8");
+
+		String userLogIP = request.getRemoteAddr();
+		PCService ps = new PCService();
+System.out.println("login Time: "+ps.currentDetailTime());
+System.out.println("login Addr: "+ps.getIpAddr(userLogIP));
+System.out.println("userLogIP: " + userLogIP);	
+
 		StringBuilder sb = new StringBuilder();
 		sb.append("<message>");
 		
@@ -63,14 +70,8 @@ System.out.println("username:"+username+"\tpassword:"+password+"\twordcheck:"+wo
 			//if(isLogin && wordOK){
 			if(u!=null && wordOK){
 				//user login ip 
-				String userLogIP = request.getRemoteAddr();
-				
-				PCService ps = new PCService();
-				
-System.out.println("login Time: "+ps.currentDetailTime());
-System.out.println("login Addr: "+ps.getIpAddr(userLogIP));
-System.out.println("userLogIP: " + userLogIP);				
-				
+			
+System.out.println("LOGINED");				
 				sb.append("canLogin").append("</message>");
 				session.setAttribute("user", user);
 				out.print(sb.toString());return;
