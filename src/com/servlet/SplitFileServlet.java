@@ -30,7 +30,8 @@ System.out.println("filesplitPath:"+fileSplitPath);
 		FileInputStream fis = new FileInputStream(fileSplitPath) ;
 		if((size*1000) > fis.available()){
 			request.setAttribute("boundsSize", "输入分解大小超过文件大小!");
-			return;
+System.out.println(fis.available()+" "+"输入分解大小超过文件大小!");
+//			return;
 		}
 		
 System.out.println(fis.available()/1024);
@@ -41,10 +42,11 @@ System.out.println(fis.available()/1024);
 			request.setAttribute("title", "拆分文件成功");
 			request.setAttribute("message", "拆分文件 "+ fileSplitPath +"成功!文件位于 " + putPath);
 		}else{
-			request.setAttribute("ok", "1");
-			request.setAttribute("title", "拆分文件成功");
+			request.setAttribute("ok", "-1");
+			request.setAttribute("title", "拆分文件失败");
 			request.setAttribute("message", "拆分文件 "+ fileSplitPath +"失败!");
 		}
+		System.gc();
 		request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
 	}
 

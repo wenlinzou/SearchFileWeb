@@ -31,6 +31,7 @@ System.out.println("MergeFile:"+flag);
 			request.setAttribute("title", "合并文件成功");
 			request.setAttribute("message", "合并文件 "+ mergeFilePath +"失败!");
 		}
+		System.gc();
 		request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
 	}
 

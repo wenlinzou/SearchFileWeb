@@ -45,6 +45,7 @@ public class RenameServlet extends HttpServlet {
 			request.setAttribute("title", "修改文件名失败");
 			request.setAttribute("message", "修改相同文件名\"" + sameName + "\"失败!");
 		}
+		System.gc();
 		request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
 		
 	}
