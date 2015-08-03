@@ -24,6 +24,8 @@ public class LoginMD5Servlet extends HttpServlet {
 
 		String userLogIP = request.getRemoteAddr();
 		PCService ps = new PCService();
+		String osName = System.getProperty("os.name");
+		
 System.out.println("login Time: "+ps.currentDetailTime());
 System.out.println("login Addr: "+ps.getIpAddr(userLogIP));
 System.out.println("userLogIP: " + userLogIP);	
@@ -74,6 +76,8 @@ System.out.println("username:"+username+"\tpassword:"+password+"\twordcheck:"+wo
 System.out.println("LOGINED");				
 				sb.append("canLogin").append("</message>");
 				session.setAttribute("user", user);
+System.out.println("osName: " + osName);				
+				session.setAttribute("osName", osName);
 				out.print(sb.toString());return;
 			}else{
 				sb.append("用户名或密码不正确").append("</message>");

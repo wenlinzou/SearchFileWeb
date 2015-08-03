@@ -74,4 +74,5 @@ System.out.println("取消关机!");
 		nowTime= df.format(dt);//用DateFormat的format()方法在dt中获取并以yyyy/MM/dd HH:mm:ss格式显示
 		return nowTime;
 	}
+	
 }

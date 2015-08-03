@@ -73,8 +73,62 @@ System.out.println("FileService-Photo:size"+allFilapath.size() + allFilapath.get
         return pass;
     }
 	
-	public List<String> queryFileLists(FileI iFile){
+	
+	public List<String> queryFileLinux(FileI iFile){
 		List<String> fileList = new ArrayList<String>();
+		
+		System.out.println("==================\n搜索次数:"+(++COUNT)+"\t搜索上限:"+SIZE_SEARCH);
+		if(COUNT>SIZE_SEARCH){
+			//<center><p style='color:red;font-size:30px;'>!</p></center>
+			fileList.add(FULL);
+			return fileList;
+		}
+		String foldername = iFile.getFoldername();
+		String filename = iFile.getFilename();
+		String suffix = iFile.getSuffix();
+		
+		foldername = "/"+foldername;
+		File dir = new File(foldername);
+		
+		//文件名不为空
+		if((null!=filename && !filename.trim().equals(""))){
+			//后缀名为空
+			if(suffix==null || suffix.trim().equals("")) {
+System.out.println("1 文件名有值,后缀为空\t"+filename);				
+				ContainsWordFilter contains = new ContainsWordFilter(filename);
+				sf.searchIgnoreFilename(dir, contains, fileList);
+			}else{
+System.out.println("2 文件名有值,后缀有值\t"+filename+","+suffix);				
+				//文件名+文件后缀
+				FilenameSuffixFilter nameSuffixFilter = new FilenameSuffixFilter(filename, suffix);
+				sf.searchIngoreNameWithSuffix(dir, nameSuffixFilter, fileList);
+			}
+		}
+		
+		//后缀名
+		if(null!=suffix && !suffix.trim().equals("")){
+			char[] temps = suffix.toCharArray();
+			if(temps[0]!='.')
+				suffix = "."+suffix;
+			
+			//文件名不为空
+			if(filename==null || filename.trim().equals("")){
+System.out.println("3 文件名为空,后缀有值"+"\t"+suffix);
+				MySuffixFilter filter = new MySuffixFilter(suffix);
+				sf.accpetSuffix(dir, filter, fileList);
+			}
+		}
+		//文件名为空
+		else if(filename==null || filename.trim().equals("")){
+System.out.println("4 文件名为空,后缀为空");
+			sf.searchFolderFile(dir, fileList);
+		}
+		return fileList;
+	}
+	
+	public List<String> queryFileWin(FileI iFile){
+		List<String> fileList = new ArrayList<String>();
+	
 		System.out.println("==================\n搜索次数:"+(++COUNT)+"\t搜索上限:"+SIZE_SEARCH);
 		if(COUNT>SIZE_SEARCH){
 			//<center><p style='color:red;font-size:30px;'>!</p></center>
@@ -165,7 +219,23 @@ System.out.println("3 文件名为空,后缀有值"+"\t"+suffix);
 System.out.println("4 文件名为空,后缀为空");
 			sf.searchFolderFile(dir, fileList);
 		}
+		
 		return fileList;
+	
+		
+	}
+	
+	
+	public List<String> queryFileLists(FileI iFile){
+		String osName = System.getProperty("os.name");
+		List<String> list = new ArrayList<String>();
+System.out.println(osName);
+		if(osName.startsWith("Windows")){
+			list = queryFileWin(iFile);
+		}else{
+			list = queryFileLinux(iFile);
+		}
+		return list;
 	}
 	
 	/**

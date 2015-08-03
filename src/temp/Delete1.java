@@ -33,10 +33,14 @@ public class Delete1 {
 		long endTime = System.currentTimeMillis();
 		System.out.println("\nusertime:" + (endTime - startTime));
 		
-		Delete1 d = new Delete1();
+		/*Delete1 d = new Delete1();
 		d.runMethod(2147483647);
-		System.in.read();
+		System.in.read();*/
+		
+		System.out.println( System.getProperty("os.name"));
+		
 	}
+	
 	
 	
 

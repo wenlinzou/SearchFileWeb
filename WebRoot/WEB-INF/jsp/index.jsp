@@ -74,6 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>
 		</form>
 	</div>
+	
 
 </div>	
 <!-- end left -->
@@ -88,8 +89,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<center>
 	<h2 class="mycenter">搜索文件</h2>
 	<span id="useTime" class="numStyle"></span>
+	<input type="hidden" id="osname" value='${osName}'/>
 		<form action="search.html" method="post"  onsubmit="return validate_form(this)">
 			<table>
+			
+			<c:if test="${osName=='Windows 7'}">
 			<tr>
 				<td>
 			指定盘符:
@@ -99,6 +103,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</td>
 				<td id="errordisk"></td>
 			</tr>
+			</c:if>
+			
 			<tr>
 				<td>
 			文件夹名:
