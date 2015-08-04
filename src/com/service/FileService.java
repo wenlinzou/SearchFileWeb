@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bean.FileI;
+import com.bean.Page;
 import com.util.FileUtils;
+import com.util.PageUtils;
 import com.util.PhotoUtils;
 import com.util.SpiderURLUtils;
 import com.util.filter.ContainsWordFilter;
@@ -18,7 +20,7 @@ public class FileService {
 	private static int COUNT = 0;
 	private final String FULL = "搜索上限已到!";
 	private final String ERROR_INFO = "请输入硬盘符,以便查询!";
-	private final int SIZE_SEARCH = 20;
+	private final int SIZE_SEARCH = 40;
 	
 	private FileUtils sf = new FileUtils();
 //	private ITextPdf itd = new ITextPdf();
@@ -225,7 +227,7 @@ System.out.println("4 文件名为空,后缀为空");
 		
 	}
 	
-	
+	//暂不适用
 	public List<String> queryFileLists(FileI iFile){
 		String osName = System.getProperty("os.name");
 		List<String> list = new ArrayList<String>();
@@ -236,6 +238,31 @@ System.out.println(osName);
 			list = queryFileLinux(iFile);
 		}
 		return list;
+	}
+	
+	
+	
+	//分页查找
+	public List<String> queryFileListsPage(FileI iFile, Page page){
+		String osName = System.getProperty("os.name");
+System.out.println(osName);		
+		PageUtils<String> pu = new PageUtils<String>();
+		List<String> list = new ArrayList<String>();
+		List<String> pageList = new ArrayList<String>();
+		if(osName.startsWith("Windows")){
+			list = queryFileWin(iFile);
+			if(list!=null){
+				page.setTotalCount(list.size());
+				pageList = pu.queryListPage(list, page);
+			}
+		}else{
+			list = queryFileLinux(iFile);
+			if(list!=null){
+				page.setTotalCount(list.size());
+				pageList = pu.queryListPage(list, page);
+			}
+		}
+		return pageList;
 	}
 	
 	/**

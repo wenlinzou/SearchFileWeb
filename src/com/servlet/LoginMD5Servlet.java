@@ -78,6 +78,9 @@ System.out.println("LOGINED");
 				session.setAttribute("user", user);
 System.out.println("osName: " + osName);				
 				session.setAttribute("osName", osName);
+				//登陆后去除之前的搜索信息
+				session.removeAttribute("iFile");
+				
 				out.print(sb.toString());return;
 			}else{
 				sb.append("用户名或密码不正确").append("</message>");

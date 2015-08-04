@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div  id="convertH">
 	
 	<div class="backIndexDiv"><input type="button" value="回到首页" onclick="backIndex()" class="backIndexBtnStyle"/></div>
-	搜索结果:<c:if test="${flag>0}">0</c:if><c:if test="${flag<0}">${fileLists.size() }</c:if>
+	<%-- 搜索结果:<c:if test="${flag>0}">0</c:if><c:if test="${flag<0}">${totalCount }</c:if> --%>
 	
 	<div id="showdiv" style="display: none">
   		<form action="print.html" onsubmit="return validate_form(this)" method="post">
@@ -117,6 +117,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	
 	    </table>
 	</div>
+	<div>
+		<table>
+			<tr><td width=100%  colspan=4 align="center"> 
+				记录总数${totalCount }条 当前页${page }/总页数${totalPage }/
+				每页显示
+					<select name="pageSize">
+						<option value="10">10</option>
+						<option value="20">20</option>
+						<option value="30">30</option>
+					</select>
+					${pageSize }条 
+				<a href="search.html?page=1">首页</a> 
+				<a href="search.html?page=${page-1}">上页</a> 
+				<a href="search.html?page=${page+1 }">下页</a> 
+				<a href="search.html?page=${totalPage }">末页</a> 
+				</td>
+				</tr>
+		</table>
+	</div>
+	
 	<div class="myright"><a href="#" onclick="gotoTop();return false;" class="myright"></a></div>
 	
 	</div>

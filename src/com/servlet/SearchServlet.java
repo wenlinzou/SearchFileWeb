@@ -1,6 +1,7 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,28 +11,67 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.bean.FileI;
+import com.bean.Page;
 import com.service.FileService;
 
 public class SearchServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
 		
 		String diskname = request.getParameter("diskname");
 		String foldername = request.getParameter("foldername");
 		String filename = request.getParameter("filename");
 		String suffix = request.getParameter("suffix");
 		
-		
-		FileService ss = new FileService();
 		FileI iFile = new FileI();
-		iFile.setDiskname(diskname);
-		iFile.setFilename(filename);
-		iFile.setFoldername(foldername);
-		iFile.setSuffix(suffix);
+		FileService ss = new FileService();
+		List<String> fileLists = new ArrayList<String>();
 		
-		List<String> fileLists = ss.queryFileLists(new FileI(diskname, foldername, filename, suffix));
-		HttpSession session = request.getSession();
+		Page page = new Page();
+		String currentPage = request.getParameter("page");
+		page.setCurrentPage(Integer.parseInt(currentPage==null||currentPage.equals("")?"1":currentPage));
+		page.setPageSize(20);
+		
+		//当前页码
+		int currPage = 0;
+		//总页数
+		int totalPage = 0;
+		//显示条数
+		int pageSize = 0;
+		//总记录数
+		int totalCount = 0;
+		
+		Object fileObj = session.getAttribute("iFile");
+		
+
+		if(null != fileObj){
+			System.out.println("ifilet:"+fileObj);
+			if(fileObj instanceof FileI){
+				FileI f = (FileI)fileObj;
+				iFile = f;
+				fileLists = ss.queryFileListsPage(new FileI(f.getDiskname(), f.getFoldername(), f.getFilename(), f.getSuffix()), page);
+				currPage = page.getCurrentPage();
+				totalPage = page.getTotalPage();
+				pageSize = page.getPageSize();
+				totalCount = page.getTotalCount();
+				
+			}
+		}else{
+			
+			iFile.setDiskname(diskname);
+			iFile.setFilename(filename);
+			iFile.setFoldername(foldername);
+			iFile.setSuffix(suffix);
+		
+		
+		
+		
+//		List<String> fileLists = ss.queryFileLists(new FileI(diskname, foldername, filename, suffix));
+		fileLists = ss.queryFileListsPage(new FileI(diskname, foldername, filename, suffix), page);
+		
+		}
 		
 		//定义是否搜索到内容的标记
 		int flag = -1;
@@ -60,6 +100,10 @@ public class SearchServlet extends HttpServlet{
 		session.setAttribute("fileLists", fileLists);
 		//request.setAttribute("fileLists", fileLists);
 		session.setAttribute("iFile", iFile);
+		request.setAttribute("page", currPage);
+		request.setAttribute("pageSize", pageSize);
+		request.setAttribute("totalCount", totalCount);
+		request.setAttribute("totalPage", totalPage);
 		request.setAttribute("flag", flag);
 		
 		request.getRequestDispatcher("/WEB-INF/jsp/searchSuccess1.jsp").forward(request, response);
