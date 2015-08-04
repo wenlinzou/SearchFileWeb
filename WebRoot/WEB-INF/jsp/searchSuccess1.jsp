@@ -120,17 +120,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div>
 		<table>
 			<tr><td width=100%  colspan=4 align="center"> 
-				记录总数${totalCount }条 当前页${page }/总页数${totalPage }/
+				记录总数<span class="totalCount">${totalCount }</span>条 当前页<span class="currentPage">${page }</span>  总页数<span class="totalPage">${totalPage }</span> 
 				每页显示
-					<select name="pageSize">
+					<!-- <select name="pageSize">
 						<option value="10">10</option>
 						<option value="20">20</option>
 						<option value="30">30</option>
-					</select>
-					${pageSize }条 
+					</select> -->
+					<span class="pageSize">${pageSize }</span>条 
 				<a href="search.html?page=1">首页</a> 
-				<a href="search.html?page=${page-1}">上页</a> 
-				<a href="search.html?page=${page+1 }">下页</a> 
+				<a href="search.html?page=${page-1<=1?1:page-1}">上页</a> 
+				<a href="search.html?page=${page+1>=totalPage?totalPage:page+1 }">下页</a> 
 				<a href="search.html?page=${totalPage }">末页</a> 
 				</td>
 				</tr>

@@ -5,6 +5,22 @@ body{text-align: center;}
 	-webkit-transform: rotate(180deg); 
 }
 
+.totalCount{
+	color:red;
+	font-size: 24px;
+}
+.currentPage{
+	color:green;
+	font-size: 22px;
+}
+.totalPage{
+	color:grey;
+	font-size:22px;
+}
+.pageSize{
+	color:pink;
+	font-size:22px;
+}
 
 .mytrOne{
 	background-color:#ECF6EE;

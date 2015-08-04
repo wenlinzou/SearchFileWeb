@@ -1,6 +1,7 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class SearchServlet extends HttpServlet{
 		String foldername = request.getParameter("foldername");
 		String filename = request.getParameter("filename");
 		String suffix = request.getParameter("suffix");
-		
+System.out.println(diskname+" fold:"+foldername+" file:"+filename+" suf:"+suffix);		
 		FileI iFile = new FileI();
 		FileService ss = new FileService();
 		List<String> fileLists = new ArrayList<String>();
@@ -45,32 +46,81 @@ public class SearchServlet extends HttpServlet{
 		
 		Object fileObj = session.getAttribute("iFile");
 		
-
+		FileI f = null;
+		boolean isSession = false;
+		//
+		
 		if(null != fileObj){
-			System.out.println("ifilet:"+fileObj);
 			if(fileObj instanceof FileI){
-				FileI f = (FileI)fileObj;
+				f = (FileI)fileObj;
 				iFile = f;
-				fileLists = ss.queryFileListsPage(new FileI(f.getDiskname(), f.getFoldername(), f.getFilename(), f.getSuffix()), page);
-				currPage = page.getCurrentPage();
-				totalPage = page.getTotalPage();
-				pageSize = page.getPageSize();
-				totalCount = page.getTotalCount();
-				
+System.out.println(f.getDiskname()+" fo "+f.getFoldername()+" fi "+f.getFilename()+" s "+f.getSuffix());				
+				boolean isBeanNull = false;
+System.out.println(f.getClass().getDeclaredFields().length);				
+				for (Field fi:f.getClass().getDeclaredFields()) {
+					fi.setAccessible(true);
+					try {
+						if(fi.get(f)==null){//判断字段是否为空，并且对象属性中的基本都会转为对象类型来判断
+							isBeanNull = true;//为null
+							
+						}
+					} catch (IllegalArgumentException e) {
+						e.printStackTrace();
+					} catch (IllegalAccessException e) {
+						e.printStackTrace();
+					}
+				}
+				if(isBeanNull){
+					isSession = false;
+				}else{
+					if(null == diskname && null==foldername&&null==filename&&null==suffix){
+						isSession = true;
+					}
+					/*if(diskname.equals(f.getDiskname())&&foldername.equals(f.getFoldername()) && filename.equals(f.getFilename())&&suffix.equals(f.getSuffix())){
+						isSession = true;
+					}*/else{
+						isSession = false;
+					}
+				}
 			}
+		}else{
+			isSession = false;
+		}
+			
+		//session not null and fileObje!=f
+		if(isSession){
+			System.out.println("ifilet:"+fileObj);
+			
+			fileLists = ss.queryFileListsPage(new FileI(f.getDiskname(), f.getFoldername(), f.getFilename(), f.getSuffix()), page);
+			
+			currPage = page.getCurrentPage();
+			totalPage = page.getTotalPage();
+			if(currPage<=1){
+				currPage = 1;
+			}else if(currPage>= totalPage){
+				currPage = totalPage;
+			}
+			pageSize = page.getPageSize();
+			totalCount = page.getTotalCount();
+				
 		}else{
 			
 			iFile.setDiskname(diskname);
 			iFile.setFilename(filename);
 			iFile.setFoldername(foldername);
 			iFile.setSuffix(suffix);
-		
-		
-		
-		
 //		List<String> fileLists = ss.queryFileLists(new FileI(diskname, foldername, filename, suffix));
-		fileLists = ss.queryFileListsPage(new FileI(diskname, foldername, filename, suffix), page);
-		
+			fileLists = ss.queryFileListsPage(new FileI(diskname, foldername, filename, suffix), page);
+			currPage = page.getCurrentPage();
+			totalPage = page.getTotalPage();
+			if(currPage<=1){
+				currPage = 1;
+			}else if(currPage>= totalPage){
+				currPage = totalPage;
+			}
+			pageSize = page.getPageSize();
+			totalCount = page.getTotalCount();
+System.out.println("file is null");		
 		}
 		
 		//定义是否搜索到内容的标记
