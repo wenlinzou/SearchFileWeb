@@ -76,7 +76,8 @@ System.out.println("username:"+username+"\tpassword:"+password+"\twordcheck:"+wo
 System.out.println("LOGINED");				
 				sb.append("canLogin").append("</message>");
 				session.setAttribute("user", user);
-System.out.println("osName: " + osName);				
+System.out.println("osName: " + osName);	
+				osName = osName.substring(0, osName.indexOf(" "));
 				session.setAttribute("osName", osName);
 				//登陆后去除之前的搜索信息
 				session.removeAttribute("iFile");

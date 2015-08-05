@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<form action="search.html" method="post"  onsubmit="return validate_form(this)">
 			<table>
 			
-			<c:if test="${osName=='Windows 7'}">
+			<c:if test="${osName=='Windows'}">
 			<tr>
 				<td>
 			指定盘符:

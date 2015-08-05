@@ -1,7 +1,6 @@
 package com.servlet;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.bean.FileI;
 import com.bean.Page;
 import com.service.FileService;
+import com.util.PageUtils;
 
 public class SearchServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,7 +47,7 @@ System.out.println(diskname+" fold:"+foldername+" file:"+filename+" suf:"+suffix
 		Object fileObj = session.getAttribute("iFile");
 		
 		FileI f = null;
-		boolean isSession = false;
+		boolean hasFileISession = false;
 		
 		//当from无值 取session
 		if(null == diskname && null==foldername&&null==filename&&null==suffix){
@@ -55,61 +55,25 @@ System.out.println(diskname+" fold:"+foldername+" file:"+filename+" suf:"+suffix
 				f = (FileI)fileObj;
 				iFile = f;
 			}
-			isSession = true;
+			hasFileISession = true;
 		} else{
-			isSession = false;
+			hasFileISession = false;
 		}
 		
 		//
 		
-		/*if(null != fileObj){
-			if(fileObj instanceof FileI){
-				f = (FileI)fileObj;
-				iFile = f;
-System.out.println(f.getDiskname()+" fo "+f.getFoldername()+" fi "+f.getFilename()+" s "+f.getSuffix());				
-				boolean isBeanNull = false;
-System.out.println(f.getClass().getDeclaredFields().length);				
-				for (Field fi:f.getClass().getDeclaredFields()) {
-					fi.setAccessible(true);
-					try {
-						if(fi.get(f)==null){//判断字段是否为空，并且对象属性中的基本都会转为对象类型来判断
-							isBeanNull = true;//为null
-							
-						}
-					} catch (IllegalArgumentException e) {
-						e.printStackTrace();
-					} catch (IllegalAccessException e) {
-						e.printStackTrace();
-					}
-				}
-				if(isBeanNull){
-					isSession = false;
-				}else{
-					if(null == diskname && null==foldername&&null==filename&&null==suffix){
-						isSession = true;
-					}
-					if(diskname.equals(f.getDiskname())&&foldername.equals(f.getFoldername()) && filename.equals(f.getFilename())&&suffix.equals(f.getSuffix())){
-						isSession = true;
-					}else{
-						isSession = false;
-					}
-				}
-			}
-		}else{
-			isSession = false;
-		}*/
+		
 			
 		//session not null and fileObje!=f
-		if(isSession){
-			System.out.println("ifilet:"+fileObj);
-			
+		if(hasFileISession) {
+System.out.println("ifilet:"+fileObj);
 			fileLists = ss.queryFileListsPage(new FileI(f.getDiskname(), f.getFoldername(), f.getFilename(), f.getSuffix()), page);
 			
 			currPage = page.getCurrentPage();
 			totalPage = page.getTotalPage();
-			if(currPage<=1){
+			if(currPage <= 1) {
 				currPage = 1;
-			}else if(currPage>= totalPage){
+			}else if(currPage >= totalPage) {
 				currPage = totalPage;
 			}
 			pageSize = page.getPageSize();
@@ -137,7 +101,7 @@ System.out.println("file is null");
 		
 		//定义是否搜索到内容的标记
 		int flag = -1;
-		if(fileLists==null || fileLists.size()<1){
+		if(fileLists==null || fileLists.size()<1) {
 			StringBuilder sb = new StringBuilder();
 			sb.append("<center>没能搜索到");
 			if(filename!=null && !filename.trim().equals("")){
@@ -175,4 +139,5 @@ System.out.println("file is null");
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
+	
 }
