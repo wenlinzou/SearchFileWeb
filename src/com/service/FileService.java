@@ -21,6 +21,7 @@ public class FileService {
 	private final String FULL = "搜索上限已到!";
 	private final String ERROR_INFO = "请输入硬盘符,以便查询!";
 	private final int SIZE_SEARCH = 40;
+	private final String OSNAME = System.getProperty("os.name");
 	
 	private FileUtils sf = new FileUtils();
 //	private ITextPdf itd = new ITextPdf();
@@ -229,7 +230,7 @@ System.out.println("4 文件名为空,后缀为空");
 	
 	//暂不适用
 	public List<String> queryFileLists(FileI iFile){
-		String osName = System.getProperty("os.name");
+		String osName = OSNAME;
 		List<String> list = new ArrayList<String>();
 System.out.println(osName);
 		if(osName.startsWith("Windows")){
@@ -244,7 +245,7 @@ System.out.println(osName);
 	
 	//分页查找
 	public List<String> queryFileListsPage(FileI iFile, Page page){
-		String osName = System.getProperty("os.name");
+		String osName = OSNAME;
 System.out.println(osName);		
 		PageUtils<String> pu = new PageUtils<String>();
 		List<String> list = new ArrayList<String>();
@@ -272,13 +273,26 @@ System.out.println(osName);
 	 * @return
 	 */
 	public boolean write2File(List<String> list,File file){
+		String osName = OSNAME;
 		boolean flag = false;
 		try {
 			if(file.exists()){
 				file.mkdirs();
 			}
-			sf.write2File(list, file);
+			
+			System.out.println(file.getAbsolutePath());
+			if(OSNAME.startsWith("Windows")){
+				
+				sf.write2File(list, file);
+			}else{
+				//linux
+				String filepath = file.getAbsolutePath().toString();
+				filepath = filepath.replace(":", "");
+				
+				sf.write2File(list, new File(filepath));
+			}
 			flag = true;
+			System.gc();
 		} catch (IOException e) {
 			System.out.println("MLGB - 找不到"+file);
 			e.printStackTrace();
