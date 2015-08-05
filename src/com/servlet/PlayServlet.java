@@ -20,9 +20,8 @@ public class PlayServlet extends HttpServlet {
 		byte [] bs = myUrl.getBytes("ISO8859-1");
 		myUrl = new String(bs,"UTF-8");
 		
-		int index = myUrl.indexOf(".");
-		
 		myUrl = myUrl.replace("\\", "/");
+System.out.println("myurl " + myUrl);		
 		
 		String first = myUrl.substring(0, 1).toUpperCase();
 		String rest = myUrl.substring(1, myUrl.length());

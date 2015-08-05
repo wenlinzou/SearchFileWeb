@@ -120,10 +120,11 @@
 	<%
 	String showIplay = iplay;
 	int endIndex = iplay.lastIndexOf(".");
-	String suffixTemp = iplay.substring(endIndex);
-	String iplayname = iplay.substring(0, endIndex);
-	StringBuilder sb = new StringBuilder();
-	iplay = sb.append(iplayname).append(suffixTemp.toLowerCase()).toString();
+	if (endIndex != -1) {
+		String suffixTemp = iplay.substring(endIndex);
+		String iplayname = iplay.substring(0, endIndex);
+		StringBuilder sb = new StringBuilder();
+		iplay = sb.append(iplayname).append(suffixTemp.toLowerCase()).toString();
 	
 		if(iplay.endsWith(".jpg") || iplay.endsWith("gif") || iplay.endsWith(".png")){
 	%>
@@ -140,6 +141,7 @@
 		html to doc:<a href="<%=basePath%>html2doc.html?htmlpath=<%=showIplay%>"><%=showIplay%></a>
 		<%
 		}
+	}
 	%>
 	
 

@@ -27,27 +27,39 @@ public class SplitFileServlet extends HttpServlet {
 System.out.println("filesplitPath:"+fileSplitPath);		
 		FileService fs = new FileService();
 		
-		FileInputStream fis = new FileInputStream(fileSplitPath) ;
-		if((size*1000) > fis.available()){
-			request.setAttribute("boundsSize", "输入分解大小超过文件大小!");
+		FileInputStream fis = null;
+		try {
+			fis = new FileInputStream(fileSplitPath);
+			if((size*1000) > fis.available()){
+				request.setAttribute("boundsSize", "输入分解大小超过文件大小!");
 System.out.println(fis.available()+" "+"输入分解大小超过文件大小!");
-//			return;
-		}
-		
+//				return;
+			}
+			
 System.out.println(fis.available()/1024);
-		
-		boolean flag = fs.splitFile(new File(fileSplitPath), new File(putPath), size, suffixname);
-		if(flag){
-			request.setAttribute("ok", "1");
-			request.setAttribute("title", "拆分文件成功");
-			request.setAttribute("message", "拆分文件 "+ fileSplitPath +"成功!文件位于 " + putPath);
-		}else{
+			
+			boolean flag = fs.splitFile(new File(fileSplitPath), new File(putPath), size, suffixname);
+			if(flag){
+				request.setAttribute("ok", "1");
+				request.setAttribute("title", "拆分文件成功");
+				request.setAttribute("message", "拆分文件 "+ fileSplitPath +"成功!文件位于 " + putPath);
+			}else{
+				request.setAttribute("ok", "-1");
+				request.setAttribute("title", "拆分文件失败");
+				request.setAttribute("message", "拆分文件 "+ fileSplitPath +"失败!");
+			}
+			System.gc();
+			request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
+		} catch (Exception e) {
+			System.out.println("系统找不到指定的文件"+fileSplitPath);
 			request.setAttribute("ok", "-1");
 			request.setAttribute("title", "拆分文件失败");
 			request.setAttribute("message", "拆分文件 "+ fileSplitPath +"失败!");
+			System.gc();
+			request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
 		}
-		System.gc();
-		request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);
+		
+		
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
