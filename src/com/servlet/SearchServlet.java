@@ -48,9 +48,21 @@ System.out.println(diskname+" fold:"+foldername+" file:"+filename+" suf:"+suffix
 		
 		FileI f = null;
 		boolean isSession = false;
+		
+		//当from无值 取session
+		if(null == diskname && null==foldername&&null==filename&&null==suffix){
+			if(fileObj instanceof FileI){
+				f = (FileI)fileObj;
+				iFile = f;
+			}
+			isSession = true;
+		} else{
+			isSession = false;
+		}
+		
 		//
 		
-		if(null != fileObj){
+		/*if(null != fileObj){
 			if(fileObj instanceof FileI){
 				f = (FileI)fileObj;
 				iFile = f;
@@ -76,16 +88,16 @@ System.out.println(f.getClass().getDeclaredFields().length);
 					if(null == diskname && null==foldername&&null==filename&&null==suffix){
 						isSession = true;
 					}
-					/*if(diskname.equals(f.getDiskname())&&foldername.equals(f.getFoldername()) && filename.equals(f.getFilename())&&suffix.equals(f.getSuffix())){
+					if(diskname.equals(f.getDiskname())&&foldername.equals(f.getFoldername()) && filename.equals(f.getFilename())&&suffix.equals(f.getSuffix())){
 						isSession = true;
-					}*/else{
+					}else{
 						isSession = false;
 					}
 				}
 			}
 		}else{
 			isSession = false;
-		}
+		}*/
 			
 		//session not null and fileObje!=f
 		if(isSession){
