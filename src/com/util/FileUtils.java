@@ -81,8 +81,7 @@ public class FileUtils {
 	/*
 	 * 查询文件名及后缀
 	 */
-	public void searchIngoreNameWithSuffix(File dir,
-			FilenameSuffixFilter nameSuffixFilter, List<String> fileList) {
+	public void searchIngoreNameWithSuffix(File dir, FilenameSuffixFilter nameSuffixFilter, List<String> fileList) {
 		myFilter(dir, nameSuffixFilter, fileList);
 	}
 

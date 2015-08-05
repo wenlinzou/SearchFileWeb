@@ -21,14 +21,6 @@ public class PlayServlet extends HttpServlet {
 		myUrl = new String(bs,"UTF-8");
 		
 		myUrl = myUrl.replace("\\", "/");
-System.out.println("myurl " + myUrl);		
-		
-		String first = myUrl.substring(0, 1).toUpperCase();
-		String rest = myUrl.substring(1, myUrl.length());
-		String newStr = new StringBuffer(first).append(rest).toString();
-		
-		//myUrl= "file:///"+newStr;
-		
 System.out.println("PlayServlet myUrl:"+myUrl);	
 //myUrl = "//f:/w/d"; 
 		request.setAttribute("playUrl", myUrl);
