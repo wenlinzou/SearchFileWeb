@@ -36,7 +36,8 @@ System.out.println("PlayServlet myUrl:"+myUrl);
 		String suffixStr = myUrl;
 		int endIndex = suffixStr.lastIndexOf(".");
 		//.properties
-		suffixStr = suffixStr.substring(endIndex);
+		if(endIndex!=-1)
+			suffixStr = suffixStr.substring(endIndex);
 		
 		HttpSession sessionPlay = request.getSession();
 		sessionPlay.setAttribute("iPlay", myUrl);
