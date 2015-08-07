@@ -59,10 +59,22 @@ function validate_disk(diskname, alerttxt, selectName) {
 		}
 	}
 }
+function validate_folder(foldername, alerttxt, selectName) {
+	with (foldername) {
+		if (value == null || value == "") {
+			$("errorfolder").innerHTML = alerttxt;
+			$("errorfolder").className = selectName;
+			return false;
+		} else {
+			return true;
+		}
+	}
+}
 function validate_form(thisform) {
 	with (thisform) {
 		var osName = $('osname').value;
-		if('Windows 7'==osName){
+		//Windows
+		if('Windows'==osName){
 			var diskwarn = "请输入盘符名称";
 			if (validate_disk(diskname, diskwarn, "errordisk") == false) {
 				diskname.focus();
@@ -70,10 +82,18 @@ function validate_form(thisform) {
 			}
 		}else{
 			//linux
+			var folderwarn = "请输入文件夹名称";
+			if (validate_folder(foldername, folderwarn, "errorfolder") == false) {
+				foldername.focus();
+				return false;
+			}
 		}
 	}
 	// setInterval("startTime()",1000);
 }
+
+//osname
+
 // 写一个计时的js
 var useTime = 0;
 function startTime() {

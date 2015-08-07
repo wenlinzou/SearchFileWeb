@@ -112,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td>
 			<input type="text" name="foldername" value="${iFile.foldername }"/>
 				</td>
-				<td></td>
+				<td id="errorfolder"></td>
 			</tr>
 			<tr>
 				<td>
