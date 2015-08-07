@@ -42,7 +42,7 @@ public class IDCodeJSPServlet extends HttpServlet {
 		
 		ImageID imageId = new ImageID();
 		imageId.setHeight(30);
-		imageId.setWidth(120);
+		imageId.setWidth(100);
 		
 		BufferedImage buffImage = new BufferedImage(imageId.getWidth(),imageId.getHeight(),BufferedImage.TYPE_INT_RGB);
 		Graphics graphics = buffImage.getGraphics();

@@ -31,6 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="hero">
     <!-- 新增一个div将用户登陆的这块信息挤到下面 -->
     <div class="head"></div>
+
     <!-- <form html="login.html" method="post"> -->
     	<div class="tabDiv">
 	    	<table class="trFont" border="0px">
@@ -41,8 +42,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    	<tr>
 				<td class="inputTd" colspan="2"><input type="text" class="trInput" id="username" name="username" value="${user.username }"/></td>
 				</tr>
-				<tr><td  class="inputTd">
-				<input type="text"  class="trInput" id="password" name="password" value="${user.password }"/></td>
+				<tr>
+					<td  class="inputTd">
+						<input type="text"  class="trInput" id="password" name="password" value="${user.password }"/>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="2" >

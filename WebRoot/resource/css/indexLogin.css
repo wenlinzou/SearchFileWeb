@@ -4,7 +4,7 @@ body{
 }
 html body{
 width: 100%;
-	background: url(../images/indexloginbackground03.png);
+	background: url(../images/indexloginbackground09.png);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center;
@@ -45,9 +45,12 @@ tr{
 	height:54px;
 }
 .wordCheck{
-	width:130px;
+	width:150px;
 	margin-right: 10px;
 	height:40px;
+	border:none;
+	
+	background-color: rgba(0,0,0,0.3);
 	
 }
 /*  Hero Section  */
@@ -57,13 +60,13 @@ tr{
     /* background-color:#F1F4F5; */
 }
 .head{
-	height: 15%;
+	height: 25%;
 }
 .tabDiv{
 	width:362px;
 	height:400px;
-	border:1px solid #8E96A1;
-	background-color: rgba(0,0,0,0.4);
+	/* border:1px solid #fff; */
+	background-color: rgba(200,200,200,0.4);
 }
 /*table font*/
 .trFont{
@@ -73,9 +76,10 @@ tr{
 .trInput{
 	width: 300px;
 	height:40px;
-	border:1px solid #8E96A1;
-	/* background-color: #F54545; */
-	background-color: #FFFFFF;
+	/* border:1px solid #fff; */
+	border:none;
+	/* background-color: #FFFFFF; */
+	background-color: rgba(0,0,0,0.3);
 }
 .login-btn {
     width: 300px;
