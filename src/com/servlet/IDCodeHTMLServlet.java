@@ -1,7 +1,5 @@
 package com.servlet;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -14,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bean.IDCodeStyle;
 import com.bean.ImageID;
 import com.service.impl.UserServiceImpl;
 
@@ -24,8 +21,8 @@ public class IDCodeHTMLServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		ImageID imageId = new ImageID();
-		imageId.setHeight(100);
-		imageId.setWidth(240);
+		imageId.setHeight(30);
+		imageId.setWidth(120);
 		
 		BufferedImage buffImage = new BufferedImage(imageId.getWidth(),imageId.getHeight(),BufferedImage.TYPE_INT_RGB);
 		Graphics graphics = buffImage.getGraphics();
