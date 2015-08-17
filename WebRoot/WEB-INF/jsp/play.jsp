@@ -76,6 +76,18 @@
 	</div>
 	<!-- download end-->
 	
+	<!-- upload file -->
+	<div>
+		<form action="uploadFile.html" method="post"enctype="multipart/form-data">
+			<input type="text" name="username" />
+            <br />
+            <input type="file" name="myfile" />
+            <br />
+            <input type="submit" />
+		</form>
+	</div>
+	
+	
 	<%-- <div>
 		<video src="${playUrl}" width="1000" height="500" controls="controls">您的浏览器不支持此种视频格式。</video> 
 	</div> --%>

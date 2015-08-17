@@ -92,6 +92,16 @@
     <servlet-name>DownloadFileServlet</servlet-name>
     <servlet-class>com.servlet.DownloadFileServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UploadFileServlet</servlet-name>
+    <servlet-class>com.servlet.UploadFileServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>VideoListServlet</servlet-name>
+    <servlet-class>com.servlet.VideoListServlet</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -187,5 +197,13 @@
   <servlet-mapping>
     <servlet-name>DownloadFileServlet</servlet-name>
     <url-pattern>/download.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UploadFileServlet</servlet-name>
+    <url-pattern>/uploadFile.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>VideoListServlet</servlet-name>
+    <url-pattern>/videolist.html</url-pattern>
   </servlet-mapping>
 </web-app>

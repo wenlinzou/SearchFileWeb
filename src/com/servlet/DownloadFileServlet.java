@@ -26,7 +26,6 @@ public class DownloadFileServlet extends HttpServlet {
 System.out.println("Download path - "+path);	
 
 		String filename = path.substring(path.lastIndexOf("/") + 1);
-//		String method = request.getMethod();
 		//通知浏览器接收
 		//如果下载文件时中文文件,则文件名需要经过url编码
 		//e.g.URLEncoder.encode(filename, "UTF-8")
