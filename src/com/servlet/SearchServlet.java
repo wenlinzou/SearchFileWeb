@@ -97,9 +97,9 @@ System.out.println("-- no session createing --");
 
 			currPage = page.getCurrentPage();
 			totalPage = page.getTotalPage();
-			if(currPage<=1){
+			if (currPage <= 1) {
 				currPage = 1;
-			}else if(currPage>= totalPage){
+			}else if (currPage >= totalPage) {
 				currPage = totalPage;
 			}
 			pageSize = page.getPageSize();
