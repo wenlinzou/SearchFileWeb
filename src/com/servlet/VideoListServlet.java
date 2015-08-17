@@ -22,7 +22,6 @@ public class VideoListServlet extends HttpServlet {
 System.out.println("filetype "+filetype);		
 		File f = new File(path);
 		File[] files = f.listFiles();
-		String type = "";
 		List<FileI> lists = new ArrayList<FileI>();
 		if(files.length>0){
 			for (int i = 0; i < files.length; i++) {
@@ -37,19 +36,6 @@ System.out.println("filetype "+filetype);
 					lists.add(ifile);
 				}
 				
-/*System.out.println(filename);				
-				if(suffix.equals("mp4")){
-					
-					type = "video";
-					System.out.println("this is mp4");
-				}
-				if(suffix.equals("mp3")){
-					ifile.setFilename(filename);
-					lists.add(ifile);
-					type = "audio";
-					System.out.println("this is mp3");
-				}*/
-
 			}
 		}
 		

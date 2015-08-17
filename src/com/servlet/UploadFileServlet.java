@@ -75,8 +75,9 @@ System.out.println(param_hm);
 		//展现播放视频列表
 //		request.getRequestDispatcher("/WEB-INF/jsp/videolist.jsp").forward(request, response);
 		
-//		request.getRequestDispatcher("/WEB-INF/videolist.html").forward(request, response);
-		response.sendRedirect("videolist.html");
+		//跳回首页
+		response.sendRedirect("jump.html");
+//		response.sendRedirect("videolist.html");
 //		return param_hm;
 	}
 
