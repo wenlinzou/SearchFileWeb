@@ -10,7 +10,8 @@ public class MySuffixFilter implements java.io.FilenameFilter{
 	}
 	@Override
 	public boolean accept(File dir, String name) {
-		return name.endsWith(suffix);
+//		return name.endsWith(suffix);
+		return name.contains(suffix);
 	}
 
 }

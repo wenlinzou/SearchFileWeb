@@ -20,7 +20,7 @@ public class FileService {
 	private static int COUNT = 0;
 	private final String FULL = "搜索上限已到!";
 	private final String ERROR_INFO = "请输入硬盘符,以便查询!";
-	private final int SIZE_SEARCH = 40;
+	private final int SIZE_SEARCH = 20;
 	private final String OSNAME = System.getProperty("os.name");
 	
 	private FileUtils sf = new FileUtils();
@@ -228,7 +228,8 @@ System.out.println("4 文件名为空,后缀为空");
 		
 	}
 	
-	//暂不适用
+
+	//先取到所有的文件list
 	public List<String> queryFileLists(FileI iFile){
 		String osName = OSNAME;
 		List<String> list = new ArrayList<String>();
@@ -241,6 +242,13 @@ System.out.println(osName);
 		return list;
 	}
 	
+	
+	//从session中取
+	public List<String> queryFileListBySession(List<String> lists, Page page){
+		PageUtils<String> pu = new PageUtils<String>();
+		List<String> backlists = pu.queryListPage(lists, page);
+		return backlists;
+	}
 	
 	
 	//分页查找

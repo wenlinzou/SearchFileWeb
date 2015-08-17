@@ -10,7 +10,7 @@ public class PageUtils<T> {
 	//传入返回的类型
 	public List<T> queryListPage(List<T> inputList,Page page){
 		List<T> backList = new ArrayList<T>();
-		
+
 		int startIndex = 0;
 		int endIndex = 0;
 		
@@ -18,13 +18,15 @@ public class PageUtils<T> {
 		int tempGoPage = currentPage; 
 		
 		int pageSize = page.getPageSize();
-		int totalCount = page.getTotalCount();
+//		int totalCount = page.getTotalCount();
+		int totalCount = inputList==null?0:inputList.size();
+		page.setTotalCount(totalCount);
+		
 		int totalPage = totalCount / pageSize + 1;
-
 		page.setTotalPage(totalPage);
 		currentPage = currentPage <= 1?0:currentPage-1;
 		startIndex = currentPage * pageSize;
-		
+System.out.println("pagesize:"+pageSize+" totalcount:"+totalCount);		
 		//大于总页数 显示最后一页
 		if(tempGoPage >= totalPage){
 			//显示剩余的记录

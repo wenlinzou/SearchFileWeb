@@ -6,7 +6,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <%-- <base href="<%=basePath%>"> --%>
@@ -144,6 +144,16 @@
 	}
 	%>
 	
+	<!-- video to show -->
+	<%
+		if(iplay.endsWith(".mp4")){
+	%>
+		<%-- <video height="500px;" src="${playUrl }" controls="true"></video> --%>
+		<video height="500px;" src="<%=basePath%>resource/video/t1-ui.mp4" controls="true"></video>
+	<%	
+		}
+	
+	%>
 
 </body>
 </html>

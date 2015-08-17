@@ -130,10 +130,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span class="pageSize">${pageSize }</span>条 
 				<a href="search.html?page=1">首页</a> 
 				<a href="search.html?page=${page-1<=1?1:page-1}">上页</a> 
+				
+				<!-- 展现中间的两页 -->
+				<%-- <c:if test="${page+2<=totalPage }">
+					<a href="search.html?page=${page+1 }">${page+1 }</a>
+				</c:if> --%>
+				
 				<a href="search.html?page=${page+1>=totalPage?totalPage:page+1 }">下页</a> 
-				<a href="search.html?page=${totalPage }">末页</a> 
+				<a href="search.html?page=${totalPage }">末页</a>
+				
 				</td>
-				</tr>
+			</tr>
+			
+			
 		</table>
 	</div>
 	

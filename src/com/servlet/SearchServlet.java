@@ -59,15 +59,13 @@ System.out.println(diskname+" fold:"+foldername+" file:"+filename+" suf:"+suffix
 		} else{
 			hasFileISession = false;
 		}
-		
-		//
-		
-		
 			
 		//session not null and fileObje!=f
 		if(hasFileISession) {
-System.out.println("ifilet:"+fileObj);
-			fileLists = ss.queryFileListsPage(new FileI(f.getDiskname(), f.getFoldername(), f.getFilename(), f.getSuffix()), page);
+System.out.println("-- has session no create --");			
+			//取sessionFileLists
+			List<String> inputSessionList = (List<String>) session.getAttribute("sessionFileLists");
+			fileLists = ss.queryFileListBySession(inputSessionList, page);
 			
 			currPage = page.getCurrentPage();
 			totalPage = page.getTotalPage();
@@ -80,13 +78,23 @@ System.out.println("ifilet:"+fileObj);
 			totalCount = page.getTotalCount();
 				
 		}else{
+System.out.println("-- no session createing --");			
+			//session is null by filefilter maybe this is first so u need input all filelist in session 
+			//first remove allfilelist session
+//			session.removeAttribute("sessionFileLists");
 			
 			iFile.setDiskname(diskname);
 			iFile.setFilename(filename);
 			iFile.setFoldername(foldername);
 			iFile.setSuffix(suffix);
-//		List<String> fileLists = ss.queryFileLists(new FileI(diskname, foldername, filename, suffix));
-			fileLists = ss.queryFileListsPage(new FileI(diskname, foldername, filename, suffix), page);
+			
+			//将filelist放入session中,page方式取自session-->alllists
+			List<String> inputSessionList = new ArrayList<String>();
+			inputSessionList = ss.queryFileLists(new FileI(iFile.getDiskname(), iFile.getFoldername(), iFile.getFilename(), iFile.getSuffix()));
+			session.setAttribute("sessionFileLists", inputSessionList);
+			
+			fileLists = ss.queryFileListBySession(inputSessionList, page);
+
 			currPage = page.getCurrentPage();
 			totalPage = page.getTotalPage();
 			if(currPage<=1){
@@ -123,8 +131,9 @@ System.out.println("file is null");
 			request.getRequestDispatcher("WEB-INF/jsp/index.jsp").forward(request, response);
 			return;
 		}
-		session.setAttribute("fileLists", fileLists);
-		//request.setAttribute("fileLists", fileLists);
+//		if(session.getAttribute("fileLists")==null)
+//			session.setAttribute("fileLists", fileLists);
+		request.setAttribute("fileLists", fileLists);
 		session.setAttribute("iFile", iFile);
 		request.setAttribute("page", currPage);
 		request.setAttribute("pageSize", pageSize);

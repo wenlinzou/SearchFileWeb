@@ -16,7 +16,10 @@ public class PlayServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		
 		String myUrl = request.getParameter("myUrl");
-		
+		if(null==myUrl || "".equals(myUrl)){
+			request.getRequestDispatcher("/WEB-INF/notfound.html").forward(request, response);
+			return;
+		}
 		byte [] bs = myUrl.getBytes("ISO8859-1");
 		myUrl = new String(bs,"UTF-8");
 		
