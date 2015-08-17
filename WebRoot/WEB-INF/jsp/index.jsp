@@ -154,7 +154,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<li><a href="<%=basePath %>otherInfo/sendEmail.jsp" target="_blank">发送邮件</a></li>
 			<li><a href="<%=basePath %>otherInfo/asciiImg.jsp" target="_blank">打印字符画</a></li>
 			<li><a href="<%=basePath %>otherInfo/indexShowImg.html" target="_blank">查看图片</a></li>
-			<li><a href="<%=basePath %>videolist.html" target="_blank">查看视频</a></li>
+			<li><a href="<%=basePath %>videolist.html?filetype=mp4" target="_blank">查看视频</a></li>
+			<li><a href="<%=basePath %>videolist.html?filetype=mp3" target="_blank">播放音频</a></li>
 		</ol>
 	</div>
 	
