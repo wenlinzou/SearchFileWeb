@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,24 @@ public class SearchServlet extends HttpServlet{
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
+		
+		// 创建一个Cookie,包括(key,value).在服务器端创建
+//	     Cookie cookie = new Cookie("cookieName", "cookieValue");
+	     
+	     // 设置Cookie的生命周期,如果设置为负值的话,关闭浏览器就失效.
+//	     cookie.setMaxAge(60*60*24*365);
+	     //单位是秒，默认情况下是不保存的
+	     //如果是0，则意味着删除该cookie
+	     //有的浏览器在关闭时会自动检查它所创建的cookie是否过期
+	     //如果过期，则将它删除
+//	  	 res.addCookie(myCookie);       ///添加到客户端
+	     
+	     // 设置Cookie路径,不设置的话为当前路径(对于Servlet来说为request.getContextPath() + web.xml里配置的该Servlet的url-pattern路径部分)
+	     // cookie.setPath("/"); 
+	   
+	     // 输出Cookie
+//	     response.addCookie(cookie);
+	     
 		
 		String diskname = request.getParameter("diskname");
 		String foldername = request.getParameter("foldername");
@@ -50,7 +69,7 @@ System.out.println(diskname+" fold:"+foldername+" file:"+filename+" suf:"+suffix
 		boolean hasFileISession = false;
 		
 		//当from无值 取session
-		if(null == diskname && null==foldername&&null==filename&&null==suffix){
+		if(null == diskname && null==foldername && null==filename && null==suffix) {
 			if(fileObj instanceof FileI){
 				f = (FileI)fileObj;
 				iFile = f;

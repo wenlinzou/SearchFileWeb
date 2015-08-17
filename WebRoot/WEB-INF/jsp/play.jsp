@@ -65,6 +65,16 @@
 			
 		</form>	
 	</div>
+	<!-- merge File end -->
+	
+	<!-- download -->
+	<div>
+		<form action="download.html" method="post">
+			<input type="hidden" name="filepath" value='${playUrl }'/>
+			<input type="submit" value="下载"/>
+		</form>
+	</div>
+	<!-- download end-->
 	
 	<%-- <div>
 		<video src="${playUrl}" width="1000" height="500" controls="controls">您的浏览器不支持此种视频格式。</video> 

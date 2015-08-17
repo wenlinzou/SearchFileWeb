@@ -88,6 +88,11 @@
     <servlet-name>GreyPhotoServlet</servlet-name>
     <servlet-class>com.servlet.GreyPhotoServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>DownloadFileServlet</servlet-name>
+    <servlet-class>com.servlet.DownloadFileServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -178,5 +183,9 @@
   <servlet-mapping>
     <servlet-name>GreyPhotoServlet</servlet-name>
     <url-pattern>/photoGrey.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DownloadFileServlet</servlet-name>
+    <url-pattern>/download.html</url-pattern>
   </servlet-mapping>
 </web-app>
