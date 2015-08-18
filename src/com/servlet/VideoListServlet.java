@@ -19,6 +19,11 @@ public class VideoListServlet extends HttpServlet {
 
 		String path = request.getServletContext().getRealPath("/resource/upload");
 		String filetype = request.getParameter("filetype");
+		
+		if(null == filetype || "".equals(filetype)){
+			request.getRequestDispatcher("/WEB-INF/notfound.html").forward(request, response);
+		}
+		
 System.out.println("filetype "+filetype);		
 		File f = new File(path);
 		File[] files = f.listFiles();
