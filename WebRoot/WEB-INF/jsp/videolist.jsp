@@ -19,13 +19,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<c:forEach var="file" items="${videolist }">
 				<c:if test="${filetype=='video' }">
 				<li>
-					<video height="500px;" controls="true" src='<%=basePath%>resource/upload/${file.filename }'></video>
+					${file.filename }<br/>
+					<video height="500px;" controls="true" src='<%=basePath%>resource/upload/${file.arrfilename }'></video>
 				</li>
 				</c:if>
 
 				<c:if test="${filetype=='audio' }">
 				<li>
-					<AUDIO height="500px;" controls="true" src='<%=basePath%>resource/upload/${file.filename }'></AUDIO>
+					${file.filename }<br/>
+					<AUDIO height="500px;" controls="true" src='<%=basePath%>resource/upload/${file.arrfilename }'></AUDIO>
 				</li>
 				</c:if>
 			</c:forEach>

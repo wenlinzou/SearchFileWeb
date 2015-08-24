@@ -21,12 +21,20 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.servlet.ServletRequestContext;
 
+import com.bean.FileI;
+import com.service.UploadFileService;
+import com.util.DateUtils;
+import com.util.FileUtils;
+import com.util.WebUtils;
+
 public class UploadFileServlet extends HttpServlet {
 	private String dir_name = "resource/upload";
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		UploadFileService upFileService = new UploadFileService();
+		
 		HashMap<String,String> param_hm = new HashMap<String,String>();
 		try {
 			RequestContext requestContext = new ServletRequestContext(request);
@@ -42,22 +50,41 @@ public class UploadFileServlet extends HttpServlet {
 				upload.setSizeMax(-1);
 				List<FileItem> items = new ArrayList<FileItem>();
 				items = upload.parseRequest(request);
+				
+				
 				Iterator<FileItem> it = items.iterator();
-				while (it.hasNext()) {
+				
+				ok:while (it.hasNext()) {
 					FileItem fileItem = (FileItem) it.next();
 					if (fileItem.isFormField()) {
 						param_hm.put(fileItem.getFieldName(), new String(fileItem.getString().getBytes("iso8859-1"),"utf-8"));
 					} else {
 						if (fileItem.getName() != null && fileItem.getSize() != 0) {
-							File fullFile = new File(fileItem.getName());
-							File newFile = new File(request.getRealPath("")	+ "//" + getDir_name() + "//" + fullFile.getName());
+							//判断文件是否已经存在
+							boolean hasFile = FileUtils.hasFile(temp_file.getAbsolutePath(), fileItem.getName());
 							//创建前 判断是否已经存在
-							if(!newFile.exists())
-								fileItem.write(newFile);
-							else{
+							if(hasFile){
 								System.out.println("文件已存在!");
-								break;
+								break ok;
 							}
+							
+							File fullFile = new File(fileItem.getName());
+							
+							String arrFilename = DateUtils.getCurrentTimeAllNo();
+							FileI filei = new FileI();
+							filei.setArrfilename(arrFilename);
+							filei.setId(WebUtils.generateID());
+							String uploadFilename = fileItem.getName();
+							int endIndex = uploadFilename.lastIndexOf(".");
+							if(endIndex!=-1){
+								filei.setFilename(uploadFilename.substring(0, endIndex));
+								filei.setSuffix(uploadFilename.substring(endIndex+1));
+							}
+							File newFile = new File(request.getRealPath("")	+ "//" + getDir_name() + "//" + arrFilename+"." + filei.getSuffix());
+							
+							
+							fileItem.write(newFile);
+							upFileService.saveUploadFileInfo(filei);
 						} else {
 							System.out.println("文件没有选择 或 文件内容为空");
 						}
@@ -71,7 +98,7 @@ public class UploadFileServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-System.out.println(param_hm);
+//System.out.println(param_hm);
 		//展现播放视频列表
 //		request.getRequestDispatcher("/WEB-INF/jsp/videolist.jsp").forward(request, response);
 		

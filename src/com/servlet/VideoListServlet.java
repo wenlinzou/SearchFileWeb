@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bean.FileI;
+import com.service.UploadFileService;
 
 public class VideoListServlet extends HttpServlet {
 
@@ -19,10 +20,12 @@ public class VideoListServlet extends HttpServlet {
 
 		String path = request.getServletContext().getRealPath("/resource/upload");
 		String filetype = request.getParameter("filetype");
+		UploadFileService uploadService = new UploadFileService();
 		List<String> suffixLists = new ArrayList<String>();
 		
 		if(null == filetype || "".equals(filetype)){
 			request.getRequestDispatcher("/WEB-INF/notfound.html").forward(request, response);
+			return;
 		}
 		
 System.out.println("filetype "+filetype);		
@@ -33,14 +36,18 @@ System.out.println("filetype "+filetype);
 			for (int i = 0; i < files.length; i++) {
 				if(files[i].isFile()){
 					FileI ifile = new FileI();
-					String filename = files[i].getName();
-					int index = filename.lastIndexOf(".");
+					String arrfilename = files[i].getName();
+					int index = arrfilename.lastIndexOf(".");
+					
 					String suffix = "";
 					if(index!=-1)
-						suffix = filename.substring((index+1));
+						suffix = arrfilename.substring((index+1));
 						suffixLists.add(suffix);
 					if(suffix.equals(filetype)){
-						ifile.setFilename(filename);
+						String beforeName = uploadService.getUploadBeforeFilename(arrfilename.substring(0, index));
+System.out.println("beforename: "+beforeName);						
+						ifile.setFilename(beforeName);
+						ifile.setArrfilename(arrfilename);
 						lists.add(ifile);
 					}
 				}
@@ -60,8 +67,13 @@ System.out.println("filetype "+filetype);
 		}
 		
 		if(!hasFiletype){
-			request.getRequestDispatcher("/WEB-INF/notfound.html").forward(request, response);
-			return;
+			try {
+				request.getRequestDispatcher("/notfound.html").forward(request,	response);
+//				response.sendRedirect("notfound.html");
+				
+				return;
+			} catch (Exception e) {
+			}
 		}
 		
 		

@@ -45,7 +45,24 @@ public class FileUtils {
             fileName = filePath.substring(startIndex + 1, endIndex);
         }
         return fileName;
-    }
+	
+	}
+	
+	//folder has input file
+	public static boolean hasFile(String filepath, String filename){
+		File folder = new File(filepath);
+		String [] children = folder.list();
+		boolean hasFile = false;
+		for (int i = 0; i < children.length; i++) {
+			if(children[i].equals(filename)){
+				hasFile = true;
+			}
+		}
+		return hasFile;
+	}
+	public static void main(String[] args) {
+		hasFile("f:/txt","");
+	}
 	 /**
      * 获取全路径的路径
      *
@@ -402,9 +419,6 @@ System.out.println("ISRename:"+rename+"\toldname:"+oldname+"\tsameName:"+sameNam
 		return needname;
 	}
 	
-	public static void main(String[] args) {
-		
-	}
 	
 	
 	

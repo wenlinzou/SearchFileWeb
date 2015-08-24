@@ -76,11 +76,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public boolean sendEmail(SEmail semail) {
-//		boolean flag = SendMail.sendMail(semail);
-		/*if(semail.getFilename() == null || semail.getFileList().size() < 1 )
-		return SendMail.sendMail(semail);
-		else*/
-			return SendMailUtils.sendEMail(semail);
+		return SendMailUtils.sendEMail(semail);
 	}
 
 
