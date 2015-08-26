@@ -16,18 +16,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-
+	<link rel="stylesheet" type="text/css" href="<%=basePath %>resource/css/upload.css">
   </head>
   
   <body>
-    <div>
+  <div class="header"></div>
+    	<center>
+    <div class="updiv">
 		<form action="<%=basePath%>uploadFile.html" method="post"enctype="multipart/form-data">
 			<input type="hidden" name="username" />
             <br />
-            <input type="file" name="myfile" />  
+            <input class="upfile" type="file" name="myfile" />  
             <br />
-            <input type="submit" value="上传" />
+            <input class="subtn" type="submit" value="上传" />
 		</form>
 	</div>
+		</center>
   </body>
 </html>

@@ -1,4 +1,20 @@
-
+body{
+	background-color: #F8F8F8;
+}
+input{
+	background-color: #E6E6E6;
+	line-height:25px;
+	width:200px;
+	border: 0px;
+}
+.btnSearch{
+	background-color: #98BAEF;
+	height:26px;
+	width:200px;
+	color:white;
+	font-weight:bold;
+	font-size: 17px;
+}
 .errordisk{
 	color:red;
 }

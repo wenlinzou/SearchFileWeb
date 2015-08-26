@@ -1,4 +1,10 @@
- li{
+body{
+	background-color: #8ADEDC;
+}
+li{
+	color:#5F5F5F;
+	font-weight:bold;
+	line-height:26px;
  	list-style: none;
  	/* float:left; */
  }
