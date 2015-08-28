@@ -6,12 +6,13 @@ input{
 	border: 0px;
 }
 .cueInfo{
+	width:90px;
 	text-align: right;
 }
 .inputSearch{
-	background-color: #E6E6E6;
-	line-height:25px;
 	width:200px;
+	line-height:25px;
+	background-color: #E6E6E6;
 }
 .btnSearch{
 	background-color: #98BAEF;
