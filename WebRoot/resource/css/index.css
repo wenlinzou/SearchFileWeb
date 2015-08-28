@@ -2,10 +2,16 @@ body{
 	background-color: #F8F8F8;
 }
 input{
+	
+	border: 0px;
+}
+.cueInfo{
+	text-align: right;
+}
+.inputSearch{
 	background-color: #E6E6E6;
 	line-height:25px;
 	width:200px;
-	border: 0px;
 }
 .btnSearch{
 	background-color: #98BAEF;

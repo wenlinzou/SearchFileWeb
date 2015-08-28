@@ -95,39 +95,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<c:if test="${osName=='Windows'}">
 			<tr>
-				<td>
-			指定盘符:
+				<td class="cueInfo">
+			指定盘符&nbsp;
 				</td>
 				<td>
-			<input type="text" name="diskname" value="${iFile.diskname }"/>
+			<input type="text" class="inputSearch" name="diskname" value="${iFile.diskname }"/>
 				</td>
 				<td id="errordisk"></td>
 			</tr>
 			</c:if>
 			
 			<tr>
-				<td>
-			文件夹名:
+				<td class="cueInfo">
+			文件夹名&nbsp;
 				</td>
 				<td>
-			<input type="text" name="foldername" value="${iFile.foldername }"/>
+			<input type="text" class="inputSearch" name="foldername" value="${iFile.foldername }"/>
 				</td>
 				<td id="errorfolder"></td>
 			</tr>
 			<tr>
-				<td>
-			文件名:
+				<td class="cueInfo">
+			文件名&nbsp;
 				</td>
 				<td>
-			<input type="text" name="filename" value="${iFile.filename }"/>
+			<input type="text"  class="inputSearch" name="filename" value="${iFile.filename }"/>
 				</td><td></td>
 			</tr>
 			<tr>
-				<td>
-			文件后缀:
+				<td class="cueInfo">
+			文件后缀&nbsp;
 				</td>
 				<td>
-			<input type="text" name="suffix" value="${iFile.suffix }"/>
+			<input type="text" class="inputSearch" name="suffix" value="${iFile.suffix }"/>
 				</td><td></td>
 			</tr>
 			<tr>
