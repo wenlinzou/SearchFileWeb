@@ -38,18 +38,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  		<tr class="writeTabTitle"><td colspan="3">搜索结果写入</td>
 		  		</tr>
 				<tr class="writeTabRight">
-					<td>盘符:</td>
+					<td>盘符&nbsp;</td>
 					<td><input type="text" name="diskname"/></td>
 					<td id="errordisk"></td>
 		  		</tr>
 		  		<tr class="writeTabRight">
-		  			<td>文件名称:</td>
+		  			<td>文件名称&nbsp;</td>
 		  			<td><input type="text" name="filename"/></td>
 		  			<td id="errorfile"></td>
 	  			</tr>
 	  			<tr>
 	  				<td></td>
-		  			<td><input type="submit" value="写入进本地磁盘" id="showthis"/></td>
+		  			<td><input type="submit" value="写入进本地磁盘" id="showthis" class="write2disk"/></td>
 		  			<td></td>
 	  			</tr>
 			</table>
@@ -75,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<input type="hidden" id="rename" name="rename"/>
 			<table>
 				<tr>
-				<td>相同部分的名称为:</td>
+				<td>相同的前缀&nbsp;</td>
 				<td><input type="text" name="samename" id="samename"/></td>
 				</tr>
 				<tr><td colspan="2" id="nochecked" ></td></tr>

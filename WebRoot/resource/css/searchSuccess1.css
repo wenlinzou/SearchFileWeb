@@ -1,5 +1,10 @@
 *{margin:0 auto;padding:0;list-style:none;border:none;}
-body{text-align: center;}
+body{text-align: center;background-color: #F8F8F8;}
+
+.write2disk{
+	background-color: #98BAEF;
+	color:white;
+}
 
 .convertH{
 	-webkit-transform: rotate(180deg); 
