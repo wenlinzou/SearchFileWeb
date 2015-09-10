@@ -32,6 +32,10 @@ System.out.println("filetype "+filetype);
 		List<FileI> lists = new ArrayList<FileI>();
 		if("img".equals(filetype)){
 			lists = jumpImg(filetype, path, uploadService);
+			if(null == lists || lists.size() < 1) {
+				request.getRequestDispatcher("/notfound.html").forward(request,	response);
+				return;
+			}
 		}else{
 			lists = jumpAudioVideo(filetype, suffixLists, path, uploadService, request, response);
 			if(null == lists || lists.size() < 1) {
@@ -39,53 +43,6 @@ System.out.println("filetype "+filetype);
 				return;
 			}
 		}
-		/*File f = new File(path);
-		File[] files = f.listFiles();
-		List<FileI> lists = new ArrayList<FileI>();
-		if(files.length>0){
-			for (int i = 0; i < files.length; i++) {
-				if(files[i].isFile()){
-					FileI ifile = new FileI();
-					String arrfilename = files[i].getName();
-					int index = arrfilename.lastIndexOf(".");
-					
-					String suffix = "";
-					if(index!=-1)
-						suffix = arrfilename.substring((index+1));
-						suffixLists.add(suffix);
-					if(suffix.equals(filetype)){
-						String beforeName = uploadService.getUploadBeforeFilename(arrfilename.substring(0, index));
-System.out.println("beforename: "+beforeName);						
-						ifile.setFilename(beforeName);
-						ifile.setArrfilename(arrfilename);
-						lists.add(ifile);
-					}
-				}
-				
-			}
-		}
-		//check upload folder exist file suffix
-		boolean hasFiletype = true;
-		int noSuffix = 0;
-		for (int i = 0; i < suffixLists.size(); i++) {
-			if(!filetype.equals(suffixLists.get(i))){
-				noSuffix++;
-			}
-			if(noSuffix == suffixLists.size()){
-				hasFiletype = false;
-			}
-		}
-		
-		if(!hasFiletype){
-			try {
-				request.getRequestDispatcher("/notfound.html").forward(request,	response);
-//				response.sendRedirect("notfound.html");
-				
-				return;
-			} catch (Exception e) {
-			}
-		}*/
-		
 		
 		request.setAttribute("videolist", lists);
 		String tempFileType = "";
