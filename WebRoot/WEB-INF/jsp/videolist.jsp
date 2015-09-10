@@ -30,6 +30,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<AUDIO height="500px;" controls="true" src='<%=basePath%>resource/upload/${file.arrfilename }'></AUDIO>
 				</li>
 				</c:if>
+				<c:if test="${filetype=='img' }">
+				<li>
+					<%-- ${file.filename }<br/> --%>
+					<img height="300px;" src='<%=basePath%>resource/upload/${file.arrfilename }' alt='${file.filename }'/>
+				</li>
+				</c:if>
 			</c:forEach>
 		</ul>
 	</div>
