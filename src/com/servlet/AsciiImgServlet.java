@@ -8,10 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.util.AsciiImgUtils;
 
 public class AsciiImgServlet extends HttpServlet {
-
+	private static Logger logger = Logger.getLogger(AsciiImgServlet.class);
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -21,6 +24,7 @@ public class AsciiImgServlet extends HttpServlet {
 
 		String method = request.getMethod();
 System.out.println("method:"+method);
+		logger.info("method:"+method);
 		
 		if(imgpath==null || imgpath.trim().equals("")){
 			request.setAttribute("message", "图像字符画失败!");

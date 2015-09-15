@@ -36,8 +36,14 @@ System.out.println("filetype "+filetype);
 				request.getRequestDispatcher("/notfound.html").forward(request,	response);
 				return;
 			}
-		}else{
+		}else if("mp3".equals(filetype) || "mp4".equals(filetype)){
 			lists = jumpAudioVideo(filetype, suffixLists, path, uploadService, request, response);
+			if(null == lists || lists.size() < 1) {
+				request.getRequestDispatcher("/notfound.html").forward(request,	response);
+				return;
+			}
+		}else if("txt".equals(filetype)){
+			lists = jumpTxt(filetype, path, uploadService);
 			if(null == lists || lists.size() < 1) {
 				request.getRequestDispatcher("/notfound.html").forward(request,	response);
 				return;
@@ -52,6 +58,8 @@ System.out.println("filetype "+filetype);
 			tempFileType = "video";
 		}else if("img".equals(filetype)){
 			tempFileType = "img";
+		}else if("txt".equals(filetype)){
+			tempFileType = "txt";
 		}
 		request.setAttribute("filetype", tempFileType);
 		System.out.println(path);
@@ -132,6 +140,36 @@ System.out.println("beforename: "+beforeName);
 							suffix = arrfilename.substring((index+1));
 						String temp_suffix = suffix.toLowerCase();
 						if("jpg".equals(temp_suffix) || "jpeg".equals(temp_suffix) || "png".equals(temp_suffix) || "bmp".equals(temp_suffix) || "gif".equals(temp_suffix)){
+							String beforeName = uploadService.getUploadBeforeFilename(arrfilename.substring(0, index));
+							System.out.println("beforename: "+beforeName);						
+							ifile.setFilename(beforeName);
+							ifile.setArrfilename(arrfilename);
+							lists.add(ifile);
+						}
+					}
+				}
+			}
+		}
+		return lists;
+	}
+	
+	public List<FileI> jumpTxt(String filetype, String path, UploadFileService uploadService){
+		List<FileI> lists = new ArrayList<FileI>();
+		if("txt".equals(filetype)){
+			File f = new File(path);
+			File[] files = f.listFiles();
+			
+			if(files.length>0){
+				for (int i = 0; i < files.length; i++) {
+					if(files[i].isFile()){
+						FileI ifile = new FileI();
+						String arrfilename = files[i].getName();
+						int index = arrfilename.lastIndexOf(".");
+						String suffix = "";
+						if(index!=-1)
+							suffix = arrfilename.substring((index+1));
+						String temp_suffix = suffix.toLowerCase();
+						if("txt".equals(temp_suffix) || "sql".equals(temp_suffix)){
 							String beforeName = uploadService.getUploadBeforeFilename(arrfilename.substring(0, index));
 							System.out.println("beforename: "+beforeName);						
 							ifile.setFilename(beforeName);

@@ -9,12 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.bean.SEmail;
 import com.service.impl.UserServiceImpl;
 import com.util.MD5Utils;
 import com.util.FileUtils;
 
 public class SendEmailServlet extends HttpServlet {
+	private static Logger logger = Logger.getLogger(SendEmailServlet.class);
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -54,6 +57,8 @@ System.out.println("filetemp:"+filetemp);
 		
 System.out.println("emailname:"+username+"\tpassword:"+MD5Utils.md5(password)+"\thostname:"+hostname.toString()+"\nTO:"+sendToEmailName+"\nFROM:"+sendFromEmailName
 		+"\nSUBJECT:"+subject+"\nCONTENT:"+content+"\nFILENAME:"+(filename==null||filename.equals("")?"无":filename));	
+		logger.info("emailname:"+username+"\tpassword:"+MD5Utils.md5(password)+"\thostname:"+hostname.toString()+"\nTO:"+sendToEmailName+"\nFROM:"+sendFromEmailName
+		+"\nSUBJECT:"+subject+"\nCONTENT:"+content+"\nFILENAME:"+(filename==null||filename.equals("")?"无":filename));
 
 		SEmail semail = new SEmail();
 		semail.setUsername(username);
@@ -70,6 +75,8 @@ System.out.println("emailname:"+username+"\tpassword:"+MD5Utils.md5(password)+"\
 		UserServiceImpl us = new UserServiceImpl();
 		boolean flag = us.sendEmail(semail);
 System.out.println("发送邮件:"+(flag==true?"成功!":"失败!"+"\n"));		
+		logger.info("发送邮件:"+(flag==true?"成功!":"失败!"+"\n"));
+		
 		if(flag){
 			request.setAttribute("ok", "1");
 			request.setAttribute("title", "邮件发送成功");

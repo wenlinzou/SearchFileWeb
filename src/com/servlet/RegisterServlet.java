@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.bean.User;
 import com.bean.form.RegisterForm;
 import com.exception.UserExistException;
@@ -15,7 +17,8 @@ import com.service.impl.UserServiceImpl;
 import com.util.WebUtils;
 
 public class RegisterServlet extends HttpServlet {
-
+	private static Logger logger = Logger.getLogger(RegisterServlet.class);
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//1校验提交表单字段的合法性(把表单数据封装到formbean)
@@ -39,7 +42,9 @@ public class RegisterServlet extends HttpServlet {
 		UserServiceImpl service = new UserServiceImpl();
 		try {
 			service.register(user);
-System.out.println("注册成功 ===\n用户名"+user.getUsername()+"\t密码:"+user.getShowpassword());				
+System.out.println("注册成功 ===\n用户名"+user.getUsername()+"\t密码:"+user.getShowpassword());
+			logger.info("注册成功 ===\n用户名"+user.getUsername()+"\t密码:"+user.getShowpassword());
+		
 			//6如果service成功，跳转到网站的全局消息显示页面，为用户注册成功的消息
 			request.setAttribute("message", "注册成功！");
 			request.getRequestDispatcher("/WEB-INF/jsp/successT.jsp").forward(request, response);

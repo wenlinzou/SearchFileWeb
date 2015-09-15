@@ -20,6 +20,7 @@ import org.apache.commons.fileupload.RequestContext;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.servlet.ServletRequestContext;
+import org.apache.log4j.Logger;
 
 import com.bean.FileI;
 import com.service.UploadFileService;
@@ -28,6 +29,7 @@ import com.util.FileUtils;
 import com.util.WebUtils;
 
 public class UploadFileServlet extends HttpServlet {
+	
 	private String dir_name = "resource/upload";
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)

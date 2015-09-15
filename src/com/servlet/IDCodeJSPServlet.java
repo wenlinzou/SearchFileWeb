@@ -15,30 +15,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.bean.IDCodeStyle;
 import com.bean.ImageID;
 import com.service.impl.UserServiceImpl;
 
 public class IDCodeJSPServlet extends HttpServlet {
-
+	private static Logger logger = Logger.getLogger(IDCodeJSPServlet.class);
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//iwordcheckstyle bean
-		/*IDCodeStyle iword = new IDCodeStyle();
-		iword.setHeight(30);
-		iword.setWidth(120);
-		
-		BufferedImage image = new BufferedImage(iword.getWidth(),iword.getHeight(),BufferedImage.TYPE_INT_RGB);
-		Graphics g = image.getGraphics();
-		
-		iword.setG(g);
-		UserServiceImpl us = new UserServiceImpl();
-		iword.setBackColor(Color.WHITE);
-		iword.setBorderColor(Color.BLACK);
-		iword.setFontColor(new Color(197,0,0));
-		iword.setLineColor(Color.GRAY);
-		iword.setWordFont(new Font("宋体",Font.BOLD,23));
-		String tempCode = us.getTWordCheck(iword);*/
 		
 		ImageID imageId = new ImageID();
 		imageId.setHeight(30);
@@ -54,7 +41,8 @@ public class IDCodeJSPServlet extends HttpServlet {
 		
 
 System.out.println("TTTWordServlet:"+tempCode);
-
+		logger.info("TTTWordServlet:"+tempCode);
+		
 		// 5图形写入浏览器
 		response.setContentType("image/jpeg");
 		// 禁止图像缓存。

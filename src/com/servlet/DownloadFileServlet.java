@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 public class DownloadFileServlet extends HttpServlet {
+	private static Logger logger = Logger.getLogger(DownloadFileServlet.class);
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -23,7 +26,8 @@ public class DownloadFileServlet extends HttpServlet {
 		path = new String(bs,"UTF-8");
 		
 		path = path.replace("\\", "/");
-System.out.println("Download path - "+path);	
+System.out.println("Download path - "+path);
+		logger.info("Download path - "+path);
 
 		String filename = path.substring(path.lastIndexOf("/") + 1);
 		//通知浏览器接收

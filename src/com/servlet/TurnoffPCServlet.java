@@ -7,17 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.service.PCService;
 
 public class TurnoffPCServlet extends HttpServlet {
-
+	private static Logger logger = Logger.getLogger(TurnoffPCServlet.class);
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
 		String tempTime = request.getParameter("turnoffTime");
 		tempTime = tempTime.trim();
-System.out.println("tempTime:"+tempTime);		
+System.out.println("tempTime:"+tempTime);
+		logger.info("tempTime:"+tempTime);
+		
 		double time = Double.parseDouble(tempTime);
 		
 		

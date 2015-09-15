@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class PlayServlet extends HttpServlet {
+import org.apache.log4j.Logger;
 
+public class PlayServlet extends HttpServlet {
+	private static Logger logger = Logger.getLogger(PlayServlet.class);
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -25,6 +28,7 @@ public class PlayServlet extends HttpServlet {
 		
 		myUrl = myUrl.replace("\\", "/");
 System.out.println("PlayServlet myUrl:"+myUrl);	
+		logger.info("PlayServlet myUrl:"+myUrl);
 //myUrl = "//f:/w/d"; 
 		request.setAttribute("playUrl", myUrl);
 		String suffixStr = myUrl;

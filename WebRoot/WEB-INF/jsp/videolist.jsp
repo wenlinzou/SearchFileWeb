@@ -31,9 +31,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</li>
 				</c:if>
 				<c:if test="${filetype=='img' }">
-				<li>
+				<li class="clearli">
 					<%-- ${file.filename }<br/> --%>
-					<img height="300px;" src='<%=basePath%>resource/upload/${file.arrfilename }' alt='${file.filename }'/>
+					<img src='<%=basePath%>resource/upload/${file.arrfilename }' alt='${file.filename }'/>
+				</li>
+				</c:if>
+				<c:if test="${filetype=='txt' }">
+				<li>
+					文档&nbsp;<a href='<%=basePath%>resource/upload/${file.arrfilename }'>${file.filename }</a>
 				</li>
 				</c:if>
 			</c:forEach>

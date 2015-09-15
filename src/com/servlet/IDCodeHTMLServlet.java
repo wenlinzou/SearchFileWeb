@@ -12,11 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.bean.ImageID;
 import com.service.impl.UserServiceImpl;
 
 public class IDCodeHTMLServlet extends HttpServlet {
-
+	private static Logger logger = Logger.getLogger(IDCodeHTMLServlet.class);
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -32,6 +35,7 @@ public class IDCodeHTMLServlet extends HttpServlet {
 		String tempCode = us.getImageWordCheck(imageId);
 		
 System.out.println("TTTWordServlet:"+tempCode);
+		logger.info("TTTWordServlet:"+tempCode);
 
 		// 5图形写入浏览器
 		response.setContentType("image/jpeg");

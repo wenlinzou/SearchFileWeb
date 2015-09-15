@@ -11,11 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.bean.User;
 import com.service.PCService;
 import com.service.impl.UserServiceImpl;
 
 public class LoginMD5Servlet extends HttpServlet {
+	private static Logger logger = Logger.getLogger(LoginMD5Servlet.class);
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -29,6 +32,9 @@ public class LoginMD5Servlet extends HttpServlet {
 System.out.println("login Time: "+ps.currentDetailTime());
 System.out.println("login Addr: "+ps.getIpAddr(userLogIP));
 System.out.println("userLogIP: " + userLogIP);	
+		logger.info("login Time: "+ps.currentDetailTime());
+		logger.info("login Addr: "+ps.getIpAddr(userLogIP));
+		logger.info("userLogIP: " + userLogIP);
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("<message>");
@@ -42,10 +48,14 @@ System.out.println("userLogIP: " + userLogIP);
 		//转换小写
 
 		boolean wordOK = wordcheck.toLowerCase().equals(wordTemp.toLowerCase());
-System.out.println("wordcheck value:"+wordcheck+"\tworktemp:"+wordTemp+"\twordok:"+wordOK);		
+System.out.println("wordcheck value:"+wordcheck+"\tworktemp:"+wordTemp+"\twordok:"+wordOK);	
+		logger.info("wordcheck value:"+wordcheck+"\tworktemp:"+wordTemp+"\twordok:"+wordOK);
+		
 		PrintWriter out = response.getWriter();
 		
-System.out.println("username:"+username+"\tpassword:"+password+"\twordcheck:"+wordcheck);		
+System.out.println("username:"+username+"\tpassword:"+password+"\twordcheck:"+wordcheck);	
+		logger.info("username:"+username+"\tpassword:"+password+"\twordcheck:"+wordcheck);
+		
 		if(username==null || username.length()==0 || "输入用户名".equals(username)){
 			sb.append("用户名不能为空").append("</message>");
 			out.print(sb.toString());return;
@@ -76,7 +86,10 @@ System.out.println("username:"+username+"\tpassword:"+password+"\twordcheck:"+wo
 System.out.println("LOGINED");				
 				sb.append("canLogin").append("</message>");
 				session.setAttribute("user", user);
-System.out.println("osName: " + osName);	
+System.out.println("osName: " + osName);
+				logger.info("LOGINED");
+				logger.info("osName: " + osName);
+				
 				int osIndex = osName.indexOf(" ");
 				if(osIndex!=-1)
 					osName = osName.substring(0, osIndex);

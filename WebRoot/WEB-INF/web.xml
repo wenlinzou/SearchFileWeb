@@ -10,6 +10,20 @@
     <!-- <welcome-file>indexLogin.jsp</welcome-file> -->
   </welcome-file-list>
   
+  <!-- 日志文件输出到自己程序的WEB-INFO/logs -->
+  <servlet>  
+    <servlet-name>lo4jInit</servlet-name>  
+    <servlet-class>com.util.Log4jUtils</servlet-class>  
+    <init-param>  
+        <param-name>log4j_init_path</param-name>  
+        <param-value>WEB-INF\classes\log4j.properties</param-value>  
+    </init-param>  
+    <init-param>  
+        <param-name>log4j_file_path</param-name>  
+        <param-value>WEB-INF\logs\</param-value>  
+    </init-param>  
+    <load-on-startup>0</load-on-startup>  
+ </servlet> 
   
   	<error-page> 
 		<error-code>404</error-code> 

@@ -8,11 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.util.Html2DocUtils;
 import com.util.FileUtils;
 
 public class Html2DocServlet extends HttpServlet {
-
+	private static Logger logger = Logger.getLogger(Html2DocServlet.class);
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -24,7 +27,9 @@ public class Html2DocServlet extends HttpServlet {
 			byte [] bs = htmlpath.getBytes("ISO8859-1");
 			htmlpath = new String(bs,"UTF-8");
 		}
-System.out.println("htmltodoc htmlpath:"+htmlpath);		
+System.out.println("htmltodoc htmlpath:"+htmlpath);	
+		logger.info("htmltodoc htmlpath:"+htmlpath);
+		
 		//截取路径
 		String writepath = htmlpath.substring(0, htmlpath.lastIndexOf("/"));
 		

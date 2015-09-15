@@ -11,12 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.bean.FileI;
 import com.bean.Page;
 import com.service.FileService;
 import com.util.PageUtils;
 
 public class SearchServlet extends HttpServlet{
+	private static Logger logger = Logger.getLogger(SearchServlet.class);
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("UTF-8");
@@ -44,7 +48,9 @@ public class SearchServlet extends HttpServlet{
 		String foldername = request.getParameter("foldername");
 		String filename = request.getParameter("filename");
 		String suffix = request.getParameter("suffix");
-System.out.println(diskname+" fold:"+foldername+" file:"+filename+" suf:"+suffix);		
+System.out.println(diskname+" fold:"+foldername+" file:"+filename+" suf:"+suffix);
+		logger.info(diskname+" fold:"+foldername+" file:"+filename+" suf:"+suffix);
+		
 		FileI iFile = new FileI();
 		FileService ss = new FileService();
 		List<String> fileLists = new ArrayList<String>();
@@ -81,7 +87,9 @@ System.out.println(diskname+" fold:"+foldername+" file:"+filename+" suf:"+suffix
 			
 		//session not null and fileObje!=f
 		if(hasFileISession) {
-System.out.println("-- has session no create --");			
+System.out.println("-- has session no create --");	
+			logger.info("-- has session no create --");
+			
 			//取sessionFileLists
 			List<String> inputSessionList = (List<String>) session.getAttribute("sessionFileLists");
 			fileLists = ss.queryFileListBySession(inputSessionList, page);
@@ -97,7 +105,9 @@ System.out.println("-- has session no create --");
 			totalCount = page.getTotalCount();
 				
 		}else{
-System.out.println("-- no session createing --");			
+System.out.println("-- no session createing --");
+			logger.info("-- no session createing --");
+			
 			//session is null by filefilter maybe this is first so u need input all filelist in session 
 			//first remove allfilelist session
 //			session.removeAttribute("sessionFileLists");
@@ -123,7 +133,9 @@ System.out.println("-- no session createing --");
 			}
 			pageSize = page.getPageSize();
 			totalCount = page.getTotalCount();
-System.out.println("file is null");		
+System.out.println("file is null");	
+			logger.info("file is null");
+			
 		}
 		
 		//定义是否搜索到内容的标记
