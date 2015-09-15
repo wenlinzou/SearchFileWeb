@@ -16,13 +16,13 @@
     <servlet-class>com.util.Log4jUtils</servlet-class>  
     <init-param>  
         <param-name>log4j_init_path</param-name>  
-        <param-value>WEB-INF\classes\log4j.properties</param-value>  
+        <param-value>WEB-INF/classes/log4j.properties</param-value>  
     </init-param>  
     <init-param>  
         <param-name>log4j_file_path</param-name>  
-        <param-value>WEB-INF\logs\</param-value>  
+        <param-value>WEB-INF/logs/</param-value>  
     </init-param>  
-    <load-on-startup>0</load-on-startup>  
+    <load-on-startup>1</load-on-startup>  
  </servlet> 
   
   	<error-page> 
