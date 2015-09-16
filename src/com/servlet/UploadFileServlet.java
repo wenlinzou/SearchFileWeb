@@ -29,6 +29,7 @@ import com.util.FileUtils;
 import com.util.WebUtils;
 
 public class UploadFileServlet extends HttpServlet {
+	private static Logger logger = Logger.getLogger(UploadFileServlet.class);
 	
 	private String dir_name = "resource/upload";
 
@@ -87,6 +88,8 @@ public class UploadFileServlet extends HttpServlet {
 							
 							fileItem.write(newFile);
 							upFileService.saveUploadFileInfo(filei);
+							logger.info(filei.getFilename()+filei.getSuffix());
+							
 						} else {
 							System.out.println("文件没有选择 或 文件内容为空");
 						}
