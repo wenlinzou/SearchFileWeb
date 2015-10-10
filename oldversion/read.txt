@@ -29,3 +29,10 @@ commons-codec-1.9.jar
 
 上传
 commons-*.jar
+
+
+二维码
+zxing-j2se-1.7.jar
+zxing-core-1.7.jar
+qrgen-1.0.jar
+

@@ -30,6 +30,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <br />
             <input class="subtn" type="submit" value="上传" />
 		</form>
+		<form action="<%=basePath %>qrcode.html" method="post">
+            		<input type="text" name="qrtext"/>
+            		<input type="submit" value="二维码"/>
+            	</form>
 	</div>
 		</center>
   </body>

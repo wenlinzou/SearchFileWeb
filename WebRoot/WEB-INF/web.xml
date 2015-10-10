@@ -114,6 +114,11 @@
     <servlet-name>VideoListServlet</servlet-name>
     <servlet-class>com.servlet.VideoListServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>QRCodeServlet</servlet-name>
+    <servlet-class>com.servlet.QRCodeServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -219,5 +224,9 @@
   <servlet-mapping>
     <servlet-name>VideoListServlet</servlet-name>
     <url-pattern>/videolist.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QRCodeServlet</servlet-name>
+    <url-pattern>/qrcode.html</url-pattern>
   </servlet-mapping>
 </web-app>
