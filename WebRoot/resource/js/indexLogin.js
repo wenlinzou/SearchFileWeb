@@ -30,6 +30,14 @@ $(function(){
 	InputHint(document.getElementById('wordcheck'),'输入验证码');
 	
 });
+
+//enter事件
+document.onkeydown=function(event){
+	var e = event||window.event||arguments.callee.caller.arguments[0];
+	if(e && e.keyCode==13){
+		verify();
+	}
+};
 function verify() {
 	
     //var userName = $("#userName").val();
